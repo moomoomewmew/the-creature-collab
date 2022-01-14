@@ -1,0 +1,144 @@
+button,
+input {
+  border: none;
+  font-size: 1rem;
+}
+
+button {
+  background-color: #046A6E;
+  border-radius: 50px;
+  color: #ffffff;
+  padding: 0.75rem 1rem;
+  transition: box-shadow 0.3s ease-in, background-color 0.3s ease-in;
+}
+
+button + button {
+  margin-left: 0.25rem;
+}
+
+button:focus {
+  box-shadow: 0 0 5px #42B0AE;
+  outline: none;
+}
+
+button:hover {
+  background-color: #FEF0A9;
+}
+
+form {
+  background-color: white;
+  border-radius: 50px;
+  color: #222222;
+  padding: 1.5rem 2rem;
+  text-align: left;
+}
+
+h1 {
+  color: #ffffff;
+  font-weight: lighter;
+  margin: 0;
+  padding: 4rem 2rem 1rem;
+  text-align: left;
+}
+
+input {
+  border-bottom: 1px solid #532727;
+  display: block;
+  margin: 1.5rem 0 0.5rem;
+  padding: 0.5rem 0;
+  transition: border 0.3s ease-in;
+}
+
+input:focus {
+  border-color: #1e90ff;
+  outline: none;
+}
+
+label {
+  color: #555555;
+  display: block;
+  opacity: 0;
+  transform: translateY(-2rem);
+  transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+}
+
+input:focus + label,
+input:not(:placeholder-shown) + label {
+  opacity: 1;
+  transform: translateY(-4.25rem);
+}
+
+input[type='text'],
+input[type='password'] {
+  width: 100%;
+}
+
+.cancel {
+  background-color: #ff0000;
+}
+
+.cancel:focus {
+  box-shadow: 0 0 5px #db0101;
+  outline: none;
+}
+
+.cancel:hover {
+  background-color: #ff0000;
+}
+
+.form {
+  background: linear-gradient(to left, #FEEEA9, #8DE0CB);
+  border: 1px solid #0D7378;
+  border-radius: 50px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.15);
+  color: #ffffff;
+  width: 100%;
+  margin: 2em auto;
+  max-width: 400px;
+  text-align: center;
+  padding: 20px;
+}
+
+.invalid,
+.valid {
+  align-items: center;
+  background-color: #ffffff;
+  display: flex;
+  margin: 1rem 0;
+}
+
+form ~ .invalid,
+form ~ .valid {
+  margin: 0;
+  padding: 1rem 2rem 2rem;
+}
+
+.invalid {
+  color: red;
+}
+
+.valid {
+  color: green;
+}
+
+.invalid::before,
+.valid::before {
+  background-repeat: no-repeat;
+  content: '';
+  display: inline-block;
+  height: 1.5rem;
+  width: 1.5rem;
+  margin-right: 0.25rem;
+}
+
+.invalid::before {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath xmlns='http://www.w3.org/2000/svg' fill='red' d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 464c-118.7 0-216-96.1-216-216 0-118.7 96.1-216 216-216 118.7 0 216 96.1 216 216 0 118.7-96.1 216-216 216zm94.8-285.3L281.5 256l69.3 69.3c4.7 4.7 4.7 12.3 0 17l-8.5 8.5c-4.7 4.7-12.3 4.7-17 0L256 281.5l-69.3 69.3c-4.7 4.7-12.3 4.7-17 0l-8.5-8.5c-4.7-4.7-4.7-12.3 0-17l69.3-69.3-69.3-69.3c-4.7-4.7-4.7-12.3 0-17l8.5-8.5c4.7-4.7 12.3-4.7 17 0l69.3 69.3 69.3-69.3c4.7-4.7 12.3-4.7 17 0l8.5 8.5c4.6 4.7 4.6 12.3 0 17z'/%3E%3C/svg%3E");
+}
+
+.valid::before {
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath xmlns='http://www.w3.org/2000/svg' fill='green' d='M256 8C119.033 8 8 119.033 8 256s111.033 248 248 248 248-111.033 248-248S392.967 8 256 8zm0 464c-118.664 0-216-96.055-216-216 0-118.663 96.055-216 216-216 118.664 0 216 96.055 216 216 0 118.663-96.055 216-216 216zm141.63-274.961L217.15 376.071c-4.705 4.667-12.303 4.637-16.97-.068l-85.878-86.572c-4.667-4.705-4.637-12.303.068-16.97l8.52-8.451c4.705-4.667 12.303-4.637 16.97.068l68.976 69.533 163.441-162.13c4.705-4.667 12.303-4.637 16.97.068l8.451 8.52c4.668 4.705 4.637 12.303-.068 16.97z'/%3E%3C/svg%3E");
+}
+
+a {
+  margin: 2em;
+}
