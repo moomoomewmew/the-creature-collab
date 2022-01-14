@@ -5,10 +5,7 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header">
-        <h1>THIS IS THE CREATURE COLLAB-APP</h1>
-
-      </header>
+    
 
       <Routes>
         <Route path='/' element={<LandingPage />} />
