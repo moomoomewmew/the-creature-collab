@@ -12,20 +12,10 @@ module.exports = {
         type: Sequelize.STRING
       },
       events: {
-        type: Sequelize.ARRAY(Sequelize.INTEGER),
-        onDelete: 'CASCADE',
-        references: {
-          model: 'events',
-          key: 'id'
-        }
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
       },
       users: {
-        type: Sequelize.ARRAY(Sequelize.INTEGER),
-        onDelete: 'CASCADE',
-        references: {
-          model: 'users',
-          key: 'id'
-        }
+        type: Sequelize.ARRAY(Sequelize.INTEGER)
       },
       createdAt: {
         allowNull: false,

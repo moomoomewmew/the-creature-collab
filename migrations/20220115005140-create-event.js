@@ -12,12 +12,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       cityId: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'cities',
-          key: 'id'
-        }
+        type: Sequelize.INTEGER
       },
       ownerId: {
         type: Sequelize.INTEGER,
