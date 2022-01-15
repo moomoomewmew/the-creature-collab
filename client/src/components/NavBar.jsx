@@ -5,10 +5,10 @@ import '../styles/navbar.css'
 const Navbar = (props) => {
 
     return (
-        <nav>
-            <Link to="/">Home</Link>
-            <Link to="/newaccount">Create Account</Link>
-            <Link to="/login">Login</Link>
+        <nav >
+            <Link className="nav" to="/">Home</Link>
+            <Link className="nav" to="/newaccount">Create Account</Link>
+            <Link className="nav" to="/login">Login</Link>
         </nav>
     )
 }
