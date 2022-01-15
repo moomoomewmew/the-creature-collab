@@ -3,15 +3,15 @@ const { Model } = require('sequelize');
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     static associate(models) {
-      User.hasMany(models.Event, {
-        as: 'owned',
-        foreignKey: 'ownerId'
-      });
-      User.belongsToMany(models.Event, {
-        as: 'attendee',
-        through: models.EventUser,
-        foreignKey: 'attendeeId'
-      });
+      // User.hasMany(models.Event, {
+      //   as: 'owned',
+      //   foreignKey: 'ownerId'
+      // });
+      // User.belongsToMany(models.Event, {
+      //   as: 'attendee',
+      //   through: models.EventUser,
+      //   foreignKey: 'attendeeId'
+      // });
     }
   }
   User.init(
