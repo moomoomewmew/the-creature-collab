@@ -11,8 +11,8 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      cityId: {
-        type: Sequelize.INTEGER
+      city: {
+        type: Sequelize.STRING
       },
       ownerId: {
         type: Sequelize.INTEGER,

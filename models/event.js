@@ -13,7 +13,6 @@ module.exports = (sequelize, DataTypes) => {
         as: 'owner',
         foreignKey: 'ownerId'
       });
-      Event.belongsTo(models.City, { foreignKey: 'cityId' });
       Event.belongsToMany(models.User, {
         through: models.EventUser,
         as: 'events',
@@ -24,14 +23,7 @@ module.exports = (sequelize, DataTypes) => {
   Event.init(
     {
       name: DataTypes.STRING,
-      cityId: {
-        type: DataTypes.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'cities',
-          key: 'id'
-        }
-      },
+      city: DataTypes.STRING,
       ownerId: {
         type: DataTypes.INTEGER,
         onDelete: 'CASCADE',
