@@ -13,8 +13,20 @@ module.exports = (sequelize, DataTypes) => {
   }
   EventUser.init(
     {
-      eventId: DataTypes.INTEGER,
-      attendeeId: DataTypes.ARRAY
+      eventId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'events',
+          key: 'id'
+        }
+      },
+      attendeeId: {
+        type: DataTypes.INTEGER,
+        references: {
+          model: 'users',
+          key: 'id'
+        }
+      }
     },
     {
       sequelize,
