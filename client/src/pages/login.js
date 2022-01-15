@@ -45,7 +45,7 @@ export default function Login(props) {
             />
           </div>
           <button disabled={!formValues.email || !formValues.password}>
-            log In
+            Sign In
           </button>
         </form>
       </div>
