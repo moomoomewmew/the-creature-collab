@@ -14,6 +14,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'ownerId'
       });
       Event.belongsTo(models.City, { foreignKey: 'cityId' });
+      Event.belongsToMany(models.User, {
+        through: models.EventUser,
+        as: 'events',
+        foreignKey: 'eventId'
+      });
     }
   }
   Event.init(
