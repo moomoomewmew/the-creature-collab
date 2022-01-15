@@ -19,6 +19,9 @@ module.exports = {
       city: {
         type: Sequelize.STRING
       },
+      pronouns: {
+        type: Sequelize.STRING
+      },
       characterClass: {
         type: Sequelize.STRING
       },
