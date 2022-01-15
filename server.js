@@ -1,7 +1,5 @@
 const express = require('express');
 const cors = require("cors")
-const users = require("./routes/index.js")
-const rides = require("./routes/rides.js")
 const db = require('./db')
 const logger = require('morgan')
 const path = require('path')
