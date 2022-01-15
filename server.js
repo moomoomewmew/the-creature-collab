@@ -1,26 +1,16 @@
-const express = require('express');
-const cors = require("cors")
-const users = require("./routes/index.js")
-const rides = require("./routes/rides.js")
-const db = require('./db')
-const logger = require('morgan')
-const path = require('path')
+const app = require('express')();
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const AuthRouter = require('./routes/AuthRouter');
+const AppRouter = require('./routes/AppRouter');
 
-const PORT = process.env.PORT || 3001
+const PORT = process.env.PORT || 3001;
 
-const app = express()
+app.use(cors());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
-app.use(cors())
-app.use(express.json())
-app.use(logger('dev'))
-
-if (process.env.NODE_ENV === 'production') {
-    app.use(express.static(path.join(__dirname, 'client/build')))
-    app.get('*', (req, res) => {
-        res.sendFile(path.join(`${__dirname}/client/build/index.html`))
-    })
-}
-app.listen(PORT, () => {
-    console.log(`listening on port ${PORT}`)
-})
- 
+app.get('/', (req, res) => res.json({ message: 'Server Works' }));
+app.use('/api', AppRouter);
+app.use('/auth', AuthRouter);
+app.listen(PORT, () => console.log(`Server Started On Port: ${PORT}`));
