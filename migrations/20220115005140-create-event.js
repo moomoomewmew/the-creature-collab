@@ -11,8 +11,13 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
-      city: {
-        type: Sequelize.INTEGER
+      cityId: {
+        type: Sequelize.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'cities',
+          key: 'id'
+        }
       },
       ownerId: {
         type: Sequelize.INTEGER,
