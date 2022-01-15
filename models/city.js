@@ -9,12 +9,20 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      City.belongsTo(models.User, { foreignKey: 'users' });
     }
   }
   City.init(
     {
       events: DataTypes.ARRAY,
-      users: DataTypes.ARRAY
+      users: {
+        type: DataTypes.ARRAY(DataTypes.INTEGER),
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        }
+      }
     },
     {
       sequelize,
