@@ -9,13 +9,24 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       // define association here
+      Event.belongsTo(models.User, {
+        as: 'owner',
+        foreignKey: 'ownerId'
+      });
     }
   }
   Event.init(
     {
       name: DataTypes.STRING,
       city: DataTypes.INTEGER,
-      ownerId: DataTypes.INTEGER,
+      ownerId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        }
+      },
       time: DataTypes.TIME,
       date: DataTypes.DATE,
       online: DataTypes.BOOLEAN,
