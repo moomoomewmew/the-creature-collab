@@ -13,12 +13,20 @@ module.exports = (sequelize, DataTypes) => {
         as: 'owner',
         foreignKey: 'ownerId'
       });
+      Event.belongsTo(models.City, { foreignKey: 'cityId' });
     }
   }
   Event.init(
     {
       name: DataTypes.STRING,
-      city: DataTypes.INTEGER,
+      cityId: {
+        type: DataTypes.INTEGER,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'cities',
+          key: 'id'
+        }
+      },
       ownerId: {
         type: DataTypes.INTEGER,
         onDelete: 'CASCADE',
