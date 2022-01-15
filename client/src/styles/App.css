@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&family=Almendra+SC&display=swap');
+
 
 
 .App-header {
@@ -26,6 +28,7 @@ nav{
   margin: 0 1em;
   color: rgb(3, 20, 36); 
   text-decoration: none;
+  font-family: 'Almendra SC', serif;
 }
 .nav:hover{
   transform: scale(1.2);
@@ -47,4 +50,21 @@ input{
 select{
   border-radius: .3em;
 
+}
+
+.bard-pic {
+  background-image: url('bard_in_pub.jpeg');
+  height: 50em;
+  background-repeat: no-repeat;
+  border: 4px solid black;
+  border-radius: 50px;
+}
+
+h1 {
+  font-family: 'Almendra SC', serif;
+}
+
+p {
+font-family: 'Almendra Display', cursive;
+color: black;
 }
