@@ -14,6 +14,7 @@ module.exports = (sequelize, DataTypes) => {
   }
   City.init(
     {
+      cityName: DataTypes.STRING,
       events: DataTypes.ARRAY,
       users: {
         type: DataTypes.ARRAY(DataTypes.INTEGER),
