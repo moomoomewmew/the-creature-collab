@@ -8,11 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      cityName: {
+        type: Sequelize.STRING
+      },
       events: {
         type: Sequelize.ARRAY
       },
       users: {
-        type: Sequelize.ARRAY
+        type: Sequelize.ARRAY(DataTypes.INTEGER),
+        onDelete: 'CASCADE',
+        references: {
+          model: 'users',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
