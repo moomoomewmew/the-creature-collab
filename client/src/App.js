@@ -8,6 +8,8 @@ import Safety from './pages/safety';
 import About from './pages/about';
 import Navbar from './components/NavBar';
 import { CheckSession} from './services/Auth'
+import landingpage from './pages/landingpage';
+import Landingpage from './pages/landingpage';
 
 
 function App() {
@@ -43,6 +45,7 @@ function App() {
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/about' element={<About />} />
         <Route path='/safety' element={<Safety />} />
+        <Route path='/welcome' element={<Landingpage />} />
       </Routes>
 
     </div>
