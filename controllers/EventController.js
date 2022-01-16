@@ -31,8 +31,19 @@ const UpdateEventDetails = async (req, res) => {
   }
 };
 
+const DeleteEvent = async (req, res) => {
+  try {
+    let eventId = parseInt(req.params.id);
+    await Event.destroy({ where: { id: eventId } });
+    res.send(`Deleted event with an id of ${eventId}`);
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   GetAllEvents,
   CreateEvent,
-  UpdateEventDetails
+  UpdateEventDetails,
+  DeleteEvent
 };
