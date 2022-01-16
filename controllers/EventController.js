@@ -27,6 +27,36 @@ const GetAllEventsWithAttendees = async (req, res) => {
   }
 };
 
+const GetAllEventsWithAllInfo = async (req, res) => {
+  try {
+    const eventsAndInfo = await Event.findAll({
+      include: [
+        {
+          model: User,
+          as: 'attendees',
+          through: { attributes: [] },
+          required: true
+        },
+        { model: User, as: 'owner' }
+      ]
+    });
+    res.send(eventsAndInfo);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+const GetAllEventsWithOwners = async (req, res) => {
+  try {
+    const eventsAndOwners = await Event.findAll({
+      include: [{ model: User, as: 'owner' }]
+    });
+    res.send(eventsAndOwners);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const GetEventByIdWithAttendees = async (req, res) => {
   try {
     let eventId = parseInt(req.params.id);
@@ -45,23 +75,6 @@ const GetEventByIdWithAttendees = async (req, res) => {
     console.log(error);
   }
 };
-
-// const GetEventAndOwner = async () => {
-//   try {
-//     const eventAndOwner = await Event.findAll({
-//       include: [
-//         {
-//           model: User,
-//           as: 'owned'
-//           // through: { attributes: [] }
-//         }
-//       ]
-//     });
-//     res.send(eventAndOwner);
-//   } catch (error) {
-//     console.log(error);
-//   }
-// };
 
 const CreateEvent = async (req, res) => {
   try {
@@ -121,12 +134,13 @@ const RemoveEventAttendee = async (req, res) => {
 
 module.exports = {
   GetAllEvents,
+  GetAllEventsWithOwners,
   GetAllEventsWithAttendees,
+  GetAllEventsWithAllInfo,
   GetEventByIdWithAttendees,
   CreateEvent,
   AddEventAttendee,
   UpdateEventDetails,
   DeleteEvent,
   RemoveEventAttendee
-  // GetEventAndOwner
 };
