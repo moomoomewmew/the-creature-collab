@@ -126,4 +126,5 @@ export default function EventForm(props) {
       <button type="submit">Submit</button>
     </div>
   );
-}
+};
+
