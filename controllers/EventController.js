@@ -104,6 +104,21 @@ const DeleteEvent = async (req, res) => {
   }
 };
 
+const RemoveEventAttendee = async (req, res) => {
+  try {
+    let eventId = parseInt(req.params.eventId);
+    let attendeeId = parseInt(req.params.attendeeId);
+    await EventUser.destroy({
+      where: { eventId: eventId, attendeeId: attendeeId }
+    });
+    res.send(
+      `Removed user with an id of ${attendeeId} from event with an id of ${eventId}`
+    );
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   GetAllEvents,
   GetAllEventsWithAttendees,
@@ -111,6 +126,7 @@ module.exports = {
   CreateEvent,
   AddEventAttendee,
   UpdateEventDetails,
-  DeleteEvent
+  DeleteEvent,
+  RemoveEventAttendee
   // GetEventAndOwner
 };
