@@ -1,4 +1,4 @@
-const { User, Event } = require('../models');
+const { User, Event, EventUser } = require('../models');
 
 const GetAllEvents = async (req, res) => {
   try {
@@ -72,6 +72,15 @@ const CreateEvent = async (req, res) => {
   }
 };
 
+const AddEventAttendee = async (req, res) => {
+  try {
+    let eventAttendee = await EventUser.create(req.body);
+    res.send(eventAttendee);
+  } catch (error) {
+    throw error;
+  }
+};
+
 const UpdateEventDetails = async (req, res) => {
   try {
     let eventId = parseInt(req.params.id);
@@ -100,6 +109,7 @@ module.exports = {
   GetAllEventsWithAttendees,
   GetEventByIdWithAttendees,
   CreateEvent,
+  AddEventAttendee,
   UpdateEventDetails,
   DeleteEvent
   // GetEventAndOwner
