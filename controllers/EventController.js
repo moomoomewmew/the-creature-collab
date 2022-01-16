@@ -1,4 +1,4 @@
-const { User, Event, sequelize } = require('../models');
+const { User, Event } = require('../models');
 
 const GetAllEvents = async (req, res) => {
   try {
@@ -18,7 +18,21 @@ const CreateEvent = async (req, res) => {
   }
 };
 
+const UpdateEventDetails = async (req, res) => {
+  try {
+    let eventId = parseInt(req.params.id);
+    let updatedEvent = await Event.update(req.body, {
+      where: { id: eventId },
+      returning: true
+    });
+    res.send(updatedEvent);
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   GetAllEvents,
-  CreateEvent
+  CreateEvent,
+  UpdateEventDetails
 };
