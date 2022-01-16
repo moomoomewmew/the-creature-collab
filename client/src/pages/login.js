@@ -1,9 +1,11 @@
 
 import React, { useState } from 'react'
 import { SignInUser } from '../services/Auth'
+import {Link, useNavigate} from 'react-router-dom'
 
 
-export default function Login(props) {
+export default function LogIn(props) {
+  const navigate = useNavigate()
   const [formValues, setFormValues] = useState({ email: '', password: '' })
 
   const handleChange = (e) => {
@@ -16,7 +18,7 @@ export default function Login(props) {
     setFormValues({ email: '', password: '' })
     props.setUser(payload)
     props.toggleAuthenticated(true)
-    props.history.push('/')
+    navigate('/dashboard')
   }
 
   return (

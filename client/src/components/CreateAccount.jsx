@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { RegisterUser } from '../services/Auth'
 
 const iState = {
@@ -9,6 +10,7 @@ const iState = {
 }
 
 export default function Register(props) {
+  const navigate = useNavigate()
   const [formValues, setFormValues] = useState({
     userName: '',
     email: '',
@@ -28,7 +30,7 @@ export default function Register(props) {
       password: formValues.password
     })
     setFormValues(iState)
-    props.history.push('/login')
+    navigate('/login')
   }
 
   return (
