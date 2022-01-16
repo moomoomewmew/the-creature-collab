@@ -107,3 +107,5 @@ const EventForm = (props) => {
     </div>
   );
 };
+
+export default EventForm

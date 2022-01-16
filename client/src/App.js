@@ -8,9 +8,8 @@ import Safety from './pages/safety';
 import About from './pages/about';
 import Navbar from './components/NavBar';
 import { CheckSession} from './services/Auth'
-import landingpage from './pages/landingpage';
 import Landingpage from './pages/landingpage';
-
+import Events from './pages/eventPage';
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false)
@@ -46,6 +45,8 @@ function App() {
         <Route path='/about' element={<About />} />
         <Route path='/safety' element={<Safety />} />
         <Route path='/welcome' element={<Landingpage />} />
+        <Route path='/events' element={<Events />} />
+
       </Routes>
 
     </div>
