@@ -1,16 +1,18 @@
 import React, { useState } from 'react'
+import { Link, useNavigate } from 'react-router-dom'
 import { RegisterUser } from '../services/Auth'
 
 const iState = {
-  name: '',
+  userName: '',
   email: '',
   password: '',
   confirmPassword: ''
 }
 
 export default function Register(props) {
+  const navigate = useNavigate()
   const [formValues, setFormValues] = useState({
-    name: '',
+    userName: '',
     email: '',
     password: '',
     confirmPassword: ''
@@ -23,12 +25,12 @@ export default function Register(props) {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await RegisterUser({
-      name: formValues.name,
+      userName: formValues.userName,
       email: formValues.email,
       password: formValues.password
     })
     setFormValues(iState)
-    props.history.push('/signin')
+    navigate('/login')
   }
 
   return (
@@ -36,13 +38,13 @@ export default function Register(props) {
       <div className="card-overlay centered">
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="name">Name</label>
+            <label htmlFor="Username">username</label>
             <input
               onChange={handleChange}
-              name="name"
+              name="userName"
               type="text"
               placeholder="John Smith"
-              value={formValues.name}
+              value={formValues.userName}
               required
             />
           </div>
