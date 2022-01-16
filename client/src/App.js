@@ -36,6 +36,7 @@ const App = () => {
     <div className="App">
       <Navbar />
       <Routes>
+
         <Route path="/newaccount" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
