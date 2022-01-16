@@ -76,6 +76,26 @@ const GetEventByIdWithAttendees = async (req, res) => {
   }
 };
 
+const GetEventByIdWithAllInfo = async (req, res) => {
+  try {
+    let eventId = parseInt(req.params.id);
+    const eventAndInfo = await Event.findOne({
+      where: { id: eventId },
+      include: [
+        {
+          model: User,
+          as: 'attendees',
+          through: { attributes: [] }
+        },
+        { model: User, as: 'owner' }
+      ]
+    });
+    res.send(eventAndInfo);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const CreateEvent = async (req, res) => {
   try {
     let newEvent = await Event.create(req.body);
@@ -138,6 +158,7 @@ module.exports = {
   GetAllEventsWithAttendees,
   GetAllEventsWithAllInfo,
   GetEventByIdWithAttendees,
+  GetEventByIdWithAllInfo,
   CreateEvent,
   AddEventAttendee,
   UpdateEventDetails,
