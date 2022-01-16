@@ -21,18 +21,11 @@ nav{
   height: 3em;
   font-size: 2vw;
   font-weight: bold;
+  background-color: #282c34;
 
 }
 
-.nav   {
-  margin: 0 1em;
-  color: rgb(3, 20, 36); 
-  text-decoration: none;
-  font-family: 'Almendra SC', serif;
-}
-.nav:hover{
-  transform: scale(1.2);
-}
+
 form {
   position: relative;
   background-color:rgba(0, 4, 8, 0.1) ;
@@ -66,5 +59,27 @@ h1 {
 
 p {
 font-family: 'Almendra Display', cursive;
-color: black;
+font-weight: bolder;
+}
+
+body {
+  background-color: black;
+  color: white;
+}
+
+nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav   {
+  margin: 0 1em;
+  color: rgb(3, 20, 36); 
+  text-decoration: none;
+  font-family: 'Almendra SC', serif;
+  color: white;
+
+}
+.nav:hover{
+  transform: scale(1.2);
 }

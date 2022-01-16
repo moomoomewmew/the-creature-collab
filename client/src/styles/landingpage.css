@@ -1,0 +1,19 @@
+.welcome {
+    display: flex;
+
+
+}
+
+.welcome-description {
+    display: flex;
+    flex-direction: column;
+}
+
+.pub-pic {
+  border-radius: 50px;
+  max-width: 40em;
+}
+
+p {
+    font-size: larger;
+}
