@@ -1,12 +1,13 @@
 .welcome {
     display: flex;
-
-
+    margin: auto;
+    padding: 100px;
 }
 
 .welcome-description {
     display: flex;
     flex-direction: column;
+    justify-content: start;
 }
 
 .pub-pic {
@@ -16,4 +17,8 @@
 
 p {
     font-size: larger;
+}
+
+h1 {
+    font-size: 50px;
 }
