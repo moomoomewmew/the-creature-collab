@@ -9,6 +9,21 @@ const GetAllUsers = async (req, res) => {
   }
 };
 
+const GetAllUsersWithAllInfo = async (req, res) => {
+  try {
+    const usersAndInfo = await User.findAll({
+      include: [
+        { model: Event, as: 'owned' },
+        { model: Event, as: 'events' }
+      ]
+    });
+    res.send(usersAndInfo);
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
-  GetAllUsers
+  GetAllUsers,
+  GetAllUsersWithAllInfo
 };
