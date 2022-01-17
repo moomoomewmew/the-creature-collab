@@ -113,13 +113,59 @@ export default function EventForm(props) {
           <select
             type="text"
             className="is-online-event"
-            value={newEvent.outdoor}
+            value={newEvent.online}
             onChange={(e) => handleChange(e)}
           >
             <option>Online Event? </option>
             <option value={true}>Online Event</option>
             <option value={false}>In-Person Event</option>
           </select>
+        </section>
+        <section className="event-outdoor-input">
+          <select
+            type="text"
+            className="is-outdoor-event"
+            value={newEvent.outdoor}
+            onChange={(e) => handleChange(e)}
+          >
+            <option>Outdoors?</option>
+            <option value={true}>Outdoor Event</option>
+            <option value={false}>Indoor Event</option>
+          </select>
+        </section>
+        <section className="address-input">
+          Street Address
+          <input
+            type="text"
+            className="event-address-info"
+            value={newEvent.address}
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </section>
+        <section className="event-state-address">
+          State
+          <input
+            type="text"
+            className="event-state-info"
+            value={newEvent.state}
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </section>
+        <section className="event-description-input">
+          <input
+            type="text"
+            className="event-description-info"
+            value={newEvent.description}
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </section>
+        <section className="event-picture-input">
+          <input
+            type="text"
+            className="event-picture-info"
+            value={newEvent.picture}
+            onChange={(e) => handleChange(e)}
+          ></input>
         </section>
       </form>
 

@@ -22,11 +22,11 @@ export default function LogIn(props) {
   }
 
   return (
-    <div className="log-in col">
-      <div className="card-overlay centered">
+    <div className="rigister-form">
+      <div className="register-form">
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="email">Email</label>
+            <label htmlFor="email">Email </label>
             <input
               onChange={handleChange}
               name="email"
@@ -37,7 +37,7 @@ export default function LogIn(props) {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password </label>
             <input
               onChange={handleChange}
               type="password"
