@@ -13,19 +13,21 @@ import Events from './pages/eventPage';
 
 function App() {
 
-  const [authenticated, toggleAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
+  const [authenticated, toggleAuthenticated] = useState(false)
+  const [user, setUser] = useState(null)
+  
+  const checkToken = async () => {
+    const user = await CheckSession()
+    setUser(user)
+    toggleAuthenticated(true)
+  }
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if (token) {
+      checkToken()
+    }
+  }, [])
 
-  // const user = await CheckSession()
-  // setUser(user);
-  // toggleAuthenticated(true);
-
-  // useEffect(() => {
-  //   const token = localStorage.getItem('token');
-  //   if (token) {
-  //     // checkToken();/// please revisit. showing "not defined" error
-  //   }
-  // }, []);
 
   const handleLogOut = () => {
     setUser(null);
