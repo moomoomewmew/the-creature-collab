@@ -10,9 +10,10 @@ import Navbar from './components/NavBar';
 import { CheckSession } from './services/Auth';
 import Landingpage from './pages/landingpage';
 import Events from './pages/eventPage';
-import DisplayProfile from './pages/DisplayProfile'
+
 import ProtectedRoute from './components/ProtectedRoute';
 import ProfileView from './components/UserProfile';
+import DisplayProfile from './pages/displayProfile'
 
 function App() {
 
