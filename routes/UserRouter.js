@@ -5,5 +5,6 @@ Router.get('/', controller.GetAllUsers);
 Router.get('/info', controller.GetAllUsersWithAllInfo);
 Router.get('/:id', controller.GetUserById);
 Router.get('/info/:id', controller.GetUserByIdWithAllInfo);
+Router.put('/:id', controller.UpdateUserDetails);
 
 module.exports = Router;

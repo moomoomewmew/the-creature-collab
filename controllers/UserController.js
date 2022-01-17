@@ -51,9 +51,23 @@ const GetUserByIdWithAllInfo = async (req, res) => {
   }
 };
 
+const UpdateUserDetails = async (req, res) => {
+  try {
+    let userId = parseInt(req.params.id);
+    let updatedUser = await User.update(req.body, {
+      where: { id: userId },
+      returning: true
+    });
+    res.send(updatedUser);
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   GetAllUsers,
   GetAllUsersWithAllInfo,
   GetUserById,
-  GetUserByIdWithAllInfo
+  GetUserByIdWithAllInfo,
+  UpdateUserDetails
 };
