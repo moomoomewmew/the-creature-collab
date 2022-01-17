@@ -18,7 +18,7 @@ export default function LogIn(props) {
     setFormValues({ email: '', password: '' })
     props.setUser(payload)
     props.toggleAuthenticated(true)
-    navigate('/dashboard')
+    navigate('/profiles')
   }
 
   return (
@@ -26,7 +26,7 @@ export default function LogIn(props) {
       <div className="register-form">
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
-            <label htmlFor="email">Email </label>
+            {/* <label htmlFor="email">Email </label> */}
             <input
               onChange={handleChange}
               name="email"
@@ -37,11 +37,12 @@ export default function LogIn(props) {
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="password">Password </label>
+            {/* <label htmlFor="password">Password </label> */}
             <input
               onChange={handleChange}
               type="password"
               name="password"
+              placeholder='Password'
               value={formValues.password}
               required
             />
