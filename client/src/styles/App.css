@@ -123,23 +123,27 @@ nav {
   height: 7vh;
   border-radius: 40px;
 }
+
 .profile-layout-grid{
   display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
   grid-template-areas: 
   'header header header'
-  'profilepic profilepic profilepic'
-  'body-left body-middle body-right'
-  'bottom-body-left bottom-body-middle bottom-body-right';
-  align-items: center;
-  /* justify-content: center; */
+  'body-left body-mid body-right'
+  'bod-left main main';
+  grid-gap: 4vmin;
+}
+.name-and-pic{
+  grid-area: header;
+
 }
 .profilePicture {
   max-height: 20vh;
   width: auto;
   border-radius: 50px;
-  grid-area: profilepic;
   align-self: center;
 }
 .details{
   grid-area: body-left;
-}
+} 
