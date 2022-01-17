@@ -23,7 +23,24 @@ const GetAllUsersWithAllInfo = async (req, res) => {
   }
 };
 
+const GetUserByIdWithAllInfo = async (req, res) => {
+  try {
+    let userId = parseInt(req.params.id);
+    const userAndInfo = await User.findOne({
+      where: { id: userId },
+      include: [
+        { model: Event, as: 'owned' },
+        { model: Event, as: 'events' }
+      ]
+    });
+    res.send(userAndInfo);
+  } catch (error) {
+    throw error;
+  }
+};
+
 module.exports = {
   GetAllUsers,
-  GetAllUsersWithAllInfo
+  GetAllUsersWithAllInfo,
+  GetUserByIdWithAllInfo
 };
