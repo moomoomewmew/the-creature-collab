@@ -10,6 +10,7 @@ import Navbar from './components/NavBar';
 import { CheckSession } from './services/Auth';
 import Landingpage from './pages/landingpage';
 import Events from './pages/eventPage';
+import DisplayProfile from './pages/DisplayProfile'
 
 function App() {
 
@@ -40,6 +41,8 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Landingpage />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/profiles" element={<DisplayProfile/>} />
         <Route path="/newaccount" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
