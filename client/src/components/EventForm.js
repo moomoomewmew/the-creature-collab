@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 
-const EventForm = (props) => {
+export default function EventForm(props) {
+  const [events, setEvents] = useState([]);
   const [newEvent, setNewEvent] = useState({
     name: '',
     city: '',
@@ -15,21 +16,43 @@ const EventForm = (props) => {
     picture: ''
   });
 
-  const handleSubmit = (e) => {
+  const createNewEvent = (e) => {
     e.preventDefault();
-    axios.post(``, {
-      name: newEvent.name,
-      city: newEvent.city,
-      date: newEvent.date,
-      time: newEvent.time,
-      online: newEvent.online,
-      address: newEvent.address,
-      state: newEvent.state,
-      descrption: newEvent.description,
-      picture: newEvent.picture,
-      ownerId: newEvent.ownerId
+    const createdEvent = {
+      ...newEvent
+    };
+    axios
+      .post(`hhtp://localhost/api/(something here)`, createdEvent)
+      // .then((response) => setreturnId(response.data)); /// please review. setREturnId is not defined
+    setNewEvent({
+      name: '',
+      city: '',
+      date: '',
+      time: '',
+      online: '',
+      outdoor: '',
+      address: '',
+      state: '',
+      description: '',
+      picture: ''
     });
-    let anotherEvent = {
+  };
+  const getEvents = async () => {
+    const response = await axios.get('http://localhost:3001/api/bleh');
+    setEvents(response.data.events);
+  };
+
+  useEffect(() => {
+    getEvents();
+  }, []);
+  const handleChange = (e) => {
+    setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = (e) => {
+    createNewEvent();
+    getEvents();
+
+    let eventFormValue = {
       name: '',
       city: '',
       date: '',
@@ -41,19 +64,14 @@ const EventForm = (props) => {
       description: '',
       picture: ''
     };
-    setNewEvent(anotherEvent);
+    setNewEvent(eventFormValue);
     window.location.reload();
-  };
-  const handleChange = (e) => {
-    const newestEvent = { ...newEvent };
-    newestEvent[e.target.id] = e.target.value;
-    setNewEvent[newestEvent];
   };
   return (
     <div className="add-event">
       <h1 className="event-header">Add Event</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
-        <section className="name-input">
+        <section className="name">
           Name:
           <input
             type="text"
@@ -95,7 +113,7 @@ const EventForm = (props) => {
           <select
             type="text"
             className="is-online-event"
-            value={newEvent.outdoor}
+            value={newEvent.online}
             onChange={(e) => handleChange(e)}
           >
             <option>Online Event? </option>
@@ -103,7 +121,55 @@ const EventForm = (props) => {
             <option value={false}>In-Person Event</option>
           </select>
         </section>
+        <section className="event-outdoor-input">
+          <select
+            type="text"
+            className="is-outdoor-event"
+            value={newEvent.outdoor}
+            onChange={(e) => handleChange(e)}
+          >
+            <option>Outdoors?</option>
+            <option value={true}>Outdoor Event</option>
+            <option value={false}>Indoor Event</option>
+          </select>
+        </section>
+        <section className="address-input">
+          Street Address
+          <input
+            type="text"
+            className="event-address-info"
+            value={newEvent.address}
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </section>
+        <section className="event-state-address">
+          State
+          <input
+            type="text"
+            className="event-state-info"
+            value={newEvent.state}
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </section>
+        <section className="event-description-input">
+          <input
+            type="text"
+            className="event-description-info"
+            value={newEvent.description}
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </section>
+        <section className="event-picture-input">
+          <input
+            type="text"
+            className="event-picture-info"
+            value={newEvent.picture}
+            onChange={(e) => handleChange(e)}
+          ></input>
+        </section>
       </form>
+
+      <button type="submit">Submit</button>
     </div>
   );
 };
