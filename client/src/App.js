@@ -11,6 +11,8 @@ import { CheckSession } from './services/Auth';
 import Landingpage from './pages/landingpage';
 import Events from './pages/eventPage';
 import DisplayProfile from './pages/DisplayProfile'
+import ProtectedRoute from './components/ProtectedRoute';
+import ProfileView from './components/UserProfile';
 
 function App() {
 
@@ -39,12 +41,25 @@ function App() {
   return (
     <div className="App">
       <Navbar />
+      {
+    user && authenticated && (
+      <ProtectedRoute
+        authenticated={authenticated}
+        user={user}
+        path="/dashboard"
+        element={<Dashboard />}
+      />
+  )
+}
+ 
       <Routes>
         <Route path="/" element={<Landingpage />} />
-        <Route path="/login" element={<LogIn />} />
+        <Route path="/login" element={<LogIn
+          setUser={setUser}
+          toggleAuthenticated={toggleAuthenticated} />} />
         <Route path="/profiles" element={<DisplayProfile/>} />
+        <Route exact path = 'users/:userId' element ={<ProfileView/>}/>
         <Route path="/newaccount" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/safety" element={<Safety />} />
         <Route path="/events" element={<Events />} />

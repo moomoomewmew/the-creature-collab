@@ -33,7 +33,7 @@ const ProfileDisplay = (props) => {
           name = {user.userName}
           image={user.image}
           id = {user._id}
-          onClick= {()=> navigate(`/user/${user.id}`)
+          onClick= {()=> navigate(`/users/${user.id}`)
         }
         />
       ))} 
