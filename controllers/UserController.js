@@ -13,8 +13,8 @@ const GetAllUsersWithAllInfo = async (req, res) => {
   try {
     const usersAndInfo = await User.findAll({
       include: [
-        { model: Event, as: 'owned' },
-        { model: Event, as: 'events' }
+        { model: Event, as: 'eventsOwned' },
+        { model: Event, as: 'eventsAttending' }
       ]
     });
     res.send(usersAndInfo);
@@ -41,8 +41,8 @@ const GetUserByIdWithAllInfo = async (req, res) => {
     const userAndInfo = await User.findOne({
       where: { id: userId },
       include: [
-        { model: Event, as: 'owned' },
-        { model: Event, as: 'events' }
+        { model: Event, as: 'eventsOwned' },
+        { model: Event, as: 'eventsAttending' }
       ]
     });
     res.send(userAndInfo);
