@@ -7,24 +7,25 @@ import Dashboard from './pages/dashboard';
 import Safety from './pages/safety';
 import About from './pages/about';
 import Navbar from './components/NavBar';
-import { CheckSession } from './services/Auth;';
+import { CheckSession } from './services/Auth';
 import Landingpage from './pages/landingpage';
-import Events from './components/eventPage';
+import Events from './pages/eventPage';
 
-const App = () => {
+function App() {
+
   const [authenticated, toggleAuthenticated] = useState(false);
   const [user, setUser] = useState(null);
 
   // const user = await CheckSession()
-  setUser(user);
-  toggleAuthenticated(true);
+  // setUser(user);
+  // toggleAuthenticated(true);
 
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    if (token) {
-      checkToken();
-    }
-  }, []);
+  // useEffect(() => {
+  //   const token = localStorage.getItem('token');
+  //   if (token) {
+  //     // checkToken();/// please revisit. showing "not defined" error
+  //   }
+  // }, []);
 
   const handleLogOut = () => {
     setUser(null);
@@ -36,12 +37,11 @@ const App = () => {
     <div className="App">
       <Navbar />
       <Routes>
-
+        <Route path="/" element={<Landingpage />} />
         <Route path="/newaccount" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
         <Route path="/safety" element={<Safety />} />
-        <Route path="/welcome" element={<Landingpage />} />
         <Route path="/events" element={<Events />} />
       </Routes>
     </div>
