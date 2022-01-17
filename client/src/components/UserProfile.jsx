@@ -12,7 +12,6 @@ const ProfileView = (props) => {
 
 const getDetails = async (user) => {
     const response = await axios.get(`http://localhost:3001/api/${window.location.pathname}`);
-    console.log(response.data)
         setUserDetails(response.data);
   };
 
