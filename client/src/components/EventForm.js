@@ -21,9 +21,8 @@ export default function EventForm(props) {
     const createdEvent = {
       ...newEvent
     };
-    axios;
-    // .post(http://localhost:3001/api/events/`, createdEvent)
-    // .then((response) => setreturnId(response.data)); /// please review. setREturnId is not defined
+    axios.post(`http://localhost:3001/api/events/`, createdEvent);
+    // .then((response) => setreturnId(response.data)); // please review. setREturnId is not defined
     setNewEvent({
       name: '',
       city: '',
@@ -45,7 +44,7 @@ export default function EventForm(props) {
   useEffect(() => {
     getEvents();
   }, []);
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
   };
   const handleSubmit = (e) => {
@@ -95,18 +94,19 @@ export default function EventForm(props) {
           <input
             type="date"
             value={newEvent.date}
-            id="date"
-            onChange={(e) => handleChange(e)}
+            name={'date'}
+            label={'date of event'}
+            onChange={handleChange}
           />
         </section>
         <section className="event-time-input">
           Time:
           <input
             type="time"
-            time="time"
+            name={'time'}
             value={newEvent.time}
-            onChange={(e) => handleChange(e)}
-            id="time"
+            onChange={handleChange}
+            label="time of"
           />
         </section>
         <section className="event-online-input">
