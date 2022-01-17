@@ -8,13 +8,12 @@ const ProfileDisplay = (props) => {
   const navigate = useNavigate()
   let userProfilesArray = [];
   const [userProfiles, setUserProfiles] = useState(userProfilesArray);
-  const showUserProfiles = (userProfiles) => {};
+
 
 
 
   const getUserProfiles = async () => {
     const response = await axios.get('http://localhost:3001/api/users');
-    console.log(response.data)
     setUserProfiles(response.data);
   };
 //   userProfiles.sort((a, b) => a.name.localeCompare(b.name))
@@ -24,7 +23,6 @@ const ProfileDisplay = (props) => {
     getUserProfiles();
   }, []);
 
-console.log('banana')
 
   return (
     <div className="">

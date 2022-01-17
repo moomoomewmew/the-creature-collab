@@ -40,8 +40,9 @@ function App() {
     <div className="App">
       <Navbar />
       <Routes>
-        {/* <Route path="/" element={<Landingpage />} /> */}
-        <Route path="/" element={<DisplayProfile/>} />
+        <Route path="/" element={<Landingpage />} />
+        <Route path="/login" element={<LogIn />} />
+        <Route path="/profiles" element={<DisplayProfile/>} />
         <Route path="/newaccount" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/about" element={<About />} />
