@@ -23,7 +23,7 @@ export default function EventForm(props) {
     };
     axios
       .post(`hhtp://localhost/api/(something here)`, createdEvent)
-      .then((response) => setreturnId(response.data));
+      // .then((response) => setreturnId(response.data)); /// please review. setREturnId is not defined
     setNewEvent({
       name: '',
       city: '',
