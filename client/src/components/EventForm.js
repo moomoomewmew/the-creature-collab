@@ -21,9 +21,9 @@ export default function EventForm(props) {
     const createdEvent = {
       ...newEvent
     };
-    axios
-      .post(`hhtp://localhost/api/(something here)`, createdEvent)
-      // .then((response) => setreturnId(response.data)); /// please review. setREturnId is not defined
+    axios;
+    // .post(http://localhost:3001/api/events/`, createdEvent)
+    // .then((response) => setreturnId(response.data)); /// please review. setREturnId is not defined
     setNewEvent({
       name: '',
       city: '',
@@ -38,7 +38,7 @@ export default function EventForm(props) {
     });
   };
   const getEvents = async () => {
-    const response = await axios.get('http://localhost:3001/api/bleh');
+    const response = await axios.get('http://localhost:3001/api/events');
     setEvents(response.data.events);
   };
 
@@ -172,5 +172,4 @@ export default function EventForm(props) {
       <button type="submit">Submit</button>
     </div>
   );
-};
-
+}
