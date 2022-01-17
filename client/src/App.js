@@ -13,7 +13,7 @@ import Events from './pages/eventPage';
 
 import ProtectedRoute from './components/ProtectedRoute';
 import ProfileView from './components/UserProfile';
-import DisplayProfile from './pages/displayProfile'
+import DisplayProfile from './pages/DisplayProfile'
 
 function App() {
 
