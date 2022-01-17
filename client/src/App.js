@@ -8,7 +8,6 @@ import Safety from './pages/safety';
 import About from './pages/about';
 import Navbar from './components/NavBar';
 import { CheckSession} from './services/Auth'
-import landingpage from './pages/landingpage';
 import Landingpage from './pages/landingpage';
 
 
@@ -17,7 +16,7 @@ function App() {
   const [user, setUser] = useState(null)
   
   const checkToken = async () => {
-    // const user = await CheckSession()
+    const user = await CheckSession()
     setUser(user)
     toggleAuthenticated(true)
   }
