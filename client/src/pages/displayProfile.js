@@ -12,7 +12,7 @@ const ProfileDisplay = (props) => {
 
 
 
-  const getUserProfiles = async () => {
+  const getUserProfiles = async (user) => {
     const response = await axios.get('http://localhost:3001/api/users');
     setUserProfiles(response.data);
   };
