@@ -21,7 +21,7 @@
   "name": "the-creature-collab",
   "description": "",
   "version": "1.0.0",
-  "main": "client/src/index.js",
+  "main": "server.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/moomoomewmew/the-creature-collab.git"
