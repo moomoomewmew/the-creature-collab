@@ -21,21 +21,21 @@ export default function EventForm(props) {
     const createdEvent = {
       ...newEvent
     };
-
-    axios.post(`http://localhost:3001/api/events`, createdEvent);
-    // .then((response) => setreturnId(response.data)); // please review. setREturnId is not defined
-    setNewEvent({
-      name: '',
-      city: '',
-      date: '',
-      time: '',
-      online: '',
-      outdoor: '',
-      address: '',
-      state: '',
-      description: '',
-      picture: ''
-    });
+    console.log(createdEvent);
+    // axios.post(`http://localhost:3001/api/events`, createdEvent);
+    // // .then((response) => setreturnId(response.data)); // please review. setREturnId is not defined
+    // setNewEvent({
+    //   name: '',
+    //   city: '',
+    //   date: '',
+    //   time: '',
+    //   online: '',
+    //   outdoor: '',
+    //   address: '',
+    //   state: '',
+    //   description: '',
+    //   picture: ''
+    // });
   };
   const getEvents = async () => {
     const response = await axios.get('http://localhost:3001/api/events');
@@ -51,22 +51,22 @@ export default function EventForm(props) {
   };
   const handleSubmit = (e) => {
     createNewEvent();
-    getEvents();
+    // getEvents();
 
-    let eventFormValue = {
-      name: '',
-      city: '',
-      date: '',
-      time: '',
-      online: '',
-      outdoor: '',
-      address: '',
-      state: '',
-      description: '',
-      picture: ''
-    };
-    setNewEvent(eventFormValue);
-    window.location.reload();
+    // let eventFormValue = {
+    //   name: '',
+    //   city: '',
+    //   date: '',
+    //   time: '',
+    //   online: '',
+    //   outdoor: '',
+    //   address: '',
+    //   state: '',
+    //   description: '',
+    //   picture: ''
+    // };
+    // setNewEvent(eventFormValue);
+    // window.location.reload();
   };
   return (
     <div className="add-event">
@@ -113,23 +113,48 @@ export default function EventForm(props) {
         </section>
         <section className="event-online-input">
           <p>Online Or In-Person?</p>
-          <input type="radio" id="online" name="online" value="online" />
+          <input
+            type="radio"
+            id="online"
+            name={'online'}
+            value={true}
+            onChange={handleChange}
+          />
           <label name="onlineChoice">Online</label>
-          <input type="radio" id="inPerson" name="online" value="inPerson" />
-          <label name="inPersonChoice">In Person</label>
+          <input
+            type="radio"
+            id="inPerson"
+            name={'online'}
+            value={false}
+            onChange={handleChange}
+          />
+          <label name="inPersonChoice">In-Person</label>
         </section>
         <section className="event-outdoor-input">
           <p>Indoor Or Outdoor?</p>
-          <input type="radio" id="indoor" name="indoorOutdoor" value="indoor" />
+          <input
+            type="radio"
+            id="indoor"
+            name={'outdoor'}
+            value={false}
+            onChange={handleChange}
+          />
           <label name="indoorChoice">Indoor</label>
           <input
             type="radio"
             id="outdoor"
-            name="indoorOutdoor"
-            value="outdoor"
+            name={'outdoor'}
+            value={true}
+            onChange={handleChange}
           />
           <label name="outdoorChoice">Outdoor</label>
-          <input type="radio" id="N/A" name="indoorOutdoor" value="N/A" />
+          <input
+            type="radio"
+            id="N/A"
+            name={'outdoor'}
+            value={''}
+            onChange={handleChange}
+          />
           <label name="N/A">N/A</label>
         </section>
         <p>For In-Person Events:</p>
@@ -167,7 +192,7 @@ export default function EventForm(props) {
           ></input>
         </section>
         <section className="event-picture-input">
-          Upload Picture:
+          Upload Pictures!:
           <input
             type="text"
             className="event-picture-info"
