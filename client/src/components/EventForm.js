@@ -21,9 +21,9 @@ export default function EventForm(props) {
     const createdEvent = {
       ...newEvent
     };
-    axios
-      .post(`hhtp://localhost/api/(something here)`, createdEvent)
-      // .then((response) => setreturnId(response.data)); /// please review. setREturnId is not defined
+
+    axios.post(`http://localhost:3001/api/events`, createdEvent);
+    // .then((response) => setreturnId(response.data)); // please review. setREturnId is not defined
     setNewEvent({
       name: '',
       city: '',
@@ -38,15 +38,16 @@ export default function EventForm(props) {
     });
   };
   const getEvents = async () => {
-    const response = await axios.get('http://localhost:3001/api/bleh');
+    const response = await axios.get('http://localhost:3001/api/events');
     setEvents(response.data.events);
   };
 
   useEffect(() => {
     getEvents();
   }, []);
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
+    console.log(newEvent);
   };
   const handleSubmit = (e) => {
     createNewEvent();
@@ -95,82 +96,89 @@ export default function EventForm(props) {
           <input
             type="date"
             value={newEvent.date}
-            id="date"
-            onChange={(e) => handleChange(e)}
+            name={'date'}
+            label={'date of event'}
+            onChange={handleChange}
           />
         </section>
         <section className="event-time-input">
           Time:
           <input
             type="time"
-            time="time"
+            name={'time'}
             value={newEvent.time}
-            onChange={(e) => handleChange(e)}
-            id="time"
+            onChange={handleChange}
+            label={'time of event'}
           />
         </section>
         <section className="event-online-input">
-          <select
-            type="text"
-            className="is-online-event"
-            value={newEvent.online}
-            onChange={(e) => handleChange(e)}
-          >
-            <option>Online Event? </option>
-            <option value={true}>Online Event</option>
-            <option value={false}>In-Person Event</option>
-          </select>
+          <p>Online Or In-Person?</p>
+          <input type="radio" id="online" name="online" value="online" />
+          <label name="onlineChoice">Online</label>
+          <input type="radio" id="inPerson" name="online" value="inPerson" />
+          <label name="inPersonChoice">In Person</label>
         </section>
         <section className="event-outdoor-input">
-          <select
-            type="text"
-            className="is-outdoor-event"
-            value={newEvent.outdoor}
-            onChange={(e) => handleChange(e)}
-          >
-            <option>Outdoors?</option>
-            <option value={true}>Outdoor Event</option>
-            <option value={false}>Indoor Event</option>
-          </select>
+          <p>Indoor Or Outdoor?</p>
+          <input type="radio" id="indoor" name="indoorOutdoor" value="indoor" />
+          <label name="indoorChoice">Indoor</label>
+          <input
+            type="radio"
+            id="outdoor"
+            name="indoorOutdoor"
+            value="outdoor"
+          />
+          <label name="outdoorChoice">Outdoor</label>
+          <input type="radio" id="N/A" name="indoorOutdoor" value="N/A" />
+          <label name="N/A">N/A</label>
         </section>
+        <p>For In-Person Events:</p>
         <section className="address-input">
-          Street Address
+          Street Address:
           <input
             type="text"
             className="event-address-info"
             value={newEvent.address}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
+            name="address"
+            id="address"
           ></input>
         </section>
         <section className="event-state-address">
-          State
+          State:
           <input
             type="text"
             className="event-state-info"
             value={newEvent.state}
             onChange={(e) => handleChange(e)}
+            name="state"
+            id="state"
           ></input>
         </section>
         <section className="event-description-input">
+          Description:
           <input
             type="text"
             className="event-description-info"
             value={newEvent.description}
             onChange={(e) => handleChange(e)}
+            name="description"
+            id="description"
           ></input>
         </section>
         <section className="event-picture-input">
+          Upload Picture:
           <input
             type="text"
             className="event-picture-info"
             value={newEvent.picture}
             onChange={(e) => handleChange(e)}
+            name="picture"
+            id="picture"
           ></input>
         </section>
+        <button type="submit">Submit</button>
       </form>
-
-      <button type="submit">Submit</button>
     </div>
   );
-};
-
+}
