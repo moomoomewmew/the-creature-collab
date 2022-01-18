@@ -106,65 +106,73 @@ export default function EventForm(props) {
             name={'time'}
             value={newEvent.time}
             onChange={handleChange}
-            label="time of"
+            label={'time of event'}
           />
         </section>
         <section className="event-online-input">
-          <select
-            type="text"
-            className="is-online-event"
-            value={newEvent.online}
-            onChange={(e) => handleChange(e)}
-          >
-            <option>Online Event? </option>
-            <option value={true}>Online Event</option>
-            <option value={false}>In-Person Event</option>
-          </select>
+          <p>Online Or In-Person?</p>
+          <input type="radio" id="online" name="online" value="online" />
+          <label for="onlineChoice">Online</label>
+          <input type="radio" id="inPerson" name="online" value="inPerson" />
+          <label for="inPersonChoice">In Person</label>
         </section>
         <section className="event-outdoor-input">
-          <select
-            type="text"
-            className="is-outdoor-event"
-            value={newEvent.outdoor}
-            onChange={(e) => handleChange(e)}
-          >
-            <option>Outdoors?</option>
-            <option value={true}>Outdoor Event</option>
-            <option value={false}>Indoor Event</option>
-          </select>
+          <p>Indoor Or Outdoor?</p>
+          <input type="radio" id="indoor" name="indoorOutdoor" value="indoor" />
+          <label for="indoorChoice">Indoor</label>
+          <input
+            type="radio"
+            id="outdoor"
+            name="indoorOutdoor"
+            value="outdoor"
+          />
+          <label for="outdoorChoice">Outdoor</label>
+          <input type="radio" id="N/A" name="indoorOutdoor" value="N/A" />
+          <label for="N/A">N/A</label>
         </section>
+        <p>For In-Person Events:</p>
         <section className="address-input">
-          Street Address
+          Street Address:
           <input
             type="text"
             className="event-address-info"
             value={newEvent.address}
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
+            name="address"
+            id="address"
           ></input>
         </section>
         <section className="event-state-address">
-          State
+          State:
           <input
             type="text"
             className="event-state-info"
             value={newEvent.state}
             onChange={(e) => handleChange(e)}
+            name="state"
+            id="state"
           ></input>
         </section>
         <section className="event-description-input">
+          Description:
           <input
             type="text"
             className="event-description-info"
             value={newEvent.description}
             onChange={(e) => handleChange(e)}
+            name="description"
+            id="description"
           ></input>
         </section>
         <section className="event-picture-input">
+          Upload Picture:
           <input
             type="text"
             className="event-picture-info"
             value={newEvent.picture}
             onChange={(e) => handleChange(e)}
+            name="picture"
+            id="picture"
           ></input>
         </section>
       </form>
