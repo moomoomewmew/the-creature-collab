@@ -10,7 +10,8 @@
     "nodemon": "^2.0.15",
     "path": "^0.12.7",
     "pg": "^8.7.1",
-    "sequelize": "^6.13.0"
+    "sequelize": "^6.13.0",
+    "ejs": "^3.1.5"
   },
   "scripts": {
     "dev": "nodemon server.js",
@@ -19,13 +20,17 @@
   "name": "the-creature-collab",
   "description": "",
   "version": "1.0.0",
-  "main": "server.js",
+  "main": "client/src/index.js",
   "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/moomoomewmew/the-creature-collab.git"
   },
-  "keywords": [],
+  "keywords": [
+    "node",
+    "heroku",
+    "express",
+    "nodemon"],
   "author": "",
   "license": "ISC",
   "bugs": {
