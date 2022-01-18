@@ -21,6 +21,9 @@
   "name": "the-creature-collab",
   "description": "",
   "version": "1.0.0",
+  "engine": {
+    "npm": "17.x"
+  },
   "main": "server.js",
   "repository": {
     "type": "git",
