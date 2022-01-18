@@ -21,7 +21,7 @@ export default function EventForm(props) {
     const createdEvent = {
       ...newEvent
     };
-    axios.post(`http://localhost:3001/api/events/`, createdEvent);
+    axios.post(`http://localhost:3001/api/events`, createdEvent);
     // .then((response) => setreturnId(response.data)); // please review. setREturnId is not defined
     setNewEvent({
       name: '',
@@ -112,23 +112,23 @@ export default function EventForm(props) {
         <section className="event-online-input">
           <p>Online Or In-Person?</p>
           <input type="radio" id="online" name="online" value="online" />
-          <label for="onlineChoice">Online</label>
+          <label name="onlineChoice">Online</label>
           <input type="radio" id="inPerson" name="online" value="inPerson" />
-          <label for="inPersonChoice">In Person</label>
+          <label name="inPersonChoice">In Person</label>
         </section>
         <section className="event-outdoor-input">
           <p>Indoor Or Outdoor?</p>
           <input type="radio" id="indoor" name="indoorOutdoor" value="indoor" />
-          <label for="indoorChoice">Indoor</label>
+          <label name="indoorChoice">Indoor</label>
           <input
             type="radio"
             id="outdoor"
             name="indoorOutdoor"
             value="outdoor"
           />
-          <label for="outdoorChoice">Outdoor</label>
+          <label name="outdoorChoice">Outdoor</label>
           <input type="radio" id="N/A" name="indoorOutdoor" value="N/A" />
-          <label for="N/A">N/A</label>
+          <label name="N/A">N/A</label>
         </section>
         <p>For In-Person Events:</p>
         <section className="address-input">
@@ -175,9 +175,8 @@ export default function EventForm(props) {
             id="picture"
           ></input>
         </section>
+        <button type="submit">Submit</button>
       </form>
-
-      <button type="submit">Submit</button>
     </div>
   );
 }
