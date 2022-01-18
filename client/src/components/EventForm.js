@@ -8,36 +8,16 @@ export default function EventForm(props) {
     city: '',
     date: '',
     time: '',
-    online: '',
-    outdoor: '',
+    online: null,
+    outdoor: null,
     address: '',
     state: '',
     description: '',
     picture: '',
     ownerId: 1
   });
+  const [displayedMessage, setDisplayedMessage] = useState('');
 
-  const createNewEvent = async () => {
-    // e.preventDefault();
-    const createdEvent = {
-      ...newEvent
-    };
-    // console.log(createdEvent);
-    await axios.post(`http://localhost:3001/api/events`, createdEvent);
-    // // .then((response) => setreturnId(response.data)); // please review. setREturnId is not defined
-    // setNewEvent({
-    //   name: '',
-    //   city: '',
-    //   date: '',
-    //   time: '',
-    //   online: '',
-    //   outdoor: '',
-    //   address: '',
-    //   state: '',
-    //   description: '',
-    //   picture: ''
-    // });
-  };
   const getEvents = async () => {
     const response = await axios.get('http://localhost:3001/api/events');
     setEvents(response.data.events);
@@ -46,26 +26,58 @@ export default function EventForm(props) {
   useEffect(() => {
     getEvents();
   }, []);
-  const handleChange = async (e) => {
-    setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
-    console.log(newEvent);
+
+  const createNewEvent = async () => {
+    const createdEvent = {
+      ...newEvent
+    };
+
+    await axios
+      .post(`http://localhost:3001/api/events`, createdEvent)
+      // // .then((response) => setreturnId(response.data)); // please review. setREturnId is not defined
+      .then(() => {
+        getEvents();
+        setDisplayedMessage('Your event has been added!');
+        setNewEvent({
+          name: '',
+          city: '',
+          date: '',
+          time: '',
+          online: null,
+          outdoor: null,
+          address: '',
+          state: '',
+          description: '',
+          picture: ''
+        });
+      });
   };
+
+  const handleChange = async (e) => {
+    setDisplayedMessage('');
+    setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
+  };
+
   const handleSubmit = (e) => {
-    createNewEvent();
+    e.preventDefault();
+    if (!newEvent.name) {
+      setDisplayedMessage('Event must have a name');
+    } else if (!newEvent.date) {
+      setDisplayedMessage('Event must have a date');
+    } else if (!newEvent.time) {
+      setDisplayedMessage('Event must have a time');
+    } else if (!newEvent.description) {
+      setDisplayedMessage('Event must have a description');
+    } else if (!newEvent.online) {
+      setDisplayedMessage('Please choose online or in-person');
+    } else if (!newEvent.address) {
+      setDisplayedMessage('Please specify a street address or URL');
+    } else {
+      createNewEvent();
+    }
+
     // getEvents();
 
-    // let eventFormValue = {
-    //   name: '',
-    //   city: '',
-    //   date: '',
-    //   time: '',
-    //   online: '',
-    //   outdoor: '',
-    //   address: '',
-    //   state: '',
-    //   description: '',
-    //   picture: ''
-    // };
     // setNewEvent(eventFormValue);
     // window.location.reload();
   };
@@ -81,16 +93,6 @@ export default function EventForm(props) {
             value={newEvent.name}
             onChange={(e) => handleChange(e)}
             id="name"
-          />
-        </section>
-        <section className="event-city-input">
-          City:
-          <input
-            type="text"
-            name={'city'}
-            value={newEvent.city}
-            onChange={(e) => handleChange(e)}
-            id="city"
           />
         </section>
         <section className="event-date-input">
@@ -113,6 +115,29 @@ export default function EventForm(props) {
             label={'time of event'}
           />
         </section>
+        <section className="event-description-input">
+          Description:
+          <textarea
+            type="text"
+            className="event-description-info"
+            value={newEvent.description}
+            onChange={(e) => handleChange(e)}
+            name="description"
+            id="description"
+          />
+        </section>
+        <section className="event-picture-input">
+          Event Picture URL:
+          <input
+            type="url"
+            className="event-picture-info"
+            value={newEvent.picture}
+            onChange={(e) => handleChange(e)}
+            name="picture"
+            id="picture"
+          ></input>
+        </section>
+
         <section className="event-online-input">
           <p>Online Or In-Person?</p>
           <input
@@ -132,6 +157,18 @@ export default function EventForm(props) {
           />
           <label name="inPersonChoice">In-Person</label>
         </section>
+        <section className="address-input">
+          <p>Please input a street address for in-person or URL for online: </p>
+          Street Address or URL:
+          <input
+            type="text"
+            className="event-address-info"
+            value={newEvent.address}
+            onChange={handleChange}
+            name="address"
+            id="address"
+          ></input>
+        </section>
         <section className="event-outdoor-input">
           <p>Indoor Or Outdoor?</p>
           <input
@@ -150,26 +187,17 @@ export default function EventForm(props) {
             onChange={handleChange}
           />
           <label name="outdoorChoice">Outdoor</label>
-          <input
-            type="radio"
-            id="N/A"
-            name={'outdoor'}
-            value={''}
-            onChange={handleChange}
-          />
-          <label name="N/A">N/A</label>
         </section>
         <p>For In-Person Events:</p>
-        <section className="address-input">
-          Street Address:
+        <section className="event-city-input">
+          City:
           <input
             type="text"
-            className="event-address-info"
-            value={newEvent.address}
-            onChange={handleChange}
-            name="address"
-            id="address"
-          ></input>
+            name={'city'}
+            value={newEvent.city}
+            onChange={(e) => handleChange(e)}
+            id="city"
+          />
         </section>
         <section className="event-state-address">
           State:
@@ -182,28 +210,8 @@ export default function EventForm(props) {
             id="state"
           ></input>
         </section>
-        <section className="event-description-input">
-          Description:
-          <input
-            type="text"
-            className="event-description-info"
-            value={newEvent.description}
-            onChange={(e) => handleChange(e)}
-            name="description"
-            id="description"
-          ></input>
-        </section>
-        <section className="event-picture-input">
-          Upload Pictures!:
-          <input
-            type="text"
-            className="event-picture-info"
-            value={newEvent.picture}
-            onChange={(e) => handleChange(e)}
-            name="picture"
-            id="picture"
-          ></input>
-        </section>
+
+        <p>{displayedMessage}</p>
         <button type="submit">Submit</button>
       </form>
     </div>
