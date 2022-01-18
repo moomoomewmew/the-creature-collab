@@ -13,16 +13,17 @@ export default function EventForm(props) {
     address: '',
     state: '',
     description: '',
-    picture: ''
+    picture: '',
+    ownerId: 1
   });
 
-  const createNewEvent = (e) => {
-    e.preventDefault();
+  const createNewEvent = async () => {
+    // e.preventDefault();
     const createdEvent = {
       ...newEvent
     };
-    console.log(createdEvent);
-    // axios.post(`http://localhost:3001/api/events`, createdEvent);
+    // console.log(createdEvent);
+    await axios.post(`http://localhost:3001/api/events`, createdEvent);
     // // .then((response) => setreturnId(response.data)); // please review. setREturnId is not defined
     // setNewEvent({
     //   name: '',
@@ -86,7 +87,8 @@ export default function EventForm(props) {
           City:
           <input
             type="text"
-            city="city"
+            name={'city'}
+            value={newEvent.city}
             onChange={(e) => handleChange(e)}
             id="city"
           />
