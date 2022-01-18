@@ -13,10 +13,12 @@
     "sequelize": "^6.13.0"
   },
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "build": "cd client && rm -rf build && npm install && npm run build"
   },
-  "name": "the-creature-collab",
+  "name": "the-creature-collab-backend",
   "description": "",
   "version": "1.0.0",
   "main": "server.js",
