@@ -10,7 +10,6 @@ import Navbar from './components/NavBar';
 import { CheckSession } from './services/Auth';
 import Landingpage from './pages/landingpage';
 import Events from './pages/eventPage';
-
 import ProtectedRoute from './components/ProtectedRoute';
 import ProfileView from './components/UserProfile';
 import DisplayProfile from './pages/DisplayProfile'
@@ -62,6 +61,7 @@ function App() {
         <Route exact path = 'users/:userId' element ={<ProfileView/>}/>
         <Route path="/newaccount" element={<Register />} />
         <Route path="/about" element={<About />} />
+        <Route path="/dashboard" element={<Dashboard/>}/>
         <Route path="/safety" element={<Safety />} />
         <Route path="/events" element={<Events />} />
       </Routes>

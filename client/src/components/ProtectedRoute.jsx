@@ -12,7 +12,7 @@
 //   return (
 //     <Route
 //       {...rest}
-//       render={(props) =>
+//       render={
 //         user && authenticated ? (
 //           <Element {...props} /> // Render our chosen component if a user exists and they are authenticated
 //         ) : (

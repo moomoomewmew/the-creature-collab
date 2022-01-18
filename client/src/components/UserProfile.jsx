@@ -24,10 +24,15 @@ const getDetails = async (user) => {
 
 return (
 <div className="profile-layout-grid">
-    < img className = "profilePicture" src = {userDetails.profilePic} alt={userDetails.name}/>
-    <h1> {userDetails.userName} </h1>
+    <div className="name-and-pic">
+        <img className = "profilePicture" src = {userDetails.profilePic} alt={userDetails.name}/>
+        <h1> {userDetails.userName} </h1>
+    </div>
     <div className= "details">
+        <h3>pronouns: {userDetails.pronouns}</h3>
         <h3> alias: {userDetails.characterName}</h3>
+        <h3>city: {userDetails.city}</h3>
+        <h3>creature: {userDetails.race}</h3>
     </div>   
 </div>
 )
