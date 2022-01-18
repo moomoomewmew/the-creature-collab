@@ -61,7 +61,7 @@ function App() {
         <Route exact path = 'users/:userId' element ={<ProfileView/>}/>
         <Route path="/newaccount" element={<Register />} />
         <Route path="/about" element={<About />} />
-        <Route path="/dashboard" element={<Dashboard/>}/>
+        {/* <Route path="/dashboard" element={<Dashboard/>}/> */}
         <Route path="/safety" element={<Safety />} />
         <Route path="/events" element={<Events />} />
       </Routes>
