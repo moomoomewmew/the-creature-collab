@@ -21,6 +21,7 @@ export default function EventForm(props) {
     const createdEvent = {
       ...newEvent
     };
+
     axios.post(`http://localhost:3001/api/events`, createdEvent);
     // .then((response) => setreturnId(response.data)); // please review. setREturnId is not defined
     setNewEvent({
@@ -46,6 +47,7 @@ export default function EventForm(props) {
   }, []);
   const handleChange = async (e) => {
     setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
+    console.log(newEvent);
   };
   const handleSubmit = (e) => {
     createNewEvent();
