@@ -23,11 +23,16 @@ const getDetails = async (user) => {
  
 
 return (
-<div >
-    <h1> {userDetails.userName} </h1>
+<div className="profile-layout-grid">
+    <div className="name-and-pic">
+        <img className = "profilePicture" src = {userDetails.profilePic} alt={userDetails.name}/>
+        <h1> {userDetails.userName} </h1>
+    </div>
     <div className= "details">
-        <h3> Name: {userDetails.userName}</h3>
-        < img className = "profilePicture" src = {userDetails.image} alt={userDetails.name}/>
+        <h3>pronouns: {userDetails.pronouns}</h3>
+        <h3> alias: {userDetails.characterName}</h3>
+        <h3>city: {userDetails.city}</h3>
+        <h3>creature: {userDetails.race}</h3>
     </div>   
 </div>
 )

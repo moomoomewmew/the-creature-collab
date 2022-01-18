@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import EventForm from '../components/EventForm';
 
 export default function Events(props) {
+
   return (
     <div>
       <EventForm />
@@ -13,6 +14,7 @@ export default function Events(props) {
       <h4>{props.state}</h4>
       <h4>{props.description}</h4>
       <h4>{props.picture}</h4>
+
     </div>
   );
 }

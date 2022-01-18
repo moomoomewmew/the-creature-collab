@@ -25,13 +25,13 @@ const ProfileDisplay = (props) => {
 
 
   return (
-    <div className="">
+    <div className="thumbnail-grid">
         {userProfiles.map((user) => (
         <ProfileCard
           key={user.id}
           {...user}
           name = {user.userName}
-          image={user.image}
+          image={user.profilePic}
           id = {user._id}
           onClick= {()=> navigate(`/users/${user.id}`)
         }
