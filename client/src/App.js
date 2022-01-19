@@ -39,14 +39,14 @@ function App() {
   return (
     <div className="App">
       <Navbar  user={user} authenticated={authenticated}/>
-      {user && authenticated && (
+      {/* {user && authenticated && (
         <ProtectedRoute
           authenticated={authenticated}
           user={user}
           path="/dashboard"
           element={<Dashboard />}
         />
-      )}
+      )} */}
 
       <Routes>
         <Route path="/" element={<Landingpage />} />
@@ -55,7 +55,9 @@ function App() {
           element={
             <LogIn
               setUser={setUser}
+              user = {user}
               toggleAuthenticated={toggleAuthenticated}
+              authenticated = {authenticated}
             />
           }
         />
@@ -63,7 +65,10 @@ function App() {
         <Route exact path="users/:userId" element={<ProfileView />} />
         <Route path="/newaccount" element={<Register />} />
         <Route path="/about" element={<About />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard" element={<Dashboard 
+        user={user}
+        checkToken={checkToken}
+        setUser={setUser}/>} />
         <Route path="/safety" element={<Safety />} />
         <Route path="/events" element={<Events />} />
       </Routes>

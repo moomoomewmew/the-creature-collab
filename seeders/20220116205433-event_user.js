@@ -6,20 +6,20 @@ module.exports = {
       'event_users',
       [
         {
-          eventId: 5,
+          eventId: 2,
           attendeeId: 1,
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          eventId: 5,
+          eventId: 2,
           attendeeId: 2,
           createdAt: new Date(),
           updatedAt: new Date()
         },
         {
-          eventId: 6,
-          attendeeId: 1,
+          eventId: 1,
+          attendeeId: 4,
           createdAt: new Date(),
           updatedAt: new Date()
         }
