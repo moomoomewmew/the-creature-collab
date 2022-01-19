@@ -38,7 +38,7 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar />
+      <Navbar  user={user} authenticated={authenticated}/>
       {user && authenticated && (
         <ProtectedRoute
           authenticated={authenticated}
