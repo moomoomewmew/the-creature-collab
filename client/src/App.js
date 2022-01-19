@@ -12,7 +12,7 @@ import Landingpage from './pages/landingpage';
 import Events from './pages/eventPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import ProfileView from './components/UserProfile';
-import DisplayProfile from './pages/displayProfile'
+import DisplayProfile from './pages/DisplayProfile'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false);
@@ -39,14 +39,14 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      {user && authenticated && (
+      {/* {user && authenticated && (
         <ProtectedRoute
           authenticated={authenticated}
           user={user}
           path="/dashboard"
           element={<Dashboard />}
         />
-      )}
+      )} */}
 
       <Routes>
         <Route path="/" element={<Landingpage />} />
