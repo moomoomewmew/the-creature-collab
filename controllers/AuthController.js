@@ -56,6 +56,27 @@ const UpdatePassword = async (req, res) => {
   }
 };
 
+const DeleteUser = async (req, res) => {
+  try {
+    const { password } = req.body;
+    const user = await User.findByPk(req.params.user_id);
+    if (
+      user &&
+      (await middleware.comparePassword(
+        user.dataValues.passwordDigest,
+        password
+      ))
+    ) {
+      let userId = parseInt(user.id);
+      await user.destroy({ where: { id: userId } });
+      return res.send(`Deleted user with an id of ${userId}`);
+    }
+    res.status(401).send({ status: 'Error', msg: 'Unauthorized' });
+  } catch (error) {
+    throw error;
+  }
+};
+
 const CheckSession = async (req, res) => {
   const { payload } = res.locals;
   res.send(payload);
@@ -65,5 +86,6 @@ module.exports = {
   Login,
   Register,
   UpdatePassword,
-  CheckSession
+  CheckSession,
+  DeleteUser
 };
