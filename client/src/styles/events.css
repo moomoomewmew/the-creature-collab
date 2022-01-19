@@ -1,0 +1,7 @@
+.event-page {
+  display: flex;
+}
+
+.event-card {
+  border: 1px solid white;
+}

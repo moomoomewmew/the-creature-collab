@@ -66,7 +66,9 @@ function App() {
         <Route path="/newaccount" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/dashboard" element={<Dashboard 
-        user={user}/>} />
+        user={user}
+        checkToken={checkToken}
+        setUser={setUser}/>} />
         <Route path="/safety" element={<Safety />} />
         <Route path="/events" element={<Events />} />
       </Routes>
