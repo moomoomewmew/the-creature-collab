@@ -16,5 +16,11 @@ router.get(
   middleware.verifyToken,
   controller.CheckSession
 );
+router.delete(
+  '/delete/:user_id',
+  middleware.stripToken,
+  middleware.verifyToken,
+  controller.DeleteUser
+);
 
 module.exports = router;
