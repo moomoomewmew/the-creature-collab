@@ -1,6 +1,6 @@
 import Axios from 'axios'
 
-export const BASE_URL = 'http://localhost:3001'
+export const BASE_URL = 'postgres://enboniuimemrwa:0d03dbefb45a5b64af482ab900915e517f059ed5a984d8434883654ddeed80dd@ec2-35-171-90-188.compute-1.amazonaws.com:5432/d9vsd2tesd493v'
 const Client = Axios.create({ baseURL: BASE_URL })
 // Intercepts every request axios makes
 Client.interceptors.request.use(
