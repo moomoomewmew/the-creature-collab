@@ -17,7 +17,9 @@ export default function LogIn(props) {
     const payload = await SignInUser(formValues)
     setFormValues({ email: '', password: '' })
     props.setUser(payload)
+    console.log(props.user)
     props.toggleAuthenticated(true)
+    console.log(props.authenticated)
     navigate('/dashboard')
   }
 
