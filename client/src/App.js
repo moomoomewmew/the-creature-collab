@@ -12,7 +12,7 @@ import Landingpage from './pages/landingpage';
 import Events from './pages/eventPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import ProfileView from './components/UserProfile';
-import DisplayProfile from './pages/displayProfile';
+import DisplayProfile from './pages/displayProfile'
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false);

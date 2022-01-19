@@ -2,8 +2,10 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "body-parser": "^1.19.1",
+    "cool-ascii-faces": "^1.3.4",
     "cors": "^2.8.5",
     "dotenv": "^11.0.0",
+    "ejs": "^3.1.5",
     "express": "^4.17.2",
     "jsonwebtoken": "^8.5.1",
     "morgan": "^1.10.0",
@@ -14,22 +16,36 @@
   },
   "scripts": {
     "dev": "nodemon server.js",
-    "start": "node server.js"
+    "start": "node server.js",
+    "build": "npm install && npx sequelize-cli db:migrate && cd client && rm -rf build && npm install && npm run build"
   },
   "name": "the-creature-collab",
   "description": "",
   "version": "1.0.0",
+  "engine": {
+    "npm": "17.x"
+  },
   "main": "server.js",
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/moomoomewmew/the-creature-collab.git"
   },
-  "keywords": [],
+  "keywords": [
+    "node",
+    "heroku",
+    "express",
+    "nodemon"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/moomoomewmew/the-creature-collab/issues"
   },
-  "homepage": "https://github.com/moomoomewmew/the-creature-collab#readme"
+  "homepage": "https://github.com/moomoomewmew/the-creature-collab#readme",
+  "devDependencies": {
+    "mini-css-extract-plugin": "2.5.1"
+  }, 
+  "resolutions": {
+    "mini-css-extract-plugin": "2.5.1"
+  }
 }
