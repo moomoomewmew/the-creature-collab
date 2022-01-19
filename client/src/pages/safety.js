@@ -11,7 +11,6 @@ const Safety = () => {
       </p>
       <h3> NEVER GIVE OUT YOUR REAL, PERSONAL INFORMATION ONLINE.</h3>
       <p>
-        {' '}
         Creature Collab is designed as a fantasy realm for our favorite
         fictional friends. We ask that you remain in character when interacting
         through our platform. As for your real-life identity-in the wise words
