@@ -15,22 +15,20 @@ import ProfileView from './components/UserProfile';
 import DisplayProfile from './pages/displayProfile'
 
 function App() {
+  const [authenticated, toggleAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
 
-  const [authenticated, toggleAuthenticated] = useState(false)
-  const [user, setUser] = useState(null)
-  
   const checkToken = async () => {
-    const user = await CheckSession()
-    setUser(user)
-    toggleAuthenticated(true)
-  }
+    const user = await CheckSession();
+    setUser(user);
+    toggleAuthenticated(true);
+  };
   useEffect(() => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem('token');
     if (token) {
-      checkToken()
+      checkToken();
     }
-  }, [])
-
+  }, []);
 
   const handleLogOut = () => {
     setUser(null);
@@ -41,31 +39,35 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      {
-    user && authenticated && (
-      <ProtectedRoute
-        authenticated={authenticated}
-        user={user}
-        path="/dashboard"
-        element={<Dashboard />}
-      />
-  )
-}
- 
+      {user && authenticated && (
+        <ProtectedRoute
+          authenticated={authenticated}
+          user={user}
+          path="/dashboard"
+          element={<Dashboard />}
+        />
+      )}
+
       <Routes>
         <Route path="/" element={<Landingpage />} />
-        <Route path="/login" element={<LogIn
-          setUser={setUser}
-          toggleAuthenticated={toggleAuthenticated} />} />
-        <Route path="/profiles" element={<DisplayProfile/>} />
-        <Route exact path = 'users/:userId' element ={<ProfileView/>}/>
+        <Route
+          path="/login"
+          element={
+            <LogIn
+              setUser={setUser}
+              toggleAuthenticated={toggleAuthenticated}
+            />
+          }
+        />
+        <Route path="/profiles" element={<DisplayProfile />} />
+        <Route exact path="users/:userId" element={<ProfileView />} />
         <Route path="/newaccount" element={<Register />} />
         <Route path="/about" element={<About />} />
-        <Route path="/dashboard" element={<Dashboard/>}/>
+        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="/safety" element={<Safety />} />
         <Route path="/events" element={<Events />} />
       </Routes>
     </div>
   );
-};
+}
 export default App;
