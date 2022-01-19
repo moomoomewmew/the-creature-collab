@@ -17,6 +17,9 @@ export default function Register(props) {
     password: '',
     confirmPassword: ''
   })
+  const password = formValues.password
+  const passwordConfirm = formValues.confirmPassword
+  const username = formValues.userName
 
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
@@ -24,13 +27,25 @@ export default function Register(props) {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-    await RegisterUser({
-      userName: formValues.userName,
-      email: formValues.email,
-      password: formValues.password
-    })
-    setFormValues(iState)
-    navigate('/login')
+    if (username === "") {
+      alert('Please enter a user name')
+    } else if (password.length < 7) {
+      alert("Your password must be at least 7 characters long")
+      console.log(password.length)
+    } else if (password !== passwordConfirm) {
+      alert("Your passwords do not match")
+    } else if (username && password === passwordConfirm && password.length >= 7) {
+      await RegisterUser({
+        userName: formValues.userName,
+        email: formValues.email,
+        password: formValues.password
+      })
+      setFormValues(iState)
+      navigate('/login')
+      alert("Youve sucessfully registered!")
+    } else {
+      console.log('error')
+    }
   }
 
   return (
@@ -82,13 +97,7 @@ export default function Register(props) {
               required
             />
           </div>
-          <button
-            disabled={
-              !formValues.email ||
-              (!formValues.password &&
-                formValues.confirmPassword === formValues.password)
-            }
-          >
+          <button type='submit'>
             Register
           </button>
         </form>
