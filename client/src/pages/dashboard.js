@@ -1,44 +1,69 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
+import { CheckSession } from '../services/Auth';
 
 
 export default function Dashboard(props) {
-    let userDashboardArray = [];
-    const [userDashboard, setUserDashboard] = useState(userDashboardArray);
-    const [formValues, setFormValues] = useState({
+    const userId = props.user.id
+    let userDetailsArray = [];
+    const [userDetails, setUserDetails] = useState(userDetailsArray);
+    const [returnId, setReturnId] = useState(props.user.id);
+    const [updatedUser, setUpdatedUser] = useState({
         characterName: '',
         pronouns: '',
         race: '',
         moralAllignment: '',
         bio: '',
-        profilePic: '',
+        profilePic: ''
 
       })
     
-    const getUserDashboard = async (user) => {
-        const response = await axios.get(`http://localhost:3001/api/users/info/${props.user.id}`);
+    const getUserDetails = async (user) => {
+        const response = await axios.get(`http://localhost:3001/api/users/info/${userId}`);
         console.log(response)
-        setUserDashboard(response.data);
+        setUserDetails(response.data);
+      };
+      const updateUser = (e) =>{
+        e.preventDefault();
+        const newUser = {
+          ...updatedUser
+        }; 
+         axios
+        .put(`http://localhost:3001/api/users/23`, newUser )
+        .then((response) => setReturnId(response.data))
+        setUpdatedUser({
+            characterName: '',
+            pronouns: '',
+            race: '',
+            moralAllignment: '',
+            bio: '',
+            profilePic: ''
+        })
+    
       };
 
       const handleChange = (e) => {
-        setFormValues({ ...formValues, [e.target.name]: e.target.value })
+        setUpdatedUser({ ...updatedUser, [e.target.name]: e.target.value })
       }
-      const handleSubmit = async (e) => {
-        e.preventDefault()
-        setFormValues({ characterName: '', pronouns:'', race: '', moralAllignment: '', bio:'',profilePic: '' })
+      const handleSubmit = async () => {
+        updateUser()
+        console.log(updatedUser)
+        props.setUser(props.user)
+        getUserDetails()
       }
     
       useEffect(() => {
-        getUserDashboard();
+        CheckSession()
+        getUserDetails();
+        props.setUser(props.user)
       }, []);
 
         return (
             <div>
 
-                <h1> {userDashboard.userName}</h1>
-                <h1> {userDashboard.email}</h1>
-                <h1> {userDashboard.pronouns}</h1>
+                <h1> {userDetails.userName}</h1>
+                <h1> {userDetails.email}</h1>
+                <h1> {userDetails.pronouns}</h1>
                 {/* <h1> {userDashboard.email}</h1> */}
             <div className="register-form">
             <div className="card-overlay centered">
@@ -46,13 +71,12 @@ export default function Dashboard(props) {
               picture:
               <div className="input-wrapper">
                   {/* <label htmlFor="password">Password</label> */}
-
                   <input
                     onChange={handleChange}
-                    type="file"
+                    type="text"
                     name="profilePic"
                     placeholder='image url'
-                    value={formValues.profilePic}
+                    value={updatedUser.profilePic}
                     required
                   />
                 </div>
@@ -63,8 +87,8 @@ export default function Dashboard(props) {
                     onChange={handleChange}
                     name="characterName"
                     type="text"
-                    placeholder="who are you really?"
-                    value={formValues.characterName}
+                    placeholder={userDetails.characterName}
+                    value={updatedUser.characterName}
                     required
                   />
                 </div>
@@ -76,13 +100,11 @@ export default function Dashboard(props) {
                     name="pronouns"
                     type="text"
                     placeholder="she/he/they/"
-                    value={formValues.pronouns}
+                    value={updatedUser.pronouns}
                     required
                   />
                 </div>
-
                 Bio:
-
                 <div className="input-wrapper">
                   {/* <label htmlFor="password">Password</label> */}
                   <input
@@ -90,7 +112,7 @@ export default function Dashboard(props) {
                     type="text"
                     name="race"
                     placeholder='what type of creature are you'
-                    value={formValues.race}
+                    value={updatedUser.race}
                     required
                   />
                 </div>
