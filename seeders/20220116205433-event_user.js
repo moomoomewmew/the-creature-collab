@@ -10,6 +10,18 @@ module.exports = {
           attendeeId: 1,
           createdAt: new Date(),
           updatedAt: new Date()
+        },
+        {
+          eventId: 5,
+          attendeeId: 2,
+          createdAt: new Date(),
+          updatedAt: new Date()
+        },
+        {
+          eventId: 6,
+          attendeeId: 1,
+          createdAt: new Date(),
+          updatedAt: new Date()
         }
       ],
       {}
