@@ -20,7 +20,6 @@ export default function LogIn(props) {
     props.toggleAuthenticated(true)
     console.log(props.authenticated)
     navigate(`/dashboard`)
-    console.log(props.user.id)
   }
 
 
@@ -28,8 +27,8 @@ export default function LogIn(props) {
     <div className="rigister-form">
       <div className="register-form">
         <form className="col" onSubmit={handleSubmit}>
+          Email:
           <div className="input-wrapper">
-            <label htmlFor="email">Email </label>
             <input
               onChange={handleChange}
               name="email"
@@ -39,8 +38,8 @@ export default function LogIn(props) {
               required
             />
           </div>
+          Password:
           <div className="input-wrapper">
-            <label htmlFor="password">Password </label>
             <input
               onChange={handleChange}
               type="password"
