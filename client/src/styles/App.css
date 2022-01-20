@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Almendra+Display&family=Almendra+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Almendra+Display&family=Fraunces:wght@500&family=Roboto+Condensed:wght@700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&family=Fraunces:wght@500&family=Oswald:wght@300&family=Roboto+Condensed:wght@700&display=swap');
 
 .App-header {
   background-color: #282c34;
@@ -44,15 +45,6 @@ nav{
   margin-bottom: 2vh;
   margin-top: 2vh;
 }
-input{
-  background-color: rgba(169, 172, 158, 0.5);
-  border-radius: 0.4em;
-  
-}
-textarea{
-  background-color: rgba(186, 190, 168, 0.5);
-  border-radius: 0.4em;
-}
 
 
 select{
@@ -71,26 +63,23 @@ body {
   background-size: cover;
 }
 
-.nav2 {
+.lower-nav {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
   background-image: linear-gradient(to right, rgb(22, 20, 20), rgb(46, 44, 44),rgb(39, 34, 34));
   height: 1.5em;
-  font-size: 1.5em;
+  font-size: 1.25em;
+  font-family: 'Oswald', sans-serif;
 }
 
-.about {
-  font-family: 'Roboto Condensed', sans-serif;
-  font-size: 3px;
-}
 
 a {
 text-decoration: none;
 color: rgba(255, 166, 0, 0.87);
 }
 
-.nav {
+.upper-left {
   margin: 0 .75em;
   color: rgb(3, 20, 36); 
   text-decoration: none;
@@ -98,9 +87,11 @@ color: rgba(255, 166, 0, 0.87);
   color: white;
 
 }
-.nav:hover {
+
+.transform:hover {
   transform: scale(1.2);
 }
+
 
 .login_and_CA {
   font-size: .65em;
@@ -155,74 +146,56 @@ color: rgba(255, 166, 0, 0.87);
   'header1 header2 header3'
   'body-left body-mid body-right'
   'bod-left main main';
-  grid-gap: 1vh;
+  grid-gap: 4vmin;
 }
 .name-and-pic{
   grid-area: header2;
-  display: grid;
-  justify-content: center;
-}
-.name{
-  text-align: center;
-}
 
+}
 .profilePicture {
-  max-height: 20vmax;
+  max-height: 20vh;
   width: auto;
-  border-radius: 50%;
-  border:solid .5vmin rgba(255, 166, 0, 0.87);
-  margin: 1vh;
+  border-radius: 50px;
   align-self: center;
 }
 .details{
-  grid-area: body-left;
-  margin: 5em;
-  background-color: rgba(255, 166, 0, 0.87);
-  border-radius: 10px;
+  grid-area: body-mid;
 } 
-.user-events{
-  display: flex;
-  justify-content: space-evenly;
-  grid-area: body-right;
-  margin: 5em;
-  background-color: #afdf90;
-  border-radius: 10px;
-}
-.basic-info{
-  /* grid-area: body-left; */
-  margin: 5em;
-} 
-.dashboard{
-  height: 100%;
-  display: grid;
-  grid-template-rows: 1fr 1fr 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-areas: 
-  'header1 header2 body-topright'
-  'body-left body-mid body-right'
-  'bod-left body-mid body-bottom';
-  grid-gap: 1vh;
-}
-.info-form {
 
-  grid-area: header2;
-  position: relative;
-  background-color:rgba(255, 166, 0, 0.5); ;
+.lower-left {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  border-radius: 0.3em;
+  justify-content: space-around;
+  padding: 0 8px;
 }
-.event-form {
-  grid-area: body-topright;
-  position: relative;
-  background-color:rgba(0, 255, 255, 0.5); ;
+
+.lower-right {
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: auto;
-  border-radius: 0.3em;
+  justify-content: space-around;
+  padding: 0 8px;
 }
+
+.CG {
+  display: flex;
+  flex-direction: row;
+  margin: 0 1em;
+ 
+}
+
+.events-button {
+    display: flex;
+  flex-direction: row;
+  margin: 0 1em;
+}
+
+.members-button {
+    display: flex;
+  flex-direction: row;
+  margin: 0 1em;
+}
+
+.about-button {
+    display: flex;
+  flex-direction: row;
+  margin: 0 1em;
+}
+
