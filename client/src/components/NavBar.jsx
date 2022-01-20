@@ -10,8 +10,8 @@ const Navbar = (props) => {
             <nav >
                 <Link className="nav" to="/">Creature Collab</Link>
                 <div className="login_and_CA">
-                    <Link className="dashboard-button" to="/dashboard">Dashboard</Link>
-                    <Link className="logout-button" onClick={props.handleLogOut} to="/">Logout</Link>
+                    <Link className="create-account-button" to="/dashboard">Dashboard</Link>
+                    <Link className="login-button" onClick={props.handleLogOut} to="/">Logout</Link>
                     <Link className="profile-button" to='/profiles'>Members</Link>
 
                 </div>
