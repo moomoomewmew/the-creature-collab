@@ -12,9 +12,11 @@
 .guideline-list-title {
   font-weight: bold;
   font-size: larger;
+  text-align: center;
 }
 .guideline-list-info {
-  font-size: large;
+  font-size: medium;
+  text-align: center;
 }
 .disguise {
   max-height: 30vh;
