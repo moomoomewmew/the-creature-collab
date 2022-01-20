@@ -24,7 +24,11 @@ export default function Events(props) {
         {events.map((event) => {
           return (
             <div key={event.id}>
-              <EventCard event={event} />
+              <EventCard
+                event={event}
+                user={props.user}
+                getEvents={getEvents}
+              />
             </div>
           );
         })}
