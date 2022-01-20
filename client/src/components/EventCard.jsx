@@ -16,10 +16,20 @@ export default function EventCard(props) {
       })
     }
 
+  const unattend = async () => {
+    await axios
+      .delete(`${BASE_URL}/events/attendees/${props.event.id}/${props.user.id}`)
+      .then(() => {
+        props.getEvents()
+      })
+  }
+
   const handleClick = (e) => {
     e.preventDefault();
     if(!attending) {
       attend()
+    } else {
+      unattend()
     }
   } 
 
