@@ -2,7 +2,7 @@
   display: flex;
   justify-content: space-evenly;
 
-  margin: auto 25px;
+  margin: auto 25px 15px 25px;
 }
 
 .event-page h1 {
@@ -18,10 +18,16 @@
 }
 
 .add-event form {
-  display: flex;
-  flex-direction: column;
-
   border: 1px solid #ffffff;
   border-radius: 50px;
   text-align: center;
+  padding: 10px;
+}
+
+.add-event section {
+  margin: 10px auto;
+}
+
+.add-event button {
+  width: 50%;
 }
