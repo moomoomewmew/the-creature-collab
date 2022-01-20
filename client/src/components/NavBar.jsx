@@ -14,13 +14,15 @@ const Navbar = (props) => {
                         <Link className="create-account-button" to="/dashboard">Dashboard</Link>
                         <Link className="login-button" onClick={props.handleLogOut} to="/">Logout</Link>
                         <Link className="profile-button" to='/profiles'>Members</Link>
-
                     </div>
                 </nav>
-                <nav>
-                    <div>
-                    <Link classname="about-safety" to="/safety">Community Guidelines</Link>
-                    <Link classname="about-safety" to="/about">About CC</Link>
+                <nav className='nav2'>
+                    <div classname="about">
+                        <Link to="/safety">Community Guidelines</Link>
+                        <Link to="/about">About CC</Link>
+                        <div>
+                            <Link to="/events">Events</Link>
+                        </div>
                     </div>
                 </nav>
             </div>
