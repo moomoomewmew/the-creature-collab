@@ -30,11 +30,11 @@ return (
         <img className = "profilePicture" src = {userDetails.profilePic} alt={userDetails.name}/>
     </div>
     <div className= "details">
-        <h3>pronouns: {userDetails.pronouns}</h3>
-        <h3> alias: {userDetails.characterName}</h3>
-        <h3>location: {userDetails.city}</h3>
-        <h3>bio: {userDetails.bio}</h3>
-        <h3>moaral allignment: {userDetails.moralAllignment}</h3>
+        <h3>Pronouns: {userDetails.pronouns}</h3>
+        <h3> Alias: {userDetails.characterName}</h3>
+        <h3>Location: {userDetails.city}</h3>
+        <h3>Bio: {userDetails.bio}</h3>
+        <h3>Moral alignment: {userDetails.moralAlignment}</h3>
     </div>   
     <div className="user-events">
         <h3>Event Host: {userDetails.events}</h3>
