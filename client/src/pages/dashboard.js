@@ -1,74 +1,69 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CheckSession } from '../services/Auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../globals/index";
-import EventForm from '../components/EventForm';
 
 
 
 export default function Dashboard(props) {
-   const navigate = useNavigate()
-    let userId = props.user.id
-    let userDetailsArray = [];
-    const [userDetails, setUserDetails] = useState(userDetailsArray);
-    const [returnId, setReturnId] = useState(props.user.id);
-    const [updatedUser, setUpdatedUser] = useState({
-        characterName: '',
-        userName:'',
-        pronouns: '',
-        race: '',
-        moralAllignment: '',
-        bio: '',
-        profilePic: '',
-        city: ''
+  const navigate = useNavigate();
+  let userId = props.user.id;
+  let userDetailsArray = [];
+  const [userDetails, setUserDetails] = useState(userDetailsArray);
+  const [returnId, setReturnId] = useState(props.user.id);
+  const [updatedUser, setUpdatedUser] = useState({
+    characterName: '',
+    userName: '',
+    pronouns: '',
+    race: '',
+    moralAllignment: '',
+    bio: '',
+    profilePic: '',
+    city: ''
+  });
 
-      })
-    
-    const getUserDetails = async (user) => {
-        const response = await axios.get(`${BASE_URL}/users/info/${userId}`);
-        setUserDetails(response.data);
-      };
+  const getUserDetails = async (user) => {
+    const response = await axios.get(`${BASE_URL}/users/info/${userId}`);
+    setUserDetails(response.data);
+  };
 
-      const updateUser = () =>{
-        // e.preventDefault();
-        const newUser = {
-          ...updatedUser
-        }; 
-         axios
-        .put(`${BASE_URL}/users/${userId}`, newUser )
-        // .then((response) => setReturnId(response.data))
-        setUpdatedUser({
-            characterName: '',
-            userName:'',
-            pronouns: '',
-            race: '',
-            moralAllignment: '',
-            bio: '',
-            profilePic: '',
-            city: ''
-        })
-    
-    
-      };
+  const updateUser = () => {
+    // e.preventDefault();
+    const newUser = {
+      ...updatedUser
+    };
+    axios.put(`${BASE_URL}/users/${userId}`, newUser);
+    // .then((response) => setReturnId(response.data))
+    setUpdatedUser({
+      characterName: '',
+      userName: '',
+      pronouns: '',
+      race: '',
+      moralAllignment: '',
+      bio: '',
+      profilePic: '',
+      city: ''
+    });
+  };
 
-      const handleChange = (e) => {
-        setUpdatedUser({ ...updatedUser, [e.target.name]: e.target.value })
-      }
-      const handleSubmit = async () => {
-        updateUser()
-        // console.log(updatedUser)
-        // props.setUser(userDetails)
-        // navigate (`/users/${userId}`)
-        // getUserDetails()
-        
-      }
-    
-      useEffect(() => {
-        CheckSession()
-        getUserDetails();
-        props.setUser(props.user)
-      }, []);
+  const handleChange = (e) => {
+    setUpdatedUser({ ...updatedUser, [e.target.name]: e.target.value });
+  };
+  const handleSubmit = async () => {
+    updateUser();
+    // console.log(updatedUser)
+    // props.setUser(userDetails)
+    // navigate (`/users/${userId}`)
+    // getUserDetails()
+  };
+
+
+  useEffect(() => {
+    CheckSession();
+    getUserDetails();
+    props.setUser(props.user);
+  }, []);
 
         return (
             <div className='dashboard'>
@@ -146,26 +141,21 @@ export default function Dashboard(props) {
                   />
                 </div>
                 {/* location
+
                 <div className="input-wrapper">
                   {/* <label htmlFor="password">Password</label> */}
-                  {/* <input
+            {/* <input
                     onChange={handleChange}
                     type="text"
                     name="location"
                     placeholder='where are you?'
                     value={updatedUser.city}
                     required
-                  /> */} 
-                {/* </div> */}
-                <button>
-                  update your character
-                </button>
-              </form>
-            </div>
+                  /> */}
+            {/* </div> */}
+            <button>update your character</button>
+          </form>
         </div>
     </div>
-        )
-       
-    }
-
-
+  );
+}
