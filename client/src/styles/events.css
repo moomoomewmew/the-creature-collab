@@ -18,10 +18,16 @@
 }
 
 .add-event form {
-  border: 1px solid #ffffff;
-  border-radius: 50px;
   text-align: center;
-  padding: 10px;
+  position: relative;
+  padding: 1em;
+  background-color:rgba(0, 255, 255, 0.5); ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  border-radius: 0.3em;
 }
 
 .add-event section {
