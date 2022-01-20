@@ -23,6 +23,7 @@ const Navbar = (props) => {
                         <div>
                             <Link to="/events">Events</Link>
                         </div>
+
                     </div>
                 </nav>
             </div>

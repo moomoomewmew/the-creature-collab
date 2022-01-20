@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { CheckSession } from '../services/Auth';
+import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from "../globals/index";
+
 
 
 export default function Dashboard(props) {
-    const userId = props.user.id
+   const navigate = useNavigate()
+    let userId = props.user.id
     let userDetailsArray = [];
     const [userDetails, setUserDetails] = useState(userDetailsArray);
     const [returnId, setReturnId] = useState(props.user.id);
@@ -14,22 +18,23 @@ export default function Dashboard(props) {
         race: '',
         moralAllignment: '',
         bio: '',
-        profilePic: ''
+        profilePic: '',
+        city: ''
 
       })
     
     const getUserDetails = async (user) => {
-        const response = await axios.get(`http://localhost:3001/api/users/info/${userId}`);
-        console.log(response)
+        const response = await axios.get(`${BASE_URL}/users/info/${userId}`);
         setUserDetails(response.data);
       };
-      const updateUser = (e) =>{
-        e.preventDefault();
+
+      const updateUser = () =>{
+        // e.preventDefault();
         const newUser = {
           ...updatedUser
         }; 
          axios
-        .put(`http://localhost:3001/api/users/23`, newUser )
+        .put(`${BASE_URL}/users/${userId}`, newUser )
         .then((response) => setReturnId(response.data))
         setUpdatedUser({
             characterName: '',
@@ -37,8 +42,10 @@ export default function Dashboard(props) {
             race: '',
             moralAllignment: '',
             bio: '',
-            profilePic: ''
+            profilePic: '',
+            city: ''
         })
+    
     
       };
 
@@ -48,8 +55,10 @@ export default function Dashboard(props) {
       const handleSubmit = async () => {
         updateUser()
         console.log(updatedUser)
-        props.setUser(props.user)
+        props.setUser(userDetails)
+        navigate (`/users/${userId}`)
         getUserDetails()
+        
       }
     
       useEffect(() => {
@@ -110,12 +119,24 @@ export default function Dashboard(props) {
                   <input
                     onChange={handleChange}
                     type="text"
-                    name="race"
-                    placeholder='what type of creature are you'
-                    value={updatedUser.race}
+                    name="bio"
+                    placeholder={userDetails.bio}
+                    value={updatedUser.bio}
                     required
                   />
                 </div>
+                {/* location
+                <div className="input-wrapper">
+                  {/* <label htmlFor="password">Password</label> */}
+                  {/* <input
+                    onChange={handleChange}
+                    type="text"
+                    name="location"
+                    placeholder='where are you?'
+                    value={updatedUser.city}
+                    required
+                  /> */} 
+                {/* </div> */}
                 <button>
                   add you info
                 </button>

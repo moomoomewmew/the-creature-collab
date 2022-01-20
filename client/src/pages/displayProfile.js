@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import {Link, useNavigate} from 'react-router-dom'
 import ProfileCard from '../components/ProfileCard';
+import { BASE_URL } from "../globals/index";
 
 
 const ProfileDisplay = (props) => {
@@ -13,7 +14,7 @@ const ProfileDisplay = (props) => {
 
 
   const getUserProfiles = async (user) => {
-    const response = await axios.get('http://localhost:3001/api/users');
+    const response = await axios.get(`${BASE_URL}/users`);
     setUserProfiles(response.data);
   };
 //   userProfiles.sort((a, b) => a.name.localeCompare(b.name))
