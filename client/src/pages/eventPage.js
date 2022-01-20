@@ -30,7 +30,7 @@ export default function Events(props) {
         })}
       </div>
       <div className="event-form">
-        <EventForm user={props.user} />
+        <EventForm user={props.user} getEvents={getEvents} />
       </div>
     </div>
   );
