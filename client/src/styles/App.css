@@ -19,10 +19,13 @@ nav{
   justify-content: center;
   align-items: center;
   height: 3em;
-  font-size: 2vw;
+  font-size: 2em;
   font-weight: bold;
   background-color: #282c34;
-
+  display: flex;
+  justify-content: space-between;
+  background-image: linear-gradient(to right, rgb(17, 16, 16), rgb(65, 64, 64),rgb(17, 10, 10));
+  height: 2.25em;
 }
 
 
@@ -60,14 +63,26 @@ body {
   background-size: cover;
 }
 
-nav {
+.nav2 {
   display: flex;
   justify-content: space-between;
-  background-image: linear-gradient(to right, rgb(22, 20, 20), rgb(65, 64, 64),rgb(17, 10, 10));
-  height: 2em;
+  flex-direction: row;
+  background-image: linear-gradient(to right, rgb(22, 20, 20), rgb(46, 44, 44),rgb(39, 34, 34));
+  height: 1.5em;
+  font-size: 1.5em;
 }
 
-.nav   {
+.about {
+  font-family: 'Roboto Condensed', sans-serif;
+  font-size: 3px;
+}
+
+a {
+text-decoration: none;
+color: rgba(255, 166, 0, 0.87);
+}
+
+.nav {
   margin: 0 .75em;
   color: rgb(3, 20, 36); 
   text-decoration: none;
@@ -75,7 +90,7 @@ nav {
   color: white;
 
 }
-.nav:hover{
+.nav:hover {
   transform: scale(1.2);
 }
 
