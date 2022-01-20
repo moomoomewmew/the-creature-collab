@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import './styles/App.css';
+import './styles/profiles.css'
 import LogIn from './pages/login';
 import Register from './components/CreateAccount';
 import { Routes, Route } from 'react-router-dom';
