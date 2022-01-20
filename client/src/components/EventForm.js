@@ -74,12 +74,8 @@ export default function EventForm(props) {
       setDisplayedMessage('Please specify a street address or URL');
     } else {
       createNewEvent();
+      // window.location.reload();
     }
-
-    // getEvents();
-
-    // setNewEvent(eventFormValue);
-    // window.location.reload();
   };
   return (
     <div className="add-event">

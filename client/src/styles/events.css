@@ -2,6 +2,18 @@
   display: flex;
 }
 
+.event-page h1 {
+  text-align: center;
+}
+
 .event-card {
-  border: 1px solid white;
+  text-align: center;
+  border: 1px solid #ffffff;
+  border-radius: 50px;
+  margin: 5px auto;
+}
+
+.add-event {
+  display: flex;
+  flex-direction: column;
 }
