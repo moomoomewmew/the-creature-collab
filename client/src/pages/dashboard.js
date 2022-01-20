@@ -3,7 +3,7 @@ import axios from 'axios';
 import { CheckSession } from '../services/Auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../globals/index";
-
+import DeleteAccount from '../components/DeleteAccount';
 
 
 export default function Dashboard(props) {
@@ -28,19 +28,15 @@ export default function Dashboard(props) {
     const getUserDetails = async (user) => {
         const response = await axios.get(`${BASE_URL}/users/info/${userId}`);
         setUserDetails(response.data);
-    };
-    const deleteAccount = async (user) => {
-        const response = await axios.delete(`${BASE_URL}/auth/users/${userId}`);
-    };
+        console.log(userDetails.eventsOwned)
 
+    };
     const updateUser = () => {
-        // e.preventDefault();
         const newUser = {
             ...updatedUser
         };
         axios
             .put(`${BASE_URL}/users/${userId}`, newUser)
-        // .then((response) => setReturnId(response.data))
         setUpdatedUser({
             characterName: '',
             userName: '',
@@ -156,9 +152,12 @@ export default function Dashboard(props) {
                             update your character
                         </button>
                     </form>
-                    <button onClick={deleteAccount}>Delete Account</button>
-
-                </div>
+                    <DeleteAccount userId = {userId}/>
+               </div>
+               <div>
+                   {/* <h2>events: {userDetails.eventsOwned.id}</h2> */}
+                   {/* <h2>events attending: {userDetails.eventsAttending}</h2> */}
+               </div>
             </div>
         </div>
     )
