@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BASE_URL } from '../globals/index';
 
 export default function EventForm(props) {
   const [events, setEvents] = useState([]);
@@ -25,30 +26,29 @@ export default function EventForm(props) {
 
   useEffect(() => {
     getEvents();
+    console.log(props.user);
   }, []);
 
   const createNewEvent = async () => {
     const createdEvent = {
       ...newEvent
     };
-    await axios
-      .post(`http://localhost:3001/api/events`, createdEvent)
-      .then(() => {
-        getEvents();
-        setDisplayedMessage('Your event has been added!');
-        setNewEvent({
-          name: '',
-          city: '',
-          date: '',
-          time: '',
-          online: null,
-          outdoor: null,
-          address: '',
-          state: '',
-          description: '',
-          picture: ''
-        });
+    await axios.post(`${BASE_URL}events`, createdEvent).then(() => {
+      getEvents();
+      setDisplayedMessage('Your event has been added!');
+      setNewEvent({
+        name: '',
+        city: '',
+        date: '',
+        time: '',
+        online: null,
+        outdoor: null,
+        address: '',
+        state: '',
+        description: '',
+        picture: ''
       });
+    });
   };
 
   const handleChange = async (e) => {

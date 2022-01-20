@@ -12,7 +12,7 @@ import Landingpage from './pages/landingpage';
 import Events from './pages/eventPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import ProfileView from './components/UserProfile';
-import DisplayProfile from './pages/displayProfile'
+import DisplayProfile from './pages/displayProfile';
 
 function App() {
   const [authenticated, toggleAuthenticated] = useState(false);
@@ -30,6 +30,8 @@ function App() {
     }
   }, []);
 
+  console.log(user);
+
   const handleLogOut = () => {
     setUser(null);
     toggleAuthenticated(false);
@@ -38,7 +40,11 @@ function App() {
 
   return (
     <div className="App">
-      <Navbar user={user} authenticated={authenticated} handleLogOut={handleLogOut}/>
+      <Navbar
+        user={user}
+        authenticated={authenticated}
+        handleLogOut={handleLogOut}
+      />
       {/* {user && authenticated && (
         <ProtectedRoute
           authenticated={authenticated}
@@ -65,12 +71,14 @@ function App() {
         <Route exact path="/users/:userId" element={<ProfileView />} />
         <Route path="/newaccount" element={<Register />} />
         <Route path="/about" element={<About />} />
-        <Route path="/dashboard" element={<Dashboard
-          user={user}
-          checkToken={checkToken}
-          setUser={setUser} />} />
+        <Route
+          path="/dashboard"
+          element={
+            <Dashboard user={user} checkToken={checkToken} setUser={setUser} />
+          }
+        />
         <Route path="/safety" element={<Safety />} />
-        <Route path="/events" element={<Events />} />
+        <Route path="/events" element={<Events user={user} />} />
       </Routes>
     </div>
   );
