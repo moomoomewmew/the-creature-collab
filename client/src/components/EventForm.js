@@ -33,7 +33,7 @@ export default function EventForm(props) {
     const createdEvent = {
       ...newEvent
     };
-    await axios.post(`${BASE_URL}events`, createdEvent).then(() => {
+    await axios.post(`${BASE_URL}/events`, createdEvent).then(() => {
       getEvents();
       setDisplayedMessage('Your event has been added!');
       setNewEvent({
