@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { BASE_URL } from '../globals/index';
+import { CheckSession } from '../services/Auth';
 
 export default function EventForm(props) {
+  const [user, setUser] = useState();
   const [events, setEvents] = useState([]);
   const [newEvent, setNewEvent] = useState({
     name: '',
@@ -14,7 +17,7 @@ export default function EventForm(props) {
     state: '',
     description: '',
     picture: '',
-    ownerId: 1
+    ownerId: props.user.id
   });
   const [displayedMessage, setDisplayedMessage] = useState('');
 
@@ -25,30 +28,30 @@ export default function EventForm(props) {
 
   useEffect(() => {
     getEvents();
+    CheckSession();
+    setUser(props.user);
   }, []);
 
   const createNewEvent = async () => {
     const createdEvent = {
       ...newEvent
     };
-    await axios
-      .post(`http://localhost:3001/api/events`, createdEvent)
-      .then(() => {
-        getEvents();
-        setDisplayedMessage('Your event has been added!');
-        setNewEvent({
-          name: '',
-          city: '',
-          date: '',
-          time: '',
-          online: null,
-          outdoor: null,
-          address: '',
-          state: '',
-          description: '',
-          picture: ''
-        });
+    await axios.post(`${BASE_URL}/events`, createdEvent).then(() => {
+      getEvents();
+      setDisplayedMessage('Your event has been added!');
+      setNewEvent({
+        name: '',
+        city: '',
+        date: '',
+        time: '',
+        online: null,
+        outdoor: null,
+        address: '',
+        state: '',
+        description: '',
+        picture: ''
       });
+    });
   };
 
   const handleChange = async (e) => {
@@ -72,7 +75,6 @@ export default function EventForm(props) {
       setDisplayedMessage('Please specify a street address or URL');
     } else {
       createNewEvent();
-      window.location.reload();
     }
   };
   return (

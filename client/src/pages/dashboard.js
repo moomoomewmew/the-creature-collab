@@ -35,7 +35,7 @@ export default function Dashboard(props) {
         }; 
          axios
         .put(`${BASE_URL}/users/${userId}`, newUser )
-        .then((response) => setReturnId(response.data))
+        // .then((response) => setReturnId(response.data))
         setUpdatedUser({
             characterName: '',
             pronouns: '',
@@ -54,10 +54,10 @@ export default function Dashboard(props) {
       }
       const handleSubmit = async () => {
         updateUser()
-        console.log(updatedUser)
-        props.setUser(userDetails)
-        navigate (`/users/${userId}`)
-        getUserDetails()
+        // console.log(updatedUser)
+        // props.setUser(userDetails)
+        // navigate (`/users/${userId}`)
+        // getUserDetails()
         
       }
     
@@ -68,13 +68,15 @@ export default function Dashboard(props) {
       }, []);
 
         return (
-            <div>
-
-                <h1> {userDetails.userName}</h1>
-                <h1> {userDetails.email}</h1>
-                <h1> {userDetails.pronouns}</h1>
-                {/* <h1> {userDashboard.email}</h1> */}
-            <div className="register-form">
+            <div className='dashboard'>
+                <div className='basic-info'>
+                    <img className = 'profilePicture' src={userDetails.profilePic} alt='profile picture'/>
+                    <h1> {userDetails.userName}</h1>
+                    <h1> user email: <br/> {userDetails.email}</h1>
+                    <h1> pronouns: <br/>{userDetails.pronouns}</h1>
+                    <h1>Bio:<br/> {userDetails.bio}</h1>
+                </div>
+            <div className="info-form">
             <div className="card-overlay centered">
               <form className="col" onSubmit={handleSubmit}>
               picture:
@@ -138,7 +140,7 @@ export default function Dashboard(props) {
                   /> */} 
                 {/* </div> */}
                 <button>
-                  add you info
+                  update your character
                 </button>
               </form>
             </div>

@@ -1,0 +1,36 @@
+.about {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+}
+.characters-flex-container {
+  list-style: none;
+  text-align: center;
+  display: flex;
+  flex-wrap: no-wrap;
+  margin-top: 5%;
+}
+.samwise {
+  max-width: 40vw;
+  max-height: 30vh;
+  margin: auto;
+  display: block;
+}
+.gloomhaven {
+  max-width: 40vw;
+  max-height: 30vh;
+  margin: auto;
+  display: block;
+}
+.madrigal {
+  max-width: 40vw;
+  max-height: 30vh;
+  margin: auto;
+  display: block;
+}
+.conjurer {
+  max-width: 40vw;
+  max-height: 30vh;
+  margin: auto;
+  display: block;
+}

@@ -19,10 +19,13 @@ nav{
   justify-content: center;
   align-items: center;
   height: 3em;
-  font-size: 2vw;
+  font-size: 2em;
   font-weight: bold;
   background-color: #282c34;
-
+  display: flex;
+  justify-content: space-between;
+  background-image: linear-gradient(to right, rgb(17, 16, 16), rgb(65, 64, 64),rgb(17, 10, 10));
+  height: 2.25em;
 }
 
 
@@ -60,14 +63,22 @@ body {
   background-size: cover;
 }
 
-nav {
+.nav2 {
   display: flex;
   justify-content: space-between;
-  background-image: linear-gradient(to right, rgb(22, 20, 20), rgb(65, 64, 64),rgb(17, 10, 10));
-  height: 2em;
+  flex-direction: row;
+  background-image: linear-gradient(to right, rgb(22, 20, 20), rgb(46, 44, 44),rgb(39, 34, 34));
+  height: 1.5em;
+  font-size: 1.5em;
 }
 
-.nav   {
+
+a {
+text-decoration: none;
+color: rgba(255, 166, 0, 0.87);
+}
+
+.nav {
   margin: 0 .75em;
   color: rgb(3, 20, 36); 
   text-decoration: none;
@@ -75,7 +86,8 @@ nav {
   color: white;
 
 }
-.nav:hover{
+
+.nav:hover {
   transform: scale(1.2);
 }
 
@@ -124,7 +136,8 @@ nav {
   border-radius: 40px;
 }
 
-.profile-layout-grid{
+.profile-layout-grid,
+.dashboard{
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
@@ -132,18 +145,46 @@ nav {
   'header1 header2 header3'
   'body-left body-mid body-right'
   'bod-left main main';
-  grid-gap: 4vmin;
+  grid-gap: 1vh;
 }
 .name-and-pic{
   grid-area: header2;
-
+  display: grid;
+  justify-content: center;
 }
+.name{
+  text-align: center;
+}
+
 .profilePicture {
-  max-height: 20vh;
+  max-height: 20vmax;
   width: auto;
-  border-radius: 50px;
+  border-radius: 50%;
+  border:solid .5vmin rgba(255, 166, 0, 0.87);
+  margin: 1vh;
   align-self: center;
 }
 .details{
-  grid-area: body-mid;
+  grid-area: body-left;
+  margin: 5em;
 } 
+.user-events{
+  display: flex;
+  justify-content: space-evenly;
+  grid-area: body-right;
+  margin: 5em;
+}
+.basic-info{
+  /* grid-area: body-left; */
+  margin: 5em;
+} 
+.info-form {
+  position: relative;
+  background-color:rgba(255, 166, 0, 0.87); ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  border-radius: 0.3em;
+}
