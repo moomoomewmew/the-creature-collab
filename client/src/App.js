@@ -16,8 +16,9 @@ import ProfileView from './components/UserProfile';
 import DisplayProfile from './pages/displayProfile';
 
 function App() {
-  const [authenticated, toggleAuthenticated] = useState(false);
-  const [user, setUser] = useState(null);
+  
+    const [authenticated, toggleAuthenticated] = useState(false);
+    const [user, setUser] = useState(null);
 
   const checkToken = async () => {
     const user = await CheckSession();
@@ -31,15 +32,15 @@ function App() {
     }
   }, []);
 
-  console.log(user);
+    console.log(user);
 
   const handleLogOut = () => {
-    setUser(null);
+      setUser(null);
     toggleAuthenticated(false);
     localStorage.clear();
   };
 
-  return (
+    return (
     <div className="App">
       <Navbar
         user={user}
@@ -87,6 +88,7 @@ function App() {
         />
       </Routes>
     </div>
-  );
+    );
+ 
 }
 export default App;

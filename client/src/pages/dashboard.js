@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { CheckSession } from '../services/Auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../globals/index";
-import EventForm from '../components/EventForm';
 
 
 
 export default function Dashboard(props) {
+
     const navigate = useNavigate()
     let userId = props.user.id
     let userDetailsArray = [];
@@ -73,6 +73,7 @@ export default function Dashboard(props) {
         props.setUser(props.user)
     }, []);
 
+
     return (
         <div className='dashboard'>
             <div className='dash-pic'>
@@ -80,6 +81,7 @@ export default function Dashboard(props) {
                 <h1 className='user-name'> {userDetails.userName}</h1>
             </div>
                 <div className='basic-info'>
+
                     
                 <h1> your email: <br/> {userDetails.email}</h1>
                 <h1> your pronouns: <br/>{userDetails.pronouns}</h1>
@@ -174,5 +176,6 @@ export default function Dashboard(props) {
     )
 
 }
+
 
 
