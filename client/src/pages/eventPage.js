@@ -9,7 +9,7 @@ export default function Events(props) {
   const [events, setEvents] = useState([]);
 
   const getEvents = async () => {
-    const res = await axios.get(`${BASE_URL}/events`);
+    const res = await axios.get(`${BASE_URL}/events/info`);
     setEvents(res.data);
   };
 
@@ -24,7 +24,11 @@ export default function Events(props) {
         {events.map((event) => {
           return (
             <div key={event.id}>
-              <EventCard event={event} />
+              <EventCard
+                event={event}
+                user={props.user}
+                getEvents={getEvents}
+              />
             </div>
           );
         })}
