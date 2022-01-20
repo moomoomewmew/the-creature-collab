@@ -52,7 +52,7 @@ export default function Dashboard(props) {
             city: ''
         })
 
-
+        getUserDetails()
     };
 
     const handleChange = (e) => {
@@ -62,7 +62,7 @@ export default function Dashboard(props) {
         updateUser()
         // console.log(updatedUser)
         // props.setUser(userDetails)
-        // navigate (`/users/${userId}`)
+        navigate (`/users/info/${userId}`)
         // getUserDetails()
 
     }
@@ -78,7 +78,7 @@ export default function Dashboard(props) {
         <div className='dashboard'>
             <div className='dash-pic'>
                 <img className='profilePicture' src={userDetails.profilePic} alt='profile picture' />
-                <h1 className='user-name'> {userDetails.userName}</h1>
+                <h1 className='user-name'> {userDetails.characterName}</h1>
             </div>
                 <div className='basic-info'>
 
@@ -103,20 +103,8 @@ export default function Dashboard(props) {
                                 value={updatedUser.profilePic}
                                 required
                             />
-                        </div>
-                        Username:
-                        <div className="input-wrapper">
-                            {/* <label htmlFor="password">Password</label> */}
-                            <input
-                                onChange={handleChange}
-                                type="text"
-                                name="userName"
-                                placeholder={userDetails.userName}
-                                value={updatedUser.profilePic}
-                                required
-                            />
-                        </div>
-                        Character:
+                        </div>                      
+                       Character:
                         <div className="input-wrapper">
                             {/* <label htmlFor="Username">username</label> */}
                             <input
