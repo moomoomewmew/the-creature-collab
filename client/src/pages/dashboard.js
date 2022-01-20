@@ -118,9 +118,9 @@ export default function Dashboard(props) {
                   <input
                     onChange={handleChange}
                     type="text"
-                    name="race"
-                    placeholder='what type of creature are you'
-                    value={updatedUser.race}
+                    name="bio"
+                    placeholder={userDetails.bio}
+                    value={updatedUser.bio}
                     required
                   />
                 </div>
