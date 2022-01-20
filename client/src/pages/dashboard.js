@@ -8,10 +8,10 @@ import { BASE_URL } from "../globals/index";
 
 export default function Dashboard(props) {
    const navigate = useNavigate()
-    const userId = props.user.id
+    let userId = props.user.id
     let userDetailsArray = [];
     const [userDetails, setUserDetails] = useState(userDetailsArray);
-    // const [returnId, setReturnId] = useState(props.user.id);
+    const [returnId, setReturnId] = useState(props.user.id);
     const [updatedUser, setUpdatedUser] = useState({
         characterName: '',
         pronouns: '',
@@ -27,15 +27,15 @@ export default function Dashboard(props) {
         const response = await axios.get(`${BASE_URL}/users/info/${userId}`);
         setUserDetails(response.data);
       };
+
       const updateUser = () =>{
         // e.preventDefault();
         const newUser = {
           ...updatedUser
         }; 
          axios
-        .put(`${BASE_URL}/users/${userDetails.id}`, newUser )
-        .then(() => {
-        getUserDetails()   
+        .put(`${BASE_URL}/users/${userId}`, newUser )
+        .then((response) => setReturnId(response.data))
         setUpdatedUser({
             characterName: '',
             pronouns: '',
@@ -45,7 +45,7 @@ export default function Dashboard(props) {
             profilePic: '',
             city: ''
         })
-    })
+    
     
       };
 
@@ -55,8 +55,9 @@ export default function Dashboard(props) {
       const handleSubmit = async () => {
         updateUser()
         console.log(updatedUser)
-        props.setUser(userDetails.user)
-        navigate (`/users/${userDetails.id}`)
+        props.setUser(userDetails)
+        navigate (`/users/${userId}`)
+        getUserDetails()
         
       }
     

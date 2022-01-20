@@ -19,8 +19,10 @@ export default function LogIn(props) {
     props.setUser(payload)
     props.toggleAuthenticated(true)
     console.log(props.authenticated)
-    navigate('/dashboard')
+    navigate(`/dashboard`)
+    console.log(props.user.id)
   }
+
 
   return (
     <div className="rigister-form">
