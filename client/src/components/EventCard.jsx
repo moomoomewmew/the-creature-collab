@@ -33,11 +33,21 @@ export default function EventCard(props) {
     }
   } 
 
+// const dateString = props.event.date
+
+// const formatDate = (dateString) => {
+//   const options = { year: "numeric", month: "long", day: "numeric" }
+//   return new Date(dateString).toLocaleDateString(undefined, options)
+// }
+
+// formatDate(dateString)
+
   return (
     <div className="event-card">
       <h3>{props.event.name}</h3>
       <h4>
         {props.event.date}
+        {/* {dateString} */}
       </h4>
       <p>{props.event.time}</p>
       <h5>{props.event.description}</h5>
