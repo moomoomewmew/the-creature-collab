@@ -3,6 +3,7 @@ import React from "react";
 import axios from "axios";
 import { useState,useEffect } from "react";
 import { BASE_URL } from "../globals/index";
+import EventForm from "./EventForm";
 
 
 
@@ -40,6 +41,7 @@ return (
         <h3>Event Host: {userDetails.events}</h3>
         <h3>Attending: {userDetails.events}</h3>
     </div>
+    <div className="event-form"> <EventForm/> </div>
 </div>
 )
 }
