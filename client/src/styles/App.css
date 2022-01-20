@@ -72,10 +72,6 @@ body {
   font-size: 1.5em;
 }
 
-.about {
-  font-family: 'Roboto Condensed', sans-serif;
-  font-size: 3px;
-}
 
 a {
 text-decoration: none;
@@ -90,6 +86,7 @@ color: rgba(255, 166, 0, 0.87);
   color: white;
 
 }
+
 .nav:hover {
   transform: scale(1.2);
 }
