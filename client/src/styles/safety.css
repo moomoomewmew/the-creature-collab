@@ -1,0 +1,49 @@
+.safety-info {
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 5%;
+}
+.guidelines {
+  text-align: center;
+}
+.guidelines-title {
+  text-align: center;
+}
+.guideline-list-title {
+  font-weight: bold;
+  font-size: larger;
+}
+.guideline-list-info {
+  font-size: large;
+}
+.disguise {
+  max-height: 30vh;
+  max-width: 40vw;
+  display: block;
+  margin: auto;
+}
+
+.buddy-system {
+  max-height: 30vh;
+  max-width: 40vw;
+  display: block;
+  margin: auto;
+}
+.friendship {
+  max-height: 30vh;
+  max-width: 40vw;
+  display: block;
+  margin: auto;
+}
+.accessibility {
+  max-height: 30vh;
+  max-width: 40vw;
+  display: block;
+  margin: auto;
+}
+.fun {
+  max-height: 30vh;
+  max-width: 40vw;
+  display: block;
+  margin: auto;
+}
