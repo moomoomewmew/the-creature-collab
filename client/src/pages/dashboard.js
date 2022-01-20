@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { CheckSession } from '../services/Auth';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../globals/index";
 import EventForm from '../components/EventForm';
 
@@ -76,10 +76,13 @@ export default function Dashboard(props) {
                     <img className = 'profilePicture' src={userDetails.profilePic} alt='profile picture'/>
                     <h1> {userDetails.userName}</h1>
                     <h1> user email: <br/> {userDetails.email}</h1>
+                    <h1>My Events:</h1>
                     <h1> pronouns: <br/>{userDetails.pronouns}</h1>
                     <h1>Bio:<br/> {userDetails.bio}</h1>
                 </div>
-            <div className="info-form"> Update Character 
+            <div className="info-form"> 
+            <Link className='event-link' to = '/events'>Add Event</Link>
+            <h2>Update Character </h2>
             <div className="card-overlay centered">
               <form className="col" onSubmit={handleSubmit}>
               picture:
@@ -160,7 +163,6 @@ export default function Dashboard(props) {
               </form>
             </div>
         </div>
-        <div className="event-form"> <EventForm/> </div>
     </div>
         )
        
