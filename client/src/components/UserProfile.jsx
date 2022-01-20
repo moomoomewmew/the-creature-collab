@@ -2,6 +2,7 @@
 import React from "react";
 import axios from "axios";
 import { useState,useEffect } from "react";
+import { BASE_URL } from "../globals/index";
 
 
 
@@ -11,7 +12,7 @@ const ProfileView = (props) => {
     const [userDetails, setUserDetails] = useState(detailsArray);
 
 const getDetails = async (user) => {
-    const response = await axios.get(`http://localhost:3001/api/${window.location.pathname}`);
+    const response = await axios.get(`${BASE_URL}/${window.location.pathname}`);
         setUserDetails(response.data);
   };
 

@@ -1,44 +1,51 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios';
 import { CheckSession } from '../services/Auth';
+import { useNavigate } from 'react-router-dom';
+import { BASE_URL } from "../globals/index";
+
 
 
 export default function Dashboard(props) {
+   const navigate = useNavigate()
     const userId = props.user.id
     let userDetailsArray = [];
     const [userDetails, setUserDetails] = useState(userDetailsArray);
-    const [returnId, setReturnId] = useState(props.user.id);
+    // const [returnId, setReturnId] = useState(props.user.id);
     const [updatedUser, setUpdatedUser] = useState({
         characterName: '',
         pronouns: '',
         race: '',
         moralAllignment: '',
         bio: '',
-        profilePic: ''
+        profilePic: '',
+        city: ''
 
       })
     
     const getUserDetails = async (user) => {
-        const response = await axios.get(`http://localhost:3001/api/users/info/${userId}`);
-        console.log(response)
+        const response = await axios.get(`${BASE_URL}/users/info/${userId}`);
         setUserDetails(response.data);
       };
-      const updateUser = (e) =>{
-        e.preventDefault();
+      const updateUser = () =>{
+        // e.preventDefault();
         const newUser = {
           ...updatedUser
         }; 
          axios
-        .put(`http://localhost:3001/api/users/23`, newUser )
-        .then((response) => setReturnId(response.data))
+        .put(`${BASE_URL}/users/${userDetails.id}`, newUser )
+        .then(() => {
+        getUserDetails()   
         setUpdatedUser({
             characterName: '',
             pronouns: '',
             race: '',
             moralAllignment: '',
             bio: '',
-            profilePic: ''
+            profilePic: '',
+            city: ''
         })
+    })
     
       };
 
@@ -48,8 +55,9 @@ export default function Dashboard(props) {
       const handleSubmit = async () => {
         updateUser()
         console.log(updatedUser)
-        props.setUser(props.user)
-        getUserDetails()
+        props.setUser(userDetails.user)
+        navigate (`/users/${userDetails.id}`)
+        
       }
     
       useEffect(() => {
@@ -116,6 +124,18 @@ export default function Dashboard(props) {
                     required
                   />
                 </div>
+                {/* location
+                <div className="input-wrapper">
+                  {/* <label htmlFor="password">Password</label> */}
+                  {/* <input
+                    onChange={handleChange}
+                    type="text"
+                    name="location"
+                    placeholder='where are you?'
+                    value={updatedUser.city}
+                    required
+                  /> */} 
+                {/* </div> */}
                 <button>
                   add you info
                 </button>
