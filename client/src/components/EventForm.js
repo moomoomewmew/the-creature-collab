@@ -22,7 +22,7 @@ export default function EventForm(props) {
   const [displayedMessage, setDisplayedMessage] = useState('');
 
   const getEvents = async () => {
-    const response = await axios.get('http://localhost:3001/api/events');
+    const response = await axios.get(`${BASE_URL}/events`);
     setEvents(response.data.events);
   };
 
@@ -37,7 +37,7 @@ export default function EventForm(props) {
       ...newEvent
     };
     await axios.post(`${BASE_URL}/events`, createdEvent).then(() => {
-      getEvents();
+      props.getEvents();
       setDisplayedMessage('Your event has been added!');
       setNewEvent({
         name: '',
