@@ -19,8 +19,11 @@ export default function EventForm(props) {
   const [displayedMessage, setDisplayedMessage] = useState('');
 
   const getEvents = async () => {
-    const response = await axios.get('http://localhost:3001/api/events');
-    setEvents(response.data.events);
+    const response = await axios
+      .get('http://localhost:3001/api/events')
+      .then(() => {
+        setEvents(response.data.events);
+      });
   };
 
   useEffect(() => {
@@ -34,7 +37,6 @@ export default function EventForm(props) {
 
     await axios
       .post(`http://localhost:3001/api/events`, createdEvent)
-      // // .then((response) => setreturnId(response.data)); // please review. setREturnId is not defined
       .then(() => {
         getEvents();
         setDisplayedMessage('Your event has been added!');
@@ -74,7 +76,7 @@ export default function EventForm(props) {
       setDisplayedMessage('Please specify a street address or URL');
     } else {
       createNewEvent();
-      // window.location.reload();
+      window.location.reload();
     }
   };
   return (
@@ -82,7 +84,7 @@ export default function EventForm(props) {
       <h1 className="event-header">Add Event</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <section className="name">
-          Name:
+          <label htmlFor="name">Name:</label>
           <input
             type="text"
             name="name"
@@ -92,7 +94,7 @@ export default function EventForm(props) {
           />
         </section>
         <section className="event-date-input">
-          Date:
+          <label htmlFor="date">Date:</label>
           <input
             type="date"
             value={newEvent.date}
@@ -102,7 +104,7 @@ export default function EventForm(props) {
           />
         </section>
         <section className="event-time-input">
-          Time:
+          <label htmlFor="time">Time:</label>
           <input
             type="time"
             name={'time'}

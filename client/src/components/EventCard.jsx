@@ -1,7 +1,3 @@
-import { useState } from "react"
-import axios from "axios"
-import { BASE_URL } from "../globals/index"
-
 export default function EventCard(props) {
 
   return (
