@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react'
 import { SignInUser } from '../services/Auth'
-import {Link, useNavigate} from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 
 export default function LogIn(props) {
@@ -20,6 +20,7 @@ export default function LogIn(props) {
     props.toggleAuthenticated(true)
     console.log(props.authenticated)
     navigate(`/dashboard`)
+    alert('You\'ve successfully logged in!')
   }
 
 
