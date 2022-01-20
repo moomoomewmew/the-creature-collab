@@ -29,6 +29,9 @@ export default function Dashboard(props) {
         const response = await axios.get(`${BASE_URL}/users/info/${userId}`);
         setUserDetails(response.data);
     };
+    const deleteAccount = async (user) => {
+        const response = await axios.delete(`${BASE_URL}/auth/users/${userId}`);
+    };
 
     const updateUser = () => {
         // e.preventDefault();
@@ -77,9 +80,10 @@ export default function Dashboard(props) {
                 <h1 className='user-name'> {userDetails.userName}</h1>
             </div>
                 <div className='basic-info'>
-                <h1> {userDetails.email}</h1>
-                <h1> {userDetails.pronouns}</h1>
-                <h1> {userDetails.bio}</h1>
+                    
+                <h1> your email: <br/> {userDetails.email}</h1>
+                <h1> your pronouns: <br/>{userDetails.pronouns}</h1>
+                <h1> your about me:<br/> {userDetails.bio}</h1>
             </div>
             <div className="info-form">
                 <Link className='event-link' to='/events'>Add Event</Link>
@@ -162,6 +166,8 @@ export default function Dashboard(props) {
                             update your character
                         </button>
                     </form>
+                    <button onClick={deleteAccount}>Delete Account</button>
+
                 </div>
             </div>
         </div>

@@ -19,7 +19,14 @@ export const RegisterUser = async (data) => {
     throw error
   }
 }
-
+export const DeleteUser = async (data) => {
+  try {
+    const res = await Client.delete('/auth/delete', data)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
 export const CheckSession = async () => {
   try {
     // Checks if the current token if it exists is valid
