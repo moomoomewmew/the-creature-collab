@@ -17,6 +17,7 @@ const Navbar = (props) => {
                     </div>
                 </nav>
                 <nav className='nav2'>
+
                     <div className="">
                         <Link to="/safety">Community Guidelines</Link>
                         <Link to="/about">About CC</Link>

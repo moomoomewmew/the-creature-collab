@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Almendra+Display&family=Almendra+SC&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Almendra+Display&family=Fraunces:wght@500&family=Roboto+Condensed:wght@700&display=swap');
 
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -44,6 +43,15 @@ nav{
   width: 100%;
   margin-bottom: 2vh;
   margin-top: 2vh;
+}
+input{
+  background-color: rgba(169, 172, 158, 0.5);
+  border-radius: 0.4em;
+  
+}
+textarea{
+  background-color: rgba(186, 190, 168, 0.5);
+  border-radius: 0.4em;
 }
 
 
@@ -136,8 +144,7 @@ color: rgba(255, 166, 0, 0.87);
   border-radius: 40px;
 }
 
-.profile-layout-grid,
-.dashboard{
+.profile-layout-grid{
   display: grid;
   grid-template-rows: 1fr 1fr 1fr;
   grid-template-columns: 1fr 1fr 1fr;
@@ -167,20 +174,48 @@ color: rgba(255, 166, 0, 0.87);
 .details{
   grid-area: body-left;
   margin: 5em;
+  background-color: rgba(255, 166, 0, 0.87);
+  border-radius: 10px;
 } 
 .user-events{
   display: flex;
   justify-content: space-evenly;
   grid-area: body-right;
   margin: 5em;
+  background-color: #afdf90;
+  border-radius: 10px;
 }
 .basic-info{
   /* grid-area: body-left; */
   margin: 5em;
 } 
+.dashboard{
+  height: 100%;
+  display: grid;
+  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas: 
+  'header1 header2 body-topright'
+  'body-left body-mid body-right'
+  'bod-left body-mid body-bottom';
+  grid-gap: 1vh;
+}
 .info-form {
+
+  grid-area: header2;
   position: relative;
-  background-color:rgba(255, 166, 0, 0.87); ;
+  background-color:rgba(255, 166, 0, 0.5); ;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: auto;
+  border-radius: 0.3em;
+}
+.event-form {
+  grid-area: body-topright;
+  position: relative;
+  background-color:rgba(0, 255, 255, 0.5); ;
   display: flex;
   flex-direction: column;
   justify-content: center;
