@@ -78,7 +78,12 @@ function App() {
           }
         />
         <Route path="/safety" element={<Safety />} />
-        <Route path="/events" element={<Events user={user} />} />
+        <Route
+          path="/events"
+          element={
+            <Events user={user} checkToken={checkToken} setUser={setUser} />
+          }
+        />
       </Routes>
     </div>
   );
