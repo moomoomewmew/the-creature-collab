@@ -7,30 +7,66 @@
   list-style: none;
   text-align: center;
   display: flex;
-  flex-wrap: no-wrap;
+  flex-wrap: wrap;
   margin-top: 5%;
+  justify-content: space-evenly;
+  font-size: 1 em;
+  font-weight: bold;
+  font-family: 'Fraunces', serif;
 }
 .samwise {
-  max-width: 40vw;
-  max-height: 30vh;
+  width: 9.375em;
+  height: 15em;
   margin: auto;
   display: block;
+  border-radius: 50%;
+  border: 1em solid;
+  border-image: url(https://i.imgur.com/3E3qeqy.png);
+  border-image-slice: 20%;
+  border-image-width: 20%;
+  border-image-repeat: round;
 }
 .gloomhaven {
-  max-width: 40vw;
-  max-height: 30vh;
+  width: 9.375em;
+  height: 15em;
+  border-radius: 50%;
   margin: auto;
   display: block;
+  border: 1em solid;
+  border-image: url(https://i.imgur.com/3E3qeqy.png);
+  border-image-slice: 20%;
+  border-image-width: 20%;
+  border-image-repeat: round;
 }
 .madrigal {
-  max-width: 40vw;
-  max-height: 30vh;
+  width: 9.375em;
+  height: 15em;
+  border-radius: 50%;
   margin: auto;
   display: block;
+  border: 1em solid;
+  border-image: url(https://i.imgur.com/3E3qeqy.png);
+  border-image-slice: 20%;
+  border-image-width: 20%;
+  border-image-repeat: round;
 }
 .conjurer {
-  max-width: 40vw;
-  max-height: 30vh;
+  width: 9.375em;
+  height: 15em;
+  border-radius: 50%;
   margin: auto;
   display: block;
+  padding: 5% 0% 0% 0%;
+  border: 1em solid;
+  border-image: url(https://i.imgur.com/3E3qeqy.png);
+  border-image-slice: 20%;
+  border-image-width: 20%;
+  border-image-repeat: round;
+}
+.about-title {
+  text-align: center;
+}
+.about-blurb {
+  margin: 0% 20% 5% 20%;
+  text-align: center;
 }
