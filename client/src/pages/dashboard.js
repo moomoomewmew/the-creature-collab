@@ -3,6 +3,7 @@ import axios from 'axios';
 import { CheckSession } from '../services/Auth';
 import { useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../globals/index";
+import EventForm from '../components/EventForm';
 
 
 
@@ -14,6 +15,7 @@ export default function Dashboard(props) {
     const [returnId, setReturnId] = useState(props.user.id);
     const [updatedUser, setUpdatedUser] = useState({
         characterName: '',
+        userName:'',
         pronouns: '',
         race: '',
         moralAllignment: '',
@@ -38,6 +40,7 @@ export default function Dashboard(props) {
         // .then((response) => setReturnId(response.data))
         setUpdatedUser({
             characterName: '',
+            userName:'',
             pronouns: '',
             race: '',
             moralAllignment: '',
@@ -76,7 +79,7 @@ export default function Dashboard(props) {
                     <h1> pronouns: <br/>{userDetails.pronouns}</h1>
                     <h1>Bio:<br/> {userDetails.bio}</h1>
                 </div>
-            <div className="info-form">
+            <div className="info-form"> Update Character 
             <div className="card-overlay centered">
               <form className="col" onSubmit={handleSubmit}>
               picture:
@@ -87,6 +90,18 @@ export default function Dashboard(props) {
                     type="text"
                     name="profilePic"
                     placeholder='image url'
+                    value={updatedUser.profilePic}
+                    required
+                  />
+                </div>
+                Username:
+                <div className="input-wrapper">
+                  {/* <label htmlFor="password">Password</label> */}
+                  <input
+                    onChange={handleChange}
+                    type="text"
+                    name="userName"
+                    placeholder={userDetails.userName}
                     value={updatedUser.profilePic}
                     required
                   />
@@ -118,7 +133,7 @@ export default function Dashboard(props) {
                 Bio:
                 <div className="input-wrapper">
                   {/* <label htmlFor="password">Password</label> */}
-                  <input
+                  <textarea
                     onChange={handleChange}
                     type="text"
                     name="bio"
@@ -145,6 +160,7 @@ export default function Dashboard(props) {
               </form>
             </div>
         </div>
+        <div className="event-form"> <EventForm/> </div>
     </div>
         )
        
