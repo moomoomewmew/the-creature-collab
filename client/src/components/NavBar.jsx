@@ -9,22 +9,21 @@ const Navbar = (props) => {
         return (
             <div>
                 <nav >
-                    <Link className="nav" to="/">Creature Collab</Link>
+                    <Link className="upper-left transform" to="/">Creature Collab</Link>
                     <div className="login_and_CA">
                         <Link className="create-account-button" to="/dashboard">Dashboard</Link>
                         <Link className="login-button" onClick={props.handleLogOut} to="/">Logout</Link>
-                        <Link className="profile-button" to='/profiles'>Members</Link>
                     </div>
                 </nav>
-                <nav className='nav2'>
+                <nav className='lower-nav'>
 
-                    <div className="">
-                        <Link to="/safety">Community Guidelines</Link>
-                        <Link to="/about">About CC</Link>
-                        <div>
-                            <Link to="/events">Events</Link>
-                        </div>
-
+                    <div className="lower-left">
+                        <Link className="transform CG" to="/safety">Community Guidelines</Link>
+                        <Link className="about-button" to="/about">About CC</Link>
+                    </div>
+                    <div className="lower-right">
+                        <Link className="transform events-button" to="/events">Events</Link>
+                    <Link className="transform members-button" to='/profiles'>Members</Link>
                     </div>
                 </nav>
             </div>
@@ -36,7 +35,6 @@ const Navbar = (props) => {
                 <div className="login_and_CA">
                     <Link className="create-account-button" to="/newaccount">Create Account</Link>
                     <Link className="login-button" to="/login">Login</Link>
-                    <Link className="profile-button" to='/profiles'>Members</Link>
                 </div>
             </nav>
         )
