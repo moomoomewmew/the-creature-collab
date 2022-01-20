@@ -34,8 +34,7 @@ const GetAllEventsWithAllInfo = async (req, res) => {
         {
           model: User,
           as: 'attendees',
-          through: { attributes: [] },
-          required: true
+          through: { attributes: [] }
         },
         { model: User, as: 'owner' }
       ]
