@@ -68,7 +68,7 @@ function App() {
           }
         />
         <Route path="/profiles" element={<DisplayProfile />} />
-        <Route exact path="/users/:userId" element={<ProfileView />} />
+        <Route exact path="/users/info/:userId" element={<ProfileView />} />
         <Route path="/newaccount" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route
@@ -78,7 +78,12 @@ function App() {
           }
         />
         <Route path="/safety" element={<Safety />} />
-        <Route path="/events" element={<Events user={user} />} />
+        <Route
+          path="/events"
+          element={
+            <Events user={user} checkToken={checkToken} setUser={setUser} />
+          }
+        />
       </Routes>
     </div>
   );
