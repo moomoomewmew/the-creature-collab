@@ -44,7 +44,7 @@
   "homepage": "https://github.com/moomoomewmew/the-creature-collab#readme",
   "devDependencies": {
     "mini-css-extract-plugin": "2.5.1"
-  }, 
+  },
   "resolutions": {
     "mini-css-extract-plugin": "2.5.1"
   }

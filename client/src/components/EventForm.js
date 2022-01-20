@@ -31,10 +31,8 @@ export default function EventForm(props) {
     const createdEvent = {
       ...newEvent
     };
-
     await axios
       .post(`http://localhost:3001/api/events`, createdEvent)
-      // // .then((response) => setreturnId(response.data)); // please review. setREturnId is not defined
       .then(() => {
         getEvents();
         setDisplayedMessage('Your event has been added!');
@@ -74,19 +72,16 @@ export default function EventForm(props) {
       setDisplayedMessage('Please specify a street address or URL');
     } else {
       createNewEvent();
+      window.location.reload();
     }
-
-    // getEvents();
-
-    // setNewEvent(eventFormValue);
-    // window.location.reload();
   };
   return (
     <div className="add-event">
       <h1 className="event-header">Add Event</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <section className="name">
-          Name:
+          <label htmlFor="name">Name:</label>
+          <br />
           <input
             type="text"
             name="name"
@@ -96,7 +91,8 @@ export default function EventForm(props) {
           />
         </section>
         <section className="event-date-input">
-          Date:
+          <label htmlFor="date">Date:</label>
+          <br />
           <input
             type="date"
             value={newEvent.date}
@@ -106,7 +102,8 @@ export default function EventForm(props) {
           />
         </section>
         <section className="event-time-input">
-          Time:
+          <label htmlFor="time">Time:</label>
+          <br />
           <input
             type="time"
             name={'time'}
@@ -116,7 +113,8 @@ export default function EventForm(props) {
           />
         </section>
         <section className="event-description-input">
-          Description:
+          <label htmlFor="description">Description:</label>
+          <br />
           <textarea
             type="text"
             className="event-description-info"
@@ -127,7 +125,8 @@ export default function EventForm(props) {
           />
         </section>
         <section className="event-picture-input">
-          Event Picture URL:
+          <label htmlFor="picture">Event Picture URL:</label>
+          <br />
           <input
             type="url"
             className="event-picture-info"
@@ -135,7 +134,7 @@ export default function EventForm(props) {
             onChange={(e) => handleChange(e)}
             name="picture"
             id="picture"
-          ></input>
+          />
         </section>
 
         <section className="event-online-input">
@@ -159,7 +158,8 @@ export default function EventForm(props) {
         </section>
         <section className="address-input">
           <p>Please input a street address for in-person or URL for online: </p>
-          Street Address or URL:
+          <label htmlFor="address">Street Address or URL:</label>
+          <br />
           <input
             type="text"
             className="event-address-info"
@@ -167,49 +167,54 @@ export default function EventForm(props) {
             onChange={handleChange}
             name="address"
             id="address"
-          ></input>
-        </section>
-        <section className="event-outdoor-input">
-          <p>Indoor Or Outdoor?</p>
-          <input
-            type="radio"
-            id="indoor"
-            name={'outdoor'}
-            value={false}
-            onChange={handleChange}
-          />
-          <label name="indoorChoice">Indoor</label>
-          <input
-            type="radio"
-            id="outdoor"
-            name={'outdoor'}
-            value={true}
-            onChange={handleChange}
-          />
-          <label name="outdoorChoice">Outdoor</label>
-        </section>
-        <p>For In-Person Events:</p>
-        <section className="event-city-input">
-          City:
-          <input
-            type="text"
-            name={'city'}
-            value={newEvent.city}
-            onChange={(e) => handleChange(e)}
-            id="city"
           />
         </section>
-        <section className="event-state-address">
-          State:
-          <input
-            type="text"
-            className="event-state-info"
-            value={newEvent.state}
-            onChange={(e) => handleChange(e)}
-            name="state"
-            id="state"
-          ></input>
-        </section>
+
+        <div>
+          <section className="event-outdoor-input">
+            <p>Indoor Or Outdoor?</p>
+            <input
+              type="radio"
+              id="indoor"
+              name={'outdoor'}
+              value={false}
+              onChange={handleChange}
+            />
+            <label name="indoorChoice">Indoor</label>
+            <input
+              type="radio"
+              id="outdoor"
+              name={'outdoor'}
+              value={true}
+              onChange={handleChange}
+            />
+            <label name="outdoorChoice">Outdoor</label>
+          </section>
+          <p>For In-Person Events:</p>
+          <section className="event-city-input">
+            <label htmlFor="city">City:</label>
+            <br />
+            <input
+              type="text"
+              name={'city'}
+              value={newEvent.city}
+              onChange={(e) => handleChange(e)}
+              id="city"
+            />
+          </section>
+          <section className="event-state-address">
+            <label htmlFor="state">State:</label>
+            <br />
+            <input
+              type="text"
+              className="event-state-info"
+              value={newEvent.state}
+              onChange={(e) => handleChange(e)}
+              name="state"
+              id="state"
+            />
+          </section>
+        </div>
 
         <p>{displayedMessage}</p>
         <button type="submit">Submit</button>
