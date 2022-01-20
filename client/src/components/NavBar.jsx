@@ -13,7 +13,6 @@ const Navbar = (props) => {
                     <div className="login_and_CA">
                         <Link className="create-account-button" to="/dashboard">Dashboard</Link>
                         <Link className="login-button" onClick={props.handleLogOut} to="/">Logout</Link>
-                        <Link className="profile-button" to='/profiles'>Members</Link>
                     </div>
                 </nav>
                 <nav className='nav2'>
@@ -21,10 +20,10 @@ const Navbar = (props) => {
                     <div className="">
                         <Link to="/safety">Community Guidelines</Link>
                         <Link to="/about">About CC</Link>
-                        <div>
-                            <Link to="/events">Events</Link>
-                        </div>
-
+                    </div>
+                    <div>
+                        <Link to="/events">Events</Link>
+                        <Link to='/profiles'>Members</Link>
                     </div>
                 </nav>
             </div>
