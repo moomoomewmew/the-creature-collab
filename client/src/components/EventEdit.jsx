@@ -4,60 +4,31 @@ import { BASE_URL } from '../globals/index';
 import { CheckSession } from '../services/Auth';
 
 export default function EventEdit(props) {
-  const [user, setUser] = useState();
-  const [events, setEvents] = useState([]);
-  const [newEvent, setNewEvent] = useState({
-    name: '',
-    city: '',
-    date: '',
-    time: '',
-    online: null,
-    outdoor: null,
-    address: '',
-    state: '',
-    description: '',
-    picture: '',
-    ownerId: props.user.id
-  });
-  const [displayedMessage, setDisplayedMessage] = useState('');
+  const [inputValue, setInputValue] = useState(props.event)
 
-  const getEvents = async () => {
-    const response = await axios.get(`${BASE_URL}/events`);
-    setEvents(response.data.events);
+  const handleChange = (e) => {
+    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
-  useEffect(() => {
-    getEvents();
-    CheckSession();
-    setUser(props.user);
-  }, []);
+  // useEffect(() => {
+  //   getEvents();
+  //   CheckSession();
+  //   setUser(props.user);
+  // }, []);
 
-  const createNewEvent = async () => {
-    const createdEvent = {
-      ...newEvent
-    };
-    await axios.post(`${BASE_URL}/events`, createdEvent).then(() => {
-      props.getEvents();
-      setDisplayedMessage('Your event has been added!');
-      setNewEvent({
-        name: '',
-        city: '',
-        date: '',
-        time: '',
-        online: null,
-        outdoor: null,
-        address: '',
-        state: '',
-        description: '',
-        picture: ''
-      });
-    });
-  };
+  const updateEvent = async () => {
+    await axios
+      .put(`${BASE_URL}/events/${props.event.id}`, inputValue)
+      .then(() => {
+        alert("Your toy has been updated!")
+        props.getEvents()
+      })
+  }
 
-  const handleChange = async (e) => {
-    setDisplayedMessage('');
-    setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
-  };
+  // const handleChange = async (e) => {
+  //   setDisplayedMessage('');
+  //   setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
+  // };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -74,7 +45,7 @@ export default function EventEdit(props) {
     } else if (!newEvent.address) {
       setDisplayedMessage('Please specify a street address or URL');
     } else {
-      createNewEvent();
+      updateEvent();
     }
   };
   return (
