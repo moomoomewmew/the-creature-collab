@@ -61,14 +61,13 @@ export default function EventCard(props) {
     }
   }
 
-// const dateString = props.event.date
+const dateString = props.event.date
 
-// const formatDate = (dateString) => {
-//   const options = { year: "numeric", month: "long", day: "numeric" }
-//   return new Date(dateString).toLocaleDateString(undefined, options)
-// }
+const formatDate = (dateString) => {
+  const options = { year: "numeric", month: "long", day: "numeric" }
+  return new Date(dateString).toLocaleDateString(undefined, options)
+}
 
-// formatDate(dateString)
 if (clicked) {
   return (
     <div>
@@ -81,14 +80,13 @@ if (clicked) {
       <p>{props.event.name}</p>
       <img className="event-pic" src={props.event.picture} alt={props.event.name}/>
       <h4>
-        {props.event.date}
-        {/* {dateString} */}
+        {formatDate(dateString)}
       </h4>
       <p>{props.event.time}</p>
-      <h5>{props.event.description}</h5>
-      <h5>{props.event.online ? "Online" : "In-Person"}</h5>
-      <h5>{props.event.online ? `URL: ${props.event.address}` : `Location: ${props.event.address}, ${props.event.city}, ${props.event.state}`}</h5>
-      <h5>Event Owner: {props.event.owner.userName}</h5>
+      <h4>{props.event.description}</h4>
+      <h4>{props.event.online ? "Online" : "In-Person"}</h4>
+      <h4>{props.event.online ? `URL: ${props.event.address}` : `Location: ${props.event.address}, ${props.event.city}, ${props.event.state}`}</h4>
+      <h4>Event Owner: {props.event.owner.userName}</h4>
       <img className="owner-pic" src={props.event.owner.profilePic} alt={props.event.owner.userName} />
       <button onClick={handleAttendingClick} className="attending-button">{attending ? "You are attending this Event" : "Click to Attend"}</button>
       {owned ? 
