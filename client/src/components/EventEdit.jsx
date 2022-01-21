@@ -42,7 +42,7 @@ export default function EventEdit(props) {
       <h1 className="event-header">Add Event</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <section className="name">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Event Name:</label>
           <br />
           <input
             type="text"
@@ -51,6 +51,7 @@ export default function EventEdit(props) {
             onChange={(e) => handleChange(e)}
             id="name"
           />
+          <p>{255 - inputValue.name.length}</p>
         </section>
         <section className="event-date-input">
           <label htmlFor="date">Date:</label>
