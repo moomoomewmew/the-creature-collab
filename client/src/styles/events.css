@@ -53,6 +53,10 @@
   border-radius: 0.3em;
 }
 
+.add-event textarea {
+  height: 60px;
+}
+
 .owner-pic {
   height: 7vh;
   border-radius: 50px;
@@ -70,7 +74,7 @@
 }
 
 .add-event section {
-  margin: 10px auto;
+  margin: 5px auto;
 }
 
 .add-event button {
