@@ -151,7 +151,7 @@ export default function EventForm(props) {
           />
           <h5
             className={
-              newEvent.description.length < 255
+              newEvent.description.length <= 255
                 ? 'positive-countdown'
                 : 'negative-countdown'
             }
@@ -172,7 +172,7 @@ export default function EventForm(props) {
           />
           <h5
             className={
-              newEvent.picture.length < 255
+              newEvent.picture.length <= 255
                 ? 'positive-countdown'
                 : 'negative-countdown'
             }

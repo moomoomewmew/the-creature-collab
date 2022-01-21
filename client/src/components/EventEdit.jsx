@@ -113,7 +113,7 @@ export default function EventEdit(props) {
           />
           <h5
             className={
-              inputValue.description.length < 255
+              inputValue.description.length <= 255
                 ? 'positive-countdown'
                 : 'negative-countdown'
             }
@@ -134,7 +134,7 @@ export default function EventEdit(props) {
           />
           <h5
             className={
-              inputValue.picture.length < 255
+              inputValue.picture.length <= 255
                 ? 'positive-countdown'
                 : 'negative-countdown'
             }

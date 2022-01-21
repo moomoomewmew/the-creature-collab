@@ -1,8 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Almendra+Display&family=Fraunces:wght@500&family=Oswald:wght@300&family=Roboto+Condensed:wght@700&display=swap');
+
 .event-page {
   display: flex;
   justify-content: space-evenly;
 
   margin: auto 25px 15px 25px;
+  font-family: 'Roboto Condensed', sans-serif;
+  font-weight: bolder;
 }
 
 .event-page h1 {
@@ -10,16 +14,21 @@
 }
 
 .event-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   text-align: center;
-  border: 1px solid #ffffff;
   border-radius: 50px;
   margin: 5px 15px;
   padding: 10px;
   background-color: rgba(234,180,77, 0.2);
-  border-radius: 1em;
+  border-radius: 0.3em;
+  width: 30vw;
 }
 
 .attending-button {
+  align-self: center;
   width: 40%;
 }
 
@@ -44,27 +53,38 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: auto;
+  width: 30vw;
   border-radius: 0.3em;
 }
 
+.add-event textarea {
+  height: 60px;
+}
+
 .owner-pic {
-  height: 7vh;
-  border-radius: 40px;
+  height: 15vh;
+  border-radius: 50px;
+  width: auto;
+  align-self: center;
 }
 
 .event-pic {
   max-height: 35vh;
   width: auto;
+  max-width: 12vw;
   border-radius: 49%;
   align-self: center;
   border: solid 0.2em rgba(255, 166, 0, 0.87);;
 }
 
 .add-event section {
-  margin: 10px auto;
+  margin: 5px auto;
 }
 
 .add-event button {
   width: 50%;
+}
+
+.negative-countdown {
+  color: #e12502;
 }
