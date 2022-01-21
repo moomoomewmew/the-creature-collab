@@ -4,77 +4,44 @@ import { BASE_URL } from '../globals/index';
 import { CheckSession } from '../services/Auth';
 
 export default function EventEdit(props) {
-  const [user, setUser] = useState();
-  const [events, setEvents] = useState([]);
-  const [newEvent, setNewEvent] = useState({
-    name: '',
-    city: '',
-    date: '',
-    time: '',
-    online: null,
-    outdoor: null,
-    address: '',
-    state: '',
-    description: '',
-    picture: '',
-    ownerId: props.user.id
-  });
-  const [displayedMessage, setDisplayedMessage] = useState('');
+  const [inputValue, setInputValue] = useState(props.event)
+  const [displayedMessage, setDisplayedMessage] = useState('')
 
-  const getEvents = async () => {
-    const response = await axios.get(`${BASE_URL}/events`);
-    setEvents(response.data.events);
+  const handleChange = (e) => {
+    setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
-  useEffect(() => {
-    getEvents();
-    CheckSession();
-    setUser(props.user);
-  }, []);
+  // useEffect(() => {
+  //   getEvents();
+  //   CheckSession();
+  //   setUser(props.user);
+  // }, []);
 
-  const createNewEvent = async () => {
-    const createdEvent = {
-      ...newEvent
-    };
-    await axios.post(`${BASE_URL}/events`, createdEvent).then(() => {
-      props.getEvents();
-      setDisplayedMessage('Your event has been added!');
-      setNewEvent({
-        name: '',
-        city: '',
-        date: '',
-        time: '',
-        online: null,
-        outdoor: null,
-        address: '',
-        state: '',
-        description: '',
-        picture: ''
-      });
-    });
-  };
-
-  const handleChange = async (e) => {
-    setDisplayedMessage('');
-    setNewEvent({ ...newEvent, [e.target.name]: e.target.value });
-  };
+  const updateEvent = async () => {
+    await axios
+      .put(`${BASE_URL}/events/${props.event.id}`, inputValue)
+      .then(() => {
+        alert("Your toy has been updated!")
+        props.getEvents()
+      })
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!newEvent.name) {
+    if (!inputValue.name) {
       setDisplayedMessage('Event must have a name');
-    } else if (!newEvent.date) {
+    } else if (!inputValue.date) {
       setDisplayedMessage('Event must have a date');
-    } else if (!newEvent.time) {
+    } else if (!inputValue.time) {
       setDisplayedMessage('Event must have a time');
-    } else if (!newEvent.description) {
+    } else if (!inputValue.description) {
       setDisplayedMessage('Event must have a description');
-    } else if (!newEvent.online) {
+    } else if (!inputValue.online) {
       setDisplayedMessage('Please choose online or in-person');
-    } else if (!newEvent.address) {
+    } else if (!inputValue.address) {
       setDisplayedMessage('Please specify a street address or URL');
     } else {
-      createNewEvent();
+      updateEvent();
     }
   };
   return (
@@ -87,7 +54,7 @@ export default function EventEdit(props) {
           <input
             type="text"
             name="name"
-            value={newEvent.name}
+            value={inputValue.name}
             onChange={(e) => handleChange(e)}
             id="name"
           />
@@ -97,7 +64,7 @@ export default function EventEdit(props) {
           <br />
           <input
             type="date"
-            value={newEvent.date}
+            value={inputValue.date}
             name={'date'}
             label={'date of event'}
             onChange={handleChange}
@@ -109,7 +76,7 @@ export default function EventEdit(props) {
           <input
             type="time"
             name={'time'}
-            value={newEvent.time}
+            value={inputValue.time}
             onChange={handleChange}
             label={'time of event'}
           />
@@ -120,7 +87,7 @@ export default function EventEdit(props) {
           <textarea
             type="text"
             className="event-description-info"
-            value={newEvent.description}
+            value={inputValue.description}
             onChange={(e) => handleChange(e)}
             name="description"
             id="description"
@@ -132,7 +99,7 @@ export default function EventEdit(props) {
           <input
             type="url"
             className="event-picture-info"
-            value={newEvent.picture}
+            value={inputValue.picture}
             onChange={(e) => handleChange(e)}
             name="picture"
             id="picture"
@@ -165,7 +132,7 @@ export default function EventEdit(props) {
           <input
             type="text"
             className="event-address-info"
-            value={newEvent.address}
+            value={inputValue.address}
             onChange={handleChange}
             name="address"
             id="address"
@@ -199,7 +166,7 @@ export default function EventEdit(props) {
             <input
               type="text"
               name={'city'}
-              value={newEvent.city}
+              value={inputValue.city}
               onChange={(e) => handleChange(e)}
               id="city"
             />
@@ -210,7 +177,7 @@ export default function EventEdit(props) {
             <input
               type="text"
               className="event-state-info"
-              value={newEvent.state}
+              value={inputValue.state}
               onChange={(e) => handleChange(e)}
               name="state"
               id="state"
