@@ -27,18 +27,16 @@ export default function LogIn(props) {
     <div className="rigister-form">
       <div className="register-form">
         <form className="col" onSubmit={handleSubmit}>
-          Email:
           <div className="input-wrapper">
             <input
               onChange={handleChange}
               name="email"
               type="email"
-              placeholder="example@example.com"
+              placeholder="email"
               value={formValues.email}
               required
             />
           </div>
-          Password:
           <div className="input-wrapper">
             <input
               onChange={handleChange}
