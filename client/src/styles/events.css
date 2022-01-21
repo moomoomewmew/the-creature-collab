@@ -16,12 +16,23 @@
   margin: 5px 15px;
   padding: 10px;
 }
+.attending-button {
+  width: 40%;
+}
+.delete-button {
+  background-color: #e12502;
+  width: 30%;
+}
+.edit-button {
+  background-color: #e8702a;
+  width: 30%;
+}
 
 .add-event form {
   text-align: center;
   position: relative;
   padding: 1em;
-  background-color:rgba(0, 255, 255, 0.5); ;
+  background-color: rgba(0, 255, 255, 0.5);
   display: flex;
   flex-direction: column;
   justify-content: center;
