@@ -4,6 +4,7 @@ import axios from "axios";
 import { useState, useEffect } from "react";
 import { BASE_URL } from "../globals/index";
 import EventForm from "./EventForm";
+import '../styles/profiles.css';
 
 
 
@@ -31,15 +32,16 @@ const ProfileView = (props) => {
                 <img className="profilePicture" src={userDetails.profilePic} alt={userDetails.name} />
             </div>
             <div className="details">
-                <h3>Pronouns: {userDetails.pronouns}</h3>
-                <h3> Alias: {userDetails.characterName}</h3>
-                <h3>Location: {userDetails.city}</h3>
-                <h3>Bio: {userDetails.bio}</h3>
-                <h3>Moral alignment: {userDetails.moralAlignment}</h3>
+                Pronouns: 
+                <h2>{userDetails.pronouns}</h2>
+                Alias:
+                <h2> {userDetails.characterName}</h2>
+                Location: 
+                <h2>{userDetails.city}</h2>
             </div>
-            <div className="user-events">
-                <h3>Event Host: {userDetails.events}</h3>
-                <h3>Attending: {userDetails.events}</h3>
+            <div className="user-bio">
+                <label>My Story:</label>
+                <h2> {userDetails.bio}</h2>
             </div>
         </div>
     )
