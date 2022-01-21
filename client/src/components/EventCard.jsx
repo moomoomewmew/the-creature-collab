@@ -61,11 +61,14 @@ export default function EventCard(props) {
     }
   }
 
-const dateString = props.event.date
-
 const formatDate = (dateString) => {
   const options = { year: "numeric", month: "long", day: "numeric" }
   return new Date(dateString).toLocaleDateString(undefined, options)
+}
+
+const toRegularTime = (militaryTime) => {
+  const [hours, minutes] = militaryTime.split(':');
+  return `${(hours > 12) ? hours - 12 : hours}:${minutes} ${(hours >= 12) ? 'PM' : 'AM'}`;
 }
 
 if (clicked) {
@@ -80,9 +83,9 @@ if (clicked) {
       <p>{props.event.name}</p>
       <img className="event-pic" src={props.event.picture} alt={props.event.name}/>
       <h4>
-        {formatDate(dateString)}
+        {formatDate(props.event.date)}
       </h4>
-      <p>{props.event.time}</p>
+      <p>{toRegularTime(props.event.time)}</p>
       <h4>{props.event.description}</h4>
       <h4>{props.event.online ? "Online" : "In-Person"}</h4>
       <h4>{props.event.online ? `URL: ${props.event.address}` : `Location: ${props.event.address}, ${props.event.city}, ${props.event.state}`}</h4>
