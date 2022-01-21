@@ -88,7 +88,7 @@ if (clicked) {
       <h5>{props.event.description}</h5>
       <h5>{props.event.online ? "Online" : "In-Person"}</h5>
       <h5>{props.event.online ? `URL: ${props.event.address}` : `Location: ${props.event.address}, ${props.event.city}, ${props.event.state}`}</h5>
-      <h5>Event Owner: </h5><img src={props.event.owner.profilePic} alt={props.event.owner.userName} />
+      <h5>Event Owner: {props.event.owner.userName}</h5><img src={props.event.owner.profilePic} alt={props.event.owner.userName} />
       <button onClick={handleAttendingClick} className="attending-button">{attending ? "You are attending this Event" : "Click to Attend"}</button>
       {owned ? 
         <div>
