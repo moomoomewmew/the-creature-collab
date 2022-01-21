@@ -69,7 +69,13 @@ export default function EventCard(props) {
 // }
 
 // formatDate(dateString)
-
+if (clicked) {
+  return (
+    <div>
+      <EventEdit event={props.event} getEvents={props.getEvents}/>
+    </div>
+  )
+}
   return (
     <div className="event-card">
       <h3>{props.event.name}</h3>

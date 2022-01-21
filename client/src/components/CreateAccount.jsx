@@ -42,12 +42,12 @@ export default function Register(props) {
       })
       setFormValues(iState)
       navigate('/login')
-      alert("Youve sucessfully registered!")
+      alert("You\'ve sucessfully registered!")
     } else {
       console.log('error')
     }
   }
-
+ 
   return (
     <div className="register-form">
       <div className="card-overlay centered">
