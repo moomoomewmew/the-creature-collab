@@ -31,7 +31,7 @@ const Navbar = (props) => {
     } else {
         return (
             <nav >
-                <Link className="nav" to="/">Creature Collab</Link>
+                <Link className="upper-left transform" to="/">Creature Collab</Link>
                 <div className="login_and_CA">
                     <Link className="create-account-button" to="/newaccount">Create Account</Link>
                     <Link className="login-button" to="/login">Login</Link>
