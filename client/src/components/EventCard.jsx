@@ -1,6 +1,7 @@
 import axios from "axios"
 import { BASE_URL } from "../globals/index"
 import { useState } from "react"
+import EventEdit from "./EventEdit"
 
 export default function EventCard(props) {
   const [clicked, setClicked] = useState(false)
@@ -81,11 +82,11 @@ export default function EventCard(props) {
       <h5>{props.event.online ? "Online" : "In-Person"}</h5>
       <h5>{props.event.online ? `URL: ${props.event.address}` : `Location: ${props.event.address}, ${props.event.city}, ${props.event.state}`}</h5>
       <h5>Event Owner: </h5><img src={props.event.owner.profilePic} alt={props.event.owner.userName} />
-      <button onClick={handleAttendingClick}>{attending ? "You are attending this Event" : "Click to Attend"}</button>
+      <button onClick={handleAttendingClick} className="attending-button">{attending ? "You are attending this Event" : "Click to Attend"}</button>
       {owned ? 
         <div>
-          <button onClick={handleEditClick}>Edit Your Event</button>
-          <button onClick={confirmDeletion}>Delete Your Event</button>
+          <button onClick={handleEditClick} className="edit-button">Edit Your Event</button>
+          <button onClick={confirmDeletion} className="delete-button">Delete Your Event</button>
         </div>
       : null}
     </div>
