@@ -143,7 +143,7 @@ export default function Dashboard({authUser, ...props}) {
                     <DeleteAccount userId = {userId}/>
                </div>
                <div>
-                   {/* <h2>events: {userDetails.eventsOwned.id}</h2> */}
+                   {/* <h2>events: {userDetails.eventsOwned}</h2> */}
                    {/* <h2>events attending: {userDetails.eventsAttending}</h2> */}
                </div>
             </div>
