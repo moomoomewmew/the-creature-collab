@@ -4,9 +4,10 @@
   display: flex;
   justify-content: space-evenly;
 
-  margin: auto 25px 15px 25px;
+  margin: auto 1vw;
   font-family: 'Roboto Condensed', sans-serif;
   font-weight: bolder;
+  color: #ffffff;
 }
 
 .event-page h1 {
@@ -20,11 +21,11 @@
 
   text-align: center;
   border-radius: 50px;
-  margin: 5px 15px;
+  margin: 0 2vw 2vw 2vw;
   padding: 10px;
   background-color: rgba(234,180,77, 0.2);
   border-radius: 0.3em;
-  width: 30vw;
+  width: 25vw;
 }
 
 .attending-button {
@@ -49,16 +50,70 @@
 
   background-color: rgba(0, 255, 255, 0.2);
 
+  margin: 0 2vw;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-content: center;
   align-items: center;
-  width: 30vw;
+  width: 25vw;
   border-radius: 0.3em;
+  color: #ffffff;
+}
+
+.add-event label {
+  color: #ffffff;
+  opacity: 1;
+  transform: translateY(+2rem);
+}
+
+.add-event .radio-label {
+  transform: translateY(-1.5rem);
 }
 
 .add-event textarea {
   height: 60px;
+  margin-top: 4vh;
+}
+
+#event-edit {
+  background-color: rgba(0, 255, 255, 0.2);
+  border-radius: 0.3em;
+  margin-bottom: 2vh;
+  /* width: 25vw; */
+}
+
+#event-edit form {
+  text-align: center;
+  position: relative;
+  padding: 1em;
+
+  background-color: rgba(0, 255, 255, 0);
+
+  margin: 0 2vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  width: 25vw;
+  border-radius: 0.3em;
+  color: #ffffff;
+}
+
+#event-edit label {
+  color: #ffffff;
+  opacity: 1;
+  transform: translateY(+2rem);
+}
+
+#event-edit .radio-label {
+  transform: translateY(-1.5rem);
+}
+
+#event-edit textarea {
+  height: 60px;
+  margin-top: 4vh;
 }
 
 .owner-pic {
