@@ -72,13 +72,14 @@ export default function EventCard(props) {
 if (clicked) {
   return (
     <div>
-      <EventEdit event={props.event} getEvents={props.getEvents}/>
+      <EventEdit event={props.event} getEvents={props.getEvents} clicked={clicked} setClicked={setClicked}/>
     </div>
   )
 }
   return (
     <div className="event-card">
       <h3>{props.event.name}</h3>
+      <img src={props.event.picture} alt={props.event.name}/>
       <h4>
         {props.event.date}
         {/* {dateString} */}
