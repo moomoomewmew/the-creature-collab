@@ -24,7 +24,7 @@ export default function LogIn(props) {
 
   return (
     <div className="rigister-form">
-      <div className="register-form">
+      <div className="register-slip">
         <form className="col" onSubmit={handleSubmit}>
           Email:
           <div className="input-wrapper">
