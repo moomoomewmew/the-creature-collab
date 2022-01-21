@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../globals/index';
-import { CheckSession } from '../services/Auth';
 
 export default function EventEdit(props) {
   const [inputValue, setInputValue] = useState(props.event)
@@ -11,18 +10,13 @@ export default function EventEdit(props) {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
   };
 
-  // useEffect(() => {
-  //   getEvents();
-  //   CheckSession();
-  //   setUser(props.user);
-  // }, []);
-
   const updateEvent = async () => {
     await axios
       .put(`${BASE_URL}/events/${props.event.id}`, inputValue)
       .then(() => {
-        alert("Your toy has been updated!")
+        alert(`Your event, "${props.event.name}," has been updated.`)
         props.getEvents()
+        props.setClicked(false)
       })
   }
 
@@ -36,14 +30,13 @@ export default function EventEdit(props) {
       setDisplayedMessage('Event must have a time');
     } else if (!inputValue.description) {
       setDisplayedMessage('Event must have a description');
-    } else if (!inputValue.online) {
-      setDisplayedMessage('Please choose online or in-person');
     } else if (!inputValue.address) {
       setDisplayedMessage('Please specify a street address or URL');
     } else {
       updateEvent();
     }
   };
+  
   return (
     <div className="event-card">
       <h1 className="event-header">Add Event</h1>
