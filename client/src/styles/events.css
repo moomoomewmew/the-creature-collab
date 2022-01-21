@@ -15,19 +15,50 @@
   border-radius: 50px;
   margin: 5px 15px;
   padding: 10px;
+  background-color: rgba(234,180,77, 0.2);
+  border-radius: 1em;
+}
+
+.attending-button {
+  width: 40%;
+}
+
+.delete-button {
+  background-color: #e12502;
+  width: 30%;
+}
+
+.edit-button {
+  background-color: #e8702a;
+  width: 30%;
 }
 
 .add-event form {
   text-align: center;
   position: relative;
   padding: 1em;
-  background-color:rgba(0, 255, 255, 0.5); 
+
+  background-color: rgba(0, 255, 255, 0.2);
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: auto;
   border-radius: 0.3em;
+}
+
+.owner-pic {
+  height: 7vh;
+  border-radius: 40px;
+}
+
+.event-pic {
+  max-height: 35vh;
+  width: auto;
+  border-radius: 49%;
+  align-self: center;
+  border: solid 0.2em rgba(255, 166, 0, 0.87);;
 }
 
 .add-event section {

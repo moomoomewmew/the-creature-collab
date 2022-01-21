@@ -2,8 +2,9 @@
 import React, { useState } from 'react'
 import { SignInUser } from '../services/Auth'
 import { Link, useNavigate } from 'react-router-dom'
+import '../styles/validator.css'
 
-
+ 
 export default function LogIn(props) {
   const navigate = useNavigate()
   const [formValues, setFormValues] = useState({ email: '', password: '' })
@@ -24,20 +25,18 @@ export default function LogIn(props) {
 
   return (
     <div className="rigister-form">
-      <div className="register-form">
+      <div className="register-slip">
         <form className="col" onSubmit={handleSubmit}>
-          Email:
           <div className="input-wrapper">
             <input
               onChange={handleChange}
               name="email"
               type="email"
-              placeholder="example@example.com"
+              placeholder="email"
               value={formValues.email}
               required
             />
           </div>
-          Password:
           <div className="input-wrapper">
             <input
               onChange={handleChange}

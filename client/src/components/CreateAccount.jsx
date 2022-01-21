@@ -7,7 +7,7 @@ const iState = {
   email: '',
   password: '',
   confirmPassword: ''
-}
+} 
 
 export default function Register(props) {
   const navigate = useNavigate()

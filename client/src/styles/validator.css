@@ -2,10 +2,14 @@ button,
 input {
   border: none;
   font-size: 1rem;
-}
+    background-color: rgb(241, 239, 239, .5);
+      border-radius: 5px;
 
+
+}
+ 
 button {
-  background-color: #046A6E;
+  background-color: #E19402;
   border-radius: 50px;
   color: #ffffff;
   padding: 0.75rem 1rem;
@@ -22,15 +26,17 @@ button:focus {
 }
 
 button:hover {
-  background-color: #FEF0A9;
+  background-color: rgba(0, 255, 255, 0.5);
 }
 
 form {
-  background-color: white;
+  background-color: rgb(241, 239, 239, .5);
   border-radius: 50px;
   color: #222222;
   padding: 1.5rem 2rem;
   text-align: left;
+  margin: 150px;
+  width: 300px;
 }
 
 h1 {
@@ -73,18 +79,6 @@ input[type='password'] {
   width: 100%;
 }
 
-.cancel {
-  background-color: #ff0000;
-}
-
-.cancel:focus {
-  box-shadow: 0 0 5px #db0101;
-  outline: none;
-}
-
-.cancel:hover {
-  background-color: #ff0000;
-}
 
 .form {
   background: linear-gradient(to left, #FEEEA9, #8DE0CB);
