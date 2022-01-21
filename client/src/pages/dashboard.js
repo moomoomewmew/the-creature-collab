@@ -34,6 +34,7 @@ export default function Dashboard({ authUser, ...props }) {
         };
         axios
             .put(`${BASE_URL}/users/${userId}`, newUser)
+            .then = () => {
         setUpdatedUser({
             characterName: '',
             userName: '',
@@ -44,6 +45,7 @@ export default function Dashboard({ authUser, ...props }) {
             profilePic: '',
             city: ''
         })
+    }
 
         getUserDetails()
     };
@@ -145,7 +147,7 @@ export default function Dashboard({ authUser, ...props }) {
                             update your character
                         </button>
                     </form>
-                    {/* <DeleteAccount userId={userId} /> */}
+                    <DeleteAccount userId={userId} />
                 </div>
                 <div>
                 </div>
