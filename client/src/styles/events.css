@@ -62,7 +62,7 @@
 }
 
 .owner-pic {
-  height: 7vh;
+  height: 15vh;
   border-radius: 50px;
   width: auto;
   align-self: center;
@@ -71,7 +71,7 @@
 .event-pic {
   max-height: 35vh;
   width: auto;
-  max-width: 15vw;
+  max-width: 12vw;
   border-radius: 49%;
   align-self: center;
   border: solid 0.2em rgba(255, 166, 0, 0.87);;
@@ -83,4 +83,8 @@
 
 .add-event button {
   width: 50%;
+}
+
+.negative-countdown {
+  color: #e12502;
 }
