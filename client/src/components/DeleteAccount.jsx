@@ -1,9 +1,7 @@
 import React from "react";
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios"
-import { BASE_URL } from '../services/api'
-import { DeleteUser } from "../services/Auth";
+import { BASE_URL } from '../globals/index'
 
 
 
@@ -15,22 +13,23 @@ export default function DeleteAccount(props) {
 
 
     const deleteAccount = async () => {
-        const response = await axios.delete(`${BASE_URL}/users/${props.userId}`);
+        const response = await axios.delete(`${BASE_URL}/users/${props.userId}`)
+        .then(() => {
+            alert(`Your profile, "${props.userName}," has been deleted.`)
+          })
 
     };
 
 
 
     const confirmDeletion = (e) => {
-        e.preventDefault();
-        const confirmDeletion = window.confirm(`Are you sure you want to delete ${props.user.characterName}?`)
+        const confirmDeletion = window.confirm(`Are you sure you want to delete ${props.userName}?`)
         if (confirmDeletion) {
           deleteAccount()
         }
       }
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
         confirmDeletion()
         navigate(`/`)
 
