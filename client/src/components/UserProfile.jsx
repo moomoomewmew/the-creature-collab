@@ -27,7 +27,7 @@ const ProfileView = (props) => {
     return (
         <div className="profile-layout-grid">
             <div className="name-and-pic">
-                <h1 className="name"> {userDetails.userName} </h1>
+                <h1 className="name"> {userDetails.characterName} </h1>
                 <img className="profilePicture" src={userDetails.profilePic} alt={userDetails.name} />
             </div>
             <div className="details">

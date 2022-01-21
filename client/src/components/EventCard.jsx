@@ -1,9 +1,14 @@
 import axios from "axios"
 import { BASE_URL } from "../globals/index"
+import { useState } from "react"
+import EventEdit from "./EventEdit"
 
 export default function EventCard(props) {
+  const [clicked, setClicked] = useState(false)
 
   const attending = props.event.attendees.find(({ id }) => id === props.user.id)
+  
+  const owned = props.event.ownerId === props.user.id
 
   const attend = async () => {
     await axios
@@ -24,7 +29,7 @@ export default function EventCard(props) {
       })
   }
 
-  const handleClick = (e) => {
+  const handleAttendingClick = (e) => {
     e.preventDefault();
     if(!attending) {
       attend()
@@ -32,6 +37,29 @@ export default function EventCard(props) {
       unattend()
     }
   } 
+
+  const handleEditClick = (e) => {
+    e.preventDefault();
+    setClicked(true)
+    console.log(clicked)
+  }
+
+  const deleteEvent = async () => {
+    await axios
+      .delete(`${BASE_URL}/events/${props.event.id}`)
+      .then(() => {
+        props.getEvents()
+        alert(`Your event, "${props.event.name}," has been deleted.`)
+      })
+  }
+
+  const confirmDeletion = (e) => {
+    e.preventDefault();
+    const confirmDeletion = window.confirm(`Are you sure you want to delete ${props.event.name}?`)
+    if (confirmDeletion) {
+      deleteEvent()
+    }
+  }
 
 // const dateString = props.event.date
 
@@ -41,7 +69,13 @@ export default function EventCard(props) {
 // }
 
 // formatDate(dateString)
-
+if (clicked) {
+  return (
+    <div>
+      <EventEdit event={props.event} getEvents={props.getEvents}/>
+    </div>
+  )
+}
   return (
     <div className="event-card">
       <h3>{props.event.name}</h3>
@@ -54,7 +88,13 @@ export default function EventCard(props) {
       <h5>{props.event.online ? "Online" : "In-Person"}</h5>
       <h5>{props.event.online ? `URL: ${props.event.address}` : `Location: ${props.event.address}, ${props.event.city}, ${props.event.state}`}</h5>
       <h5>Event Owner: </h5><img src={props.event.owner.profilePic} alt={props.event.owner.userName} />
-      <button onClick={handleClick}>{attending ? "You are attending this Event" : "Click to Attend"}</button>
+      <button onClick={handleAttendingClick} className="attending-button">{attending ? "You are attending this Event" : "Click to Attend"}</button>
+      {owned ? 
+        <div>
+          <button onClick={handleEditClick} className="edit-button">Edit Your Event</button>
+          <button onClick={confirmDeletion} className="delete-button">Delete Your Event</button>
+        </div>
+      : null}
     </div>
   )
 }

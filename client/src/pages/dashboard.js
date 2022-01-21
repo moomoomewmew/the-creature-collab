@@ -3,16 +3,14 @@ import axios from 'axios';
 import { CheckSession } from '../services/Auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../globals/index";
+import DeleteAccount from '../components/DeleteAccount';
 
 
-
-export default function Dashboard(props) {
-
+export default function Dashboard({authUser, ...props}) {
     const navigate = useNavigate()
-    let userId = props.user.id
+    let userId = authUser.id
     let userDetailsArray = [];
     const [userDetails, setUserDetails] = useState(userDetailsArray);
-    const [returnId, setReturnId] = useState(props.user.id);
     const [updatedUser, setUpdatedUser] = useState({
         characterName: '',
         userName: '',
@@ -24,23 +22,17 @@ export default function Dashboard(props) {
         city: ''
 
     })
-
     const getUserDetails = async (user) => {
-        const response = await axios.get(`${BASE_URL}/users/info/${userId}`);
+        const response = await axios.get(`${BASE_URL}/users/info/${authUser.id}`);
         setUserDetails(response.data);
-    };
-    const deleteAccount = async (user) => {
-        const response = await axios.delete(`${BASE_URL}/auth/users/${userId}`);
-    };
 
+    };
     const updateUser = () => {
-        // e.preventDefault();
         const newUser = {
             ...updatedUser
         };
         axios
             .put(`${BASE_URL}/users/${userId}`, newUser)
-        // .then((response) => setReturnId(response.data))
         setUpdatedUser({
             characterName: '',
             userName: '',
@@ -52,25 +44,21 @@ export default function Dashboard(props) {
             city: ''
         })
 
-
+        getUserDetails()
     };
 
     const handleChange = (e) => {
         setUpdatedUser({ ...updatedUser, [e.target.name]: e.target.value })
     }
-    const handleSubmit = async () => {
+    const handleSubmit = async (e) => {
         updateUser()
-        // console.log(updatedUser)
-        // props.setUser(userDetails)
-        // navigate (`/users/${userId}`)
-        // getUserDetails()
+        navigate (`/users/info/${userId}`)
 
     }
 
     useEffect(() => {
         CheckSession()
         getUserDetails();
-        props.setUser(props.user)
     }, []);
 
 
@@ -78,7 +66,7 @@ export default function Dashboard(props) {
         <div className='dashboard'>
             <div className='dash-pic'>
                 <img className='profilePicture' src={userDetails.profilePic} alt='profile picture' />
-                <h1 className='user-name'> {userDetails.userName}</h1>
+                <h1 className='user-name'> {userDetails.characterName}</h1>
             </div>
                 <div className='basic-info'>
 
@@ -94,7 +82,6 @@ export default function Dashboard(props) {
                     <form className="col" onSubmit={handleSubmit}>
                         picture:
                         <div className="input-wrapper">
-                            {/* <label htmlFor="password">Password</label> */}
                             <input
                                 onChange={handleChange}
                                 type="text"
@@ -103,22 +90,9 @@ export default function Dashboard(props) {
                                 value={updatedUser.profilePic}
                                 required
                             />
-                        </div>
-                        Username:
+                        </div>                      
+                       Character:
                         <div className="input-wrapper">
-                            {/* <label htmlFor="password">Password</label> */}
-                            <input
-                                onChange={handleChange}
-                                type="text"
-                                name="userName"
-                                placeholder={userDetails.userName}
-                                value={updatedUser.profilePic}
-                                required
-                            />
-                        </div>
-                        Character:
-                        <div className="input-wrapper">
-                            {/* <label htmlFor="Username">username</label> */}
                             <input
                                 onChange={handleChange}
                                 name="characterName"
@@ -130,7 +104,6 @@ export default function Dashboard(props) {
                         </div>
                         pronouns:
                         <div className="input-wrapper">
-                            {/* <label htmlFor="email">Email</label> */}
                             <input
                                 onChange={handleChange}
                                 name="pronouns"
@@ -142,7 +115,6 @@ export default function Dashboard(props) {
                         </div>
                         Bio:
                         <div className="input-wrapper">
-                            {/* <label htmlFor="password">Password</label> */}
                             <textarea
                                 onChange={handleChange}
                                 type="text"
@@ -168,9 +140,12 @@ export default function Dashboard(props) {
                             update your character
                         </button>
                     </form>
-                    <button onClick={deleteAccount}>Delete Account</button>
-
-                </div>
+                    <DeleteAccount userId = {userId}/>
+               </div>
+               <div>
+                   {/* <h2>events: {userDetails.eventsOwned}</h2> */}
+                   {/* <h2>events attending: {userDetails.eventsAttending}</h2> */}
+               </div>
             </div>
         </div>
     )
