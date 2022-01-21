@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { BASE_URL } from '../globals/index';
 
@@ -36,7 +36,7 @@ export default function EventEdit(props) {
       updateEvent();
     }
   };
-  
+
   return (
     <div className="event-card">
       <h1 className="event-header">Add Event</h1>
