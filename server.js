@@ -14,7 +14,6 @@ app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
-app.get('/', (req, res) => res.json({ message: 'Server Works!' }));
 app.use('/api', AppRouter);
 app.use('/auth', AuthRouter);
 if (process.env.NODE_ENV === 'production') {
