@@ -72,7 +72,7 @@ function App() {
           path="/login"
           element={
             <LogIn
-              setUser={setUser}
+              setAuthUser={setAuthUser}
               authUser={authUser}
               toggleAuthenticated={toggleAuthenticated}
               authenticated={authenticated}
