@@ -8,6 +8,7 @@ export default function EventEdit(props) {
 
   const handleChange = (e) => {
     setInputValue({ ...inputValue, [e.target.name]: e.target.value });
+    setDisplayedMessage('')
   };
 
   const updateEvent = async () => {
@@ -38,6 +39,10 @@ export default function EventEdit(props) {
       setDisplayedMessage(
         "Your event description can't be longer than 255 characters."
       );
+    } else if (inputValue.picture.length > 255) {
+      setDisplayedMessage(
+        "Your event picture URL can't be longer than 255 characters."
+      );
     } else if (!inputValue.address) {
       setDisplayedMessage('Please specify a street address or URL');
     } else if (inputValue.address.length > 255) {
@@ -59,7 +64,7 @@ export default function EventEdit(props) {
 
   return (
     <div className="event-card">
-      <h1 className="event-header">Add Event</h1>
+      <h1 className="event-header">Update Event</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <section className="name">
           <label htmlFor="name">Event Name:</label>
@@ -106,6 +111,15 @@ export default function EventEdit(props) {
             name="description"
             id="description"
           />
+          <h5
+            className={
+              inputValue.description.length < 255
+                ? 'positive-countdown'
+                : 'negative-countdown'
+            }
+          >
+            Description Characters Left: {255 - inputValue.description.length}
+          </h5>
         </section>
         <section className="event-picture-input">
           <label htmlFor="picture">Event Picture URL:</label>
@@ -118,6 +132,15 @@ export default function EventEdit(props) {
             name="picture"
             id="picture"
           />
+          <h5
+            className={
+              inputValue.picture.length < 255
+                ? 'positive-countdown'
+                : 'negative-countdown'
+            }
+          >
+            Picture URL Characters Left: {255 - inputValue.picture.length}
+          </h5>
         </section>
 
         <section className="event-online-input">

@@ -77,6 +77,10 @@ export default function EventForm(props) {
       setDisplayedMessage(
         "Your event description can't be longer than 255 characters."
       );
+    } else if (newEvent.picture.length > 255) {
+      setDisplayedMessage(
+        "Your event picture URL can't be longer than 255 characters."
+      );
     } else if (!newEvent.online) {
       setDisplayedMessage('Please choose online or in-person');
     } else if (!newEvent.address) {
