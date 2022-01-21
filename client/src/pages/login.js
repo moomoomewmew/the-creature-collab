@@ -7,7 +7,6 @@ import { Link, useNavigate } from 'react-router-dom'
 export default function LogIn(props) {
   const navigate = useNavigate()
   const [formValues, setFormValues] = useState({ email: '', password: '' })
-
   const handleChange = (e) => {
     setFormValues({ ...formValues, [e.target.name]: e.target.value })
   }
@@ -16,9 +15,8 @@ export default function LogIn(props) {
     e.preventDefault()
     const payload = await SignInUser(formValues)
     setFormValues({ email: '', password: '' })
-    props.setUser(payload)
+    props.setAuthUser(payload)
     props.toggleAuthenticated(true)
-    console.log(props.authenticated)
     navigate(`/dashboard`)
     alert('You\'ve successfully logged in!')
   }
