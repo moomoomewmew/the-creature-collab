@@ -3,9 +3,9 @@ input {
   border: none;
   font-size: 1rem;
 }
-
+ 
 button {
-  background-color: #046A6E;
+  background-color: #E19402;
   border-radius: 50px;
   color: #ffffff;
   padding: 0.75rem 1rem;
@@ -22,7 +22,7 @@ button:focus {
 }
 
 button:hover {
-  background-color: #FEF0A9;
+  background-color: rgba(0, 255, 255, 0.5);
 }
 
 form {
