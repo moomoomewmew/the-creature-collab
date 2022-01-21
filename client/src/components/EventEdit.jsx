@@ -24,14 +24,34 @@ export default function EventEdit(props) {
     e.preventDefault();
     if (!inputValue.name) {
       setDisplayedMessage('Event must have a name');
+    } else if (inputValue.name.length > 255) {
+      setDisplayedMessage(
+        "Your event name can't be longer than 255 characters."
+      );
     } else if (!inputValue.date) {
       setDisplayedMessage('Event must have a date');
     } else if (!inputValue.time) {
       setDisplayedMessage('Event must have a time');
     } else if (!inputValue.description) {
       setDisplayedMessage('Event must have a description');
+    } else if (inputValue.description.length > 255) {
+      setDisplayedMessage(
+        "Your event description can't be longer than 255 characters."
+      );
     } else if (!inputValue.address) {
       setDisplayedMessage('Please specify a street address or URL');
+    } else if (inputValue.address.length > 255) {
+      setDisplayedMessage(
+        "Your event address can't be longer than 255 characters."
+      );
+    } else if (inputValue.city.length > 255) {
+      setDisplayedMessage(
+        "Your event city can't be longer than 255 characters."
+      );
+    } else if (inputValue.state.length > 255) {
+      setDisplayedMessage(
+        "Your event state can't be longer than 255 characters."
+      );
     } else {
       updateEvent();
     }
@@ -51,7 +71,6 @@ export default function EventEdit(props) {
             onChange={(e) => handleChange(e)}
             id="name"
           />
-          <p>{255 - inputValue.name.length}</p>
         </section>
         <section className="event-date-input">
           <label htmlFor="date">Date:</label>
