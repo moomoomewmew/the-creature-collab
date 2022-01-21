@@ -10,6 +10,7 @@ import '../styles/profiles.css';
 export default function Dashboard({ authUser, ...props }) {
     const navigate = useNavigate()
     let userId = authUser.id
+    let userName = authUser.userName
     let userDetailsArray = [];
     const [userDetails, setUserDetails] = useState(userDetailsArray);
     const [updatedUser, setUpdatedUser] = useState({
@@ -34,6 +35,7 @@ export default function Dashboard({ authUser, ...props }) {
         };
         axios
             .put(`${BASE_URL}/users/${userId}`, newUser)
+            .then = () => {
         setUpdatedUser({
             characterName: '',
             userName: '',
@@ -44,6 +46,7 @@ export default function Dashboard({ authUser, ...props }) {
             profilePic: '',
             city: ''
         })
+    }
 
         getUserDetails()
     };
@@ -144,8 +147,9 @@ export default function Dashboard({ authUser, ...props }) {
                         <button>
                             update your character
                         </button>
+                        <DeleteAccount userId={userId} userName = {userName}/>
                     </form>
-                    {/* <DeleteAccount userId={userId} /> */}
+                    
                 </div>
                 <div>
                 </div>
