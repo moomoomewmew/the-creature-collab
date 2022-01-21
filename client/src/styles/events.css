@@ -10,16 +10,21 @@
 }
 
 .event-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
   text-align: center;
-  border: 1px solid #ffffff;
   border-radius: 50px;
   margin: 5px 15px;
   padding: 10px;
   background-color: rgba(234,180,77, 0.2);
-  border-radius: 1em;
+  border-radius: 0.3em;
+  width: 30vw;
 }
 
 .attending-button {
+  align-self: center;
   width: 40%;
 }
 
@@ -44,18 +49,21 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: auto;
+  width: 30vw;
   border-radius: 0.3em;
 }
 
 .owner-pic {
   height: 7vh;
-  border-radius: 40px;
+  border-radius: 50px;
+  width: auto;
+  align-self: center;
 }
 
 .event-pic {
   max-height: 35vh;
   width: auto;
+  max-width: 15vw;
   border-radius: 49%;
   align-self: center;
   border: solid 0.2em rgba(255, 166, 0, 0.87);;

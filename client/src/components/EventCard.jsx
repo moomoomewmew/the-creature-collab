@@ -78,7 +78,7 @@ if (clicked) {
 }
   return (
     <div className="event-card">
-      <h3>{props.event.name}</h3>
+      <p>{props.event.name}</p>
       <img className="event-pic" src={props.event.picture} alt={props.event.name}/>
       <h4>
         {props.event.date}
