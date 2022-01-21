@@ -45,7 +45,7 @@ export default function EventEdit(props) {
     }
   };
   return (
-    <div className="add-event">
+    <div className="event-card">
       <h1 className="event-header">Add Event</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <section className="name">
@@ -65,6 +65,7 @@ export default function EventEdit(props) {
           <input
             type="date"
             value={inputValue.date}
+            placeholder={inputValue.date}
             name={'date'}
             label={'date of event'}
             onChange={handleChange}
@@ -187,6 +188,7 @@ export default function EventEdit(props) {
 
         <p>{displayedMessage}</p>
         <button type="submit">Submit</button>
+        <button onClick={()=>props.setClicked(false)}>Cancel</button>
       </form>
     </div>
   );
