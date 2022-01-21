@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './styles/App.css';
-import './styles/profiles.css'
+import './styles/profiles.css';
 import LogIn from './pages/login';
 import Register from './components/CreateAccount';
 import { Routes, Route } from 'react-router-dom';
@@ -14,47 +14,51 @@ import Events from './pages/eventPage';
 import ProtectedRoute from './components/ProtectedRoute';
 import ProfileView from './components/UserProfile';
 import DisplayProfile from './pages/displayProfile';
+import axios from 'axios';
+import { BASE_URL } from './globals/index';
 
 function App() {
-  
-    const [authenticated, toggleAuthenticated] = useState(false);
-    const [user, setUser] = useState(null);
+  const [authenticated, toggleAuthenticated] = useState(false);
+  const [user, setUser] = useState(null);
+  const [authUser, setAuthUser] = useState({});
+  const [loading, setLoading] = useState(true);
 
   const checkToken = async () => {
     const user = await CheckSession();
     setUser(user);
     toggleAuthenticated(true);
   };
+  const getAuthUser = async () => {
+    const id = localStorage.getItem('id');
+    axios.get(`${BASE_URL}/users/${id}`).then((res) => {
+      setAuthUser(res.data);
+      setLoading(false);
+    });
+  };
+
   useEffect(() => {
     const token = localStorage.getItem('token');
     if (token) {
       checkToken();
+      getAuthUser();
     }
   }, []);
 
-    console.log(user);
-
   const handleLogOut = () => {
-      setUser(null);
+    setUser(null);
     toggleAuthenticated(false);
     localStorage.clear();
   };
-
-    return (
+  // if (loading) {
+  //   return <div> loading...</div>;
+  // }
+  return (
     <div className="App">
       <Navbar
-        user={user}
+        user={authUser}
         authenticated={authenticated}
         handleLogOut={handleLogOut}
       />
-      {/* {user && authenticated && (
-        <ProtectedRoute
-          authenticated={authenticated}
-          user={user}
-          path="/dashboard"
-          element={<Dashboard />}
-        />
-      )} */}
 
       <Routes>
         <Route path="/" element={<Landingpage />} />
@@ -62,8 +66,8 @@ function App() {
           path="/login"
           element={
             <LogIn
-              setUser={setUser}
-              user={user}
+              setAuthUser={setAuthUser}
+              authUser={authUser}
               toggleAuthenticated={toggleAuthenticated}
               authenticated={authenticated}
             />
@@ -76,19 +80,22 @@ function App() {
         <Route
           path="/dashboard"
           element={
-            <Dashboard user={user} checkToken={checkToken} setUser={setUser} />
+            <Dashboard
+              authUser={authUser}
+              checkToken={checkToken}
+              setUser={setUser}
+            />
           }
         />
         <Route path="/safety" element={<Safety />} />
         <Route
           path="/events"
           element={
-            <Events user={user} checkToken={checkToken} setUser={setUser} />
+            <Events user={authUser} checkToken={checkToken} setUser={setUser} />
           }
         />
       </Routes>
     </div>
-    );
- 
+  );
 }
 export default App;
