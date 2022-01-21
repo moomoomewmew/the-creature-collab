@@ -3,6 +3,7 @@ import axios from 'axios';
 import {Link, useNavigate} from 'react-router-dom'
 import ProfileCard from '../components/ProfileCard';
 import { BASE_URL } from "../globals/index";
+import '../styles/profiles.css';
 
 
 const ProfileDisplay = (props) => {

@@ -4,9 +4,10 @@ import { CheckSession } from '../services/Auth';
 import { Link, useNavigate } from 'react-router-dom';
 import { BASE_URL } from "../globals/index";
 import DeleteAccount from '../components/DeleteAccount';
+import '../styles/profiles.css';
 
 
-export default function Dashboard({authUser, ...props}) {
+export default function Dashboard({ authUser, ...props }) {
     const navigate = useNavigate()
     let userId = authUser.id
     let userDetailsArray = [];
@@ -52,7 +53,7 @@ export default function Dashboard({authUser, ...props}) {
     }
     const handleSubmit = async (e) => {
         updateUser()
-        navigate (`/users/info/${userId}`)
+        navigate(`/users/info/${userId}`)
 
     }
 
@@ -65,22 +66,23 @@ export default function Dashboard({authUser, ...props}) {
     return (
         <div className='dashboard'>
             <div className='dash-pic'>
-                <img className='profilePicture' src={userDetails.profilePic} alt='profile picture' />
+                <img className='dashboardPicture' src={userDetails.profilePic} alt='profile picture' />
                 <h1 className='user-name'> {userDetails.characterName}</h1>
             </div>
-                <div className='basic-info'>
+            <div className='basic-info'>
 
-                    
-                <h1> your email: <br/> {userDetails.email}</h1>
-                <h1> your pronouns: <br/>{userDetails.pronouns}</h1>
-                <h1> your about me:<br/> {userDetails.bio}</h1>
+
+                <h1> your email: <br /> {userDetails.email}</h1>
+                <h1> your pronouns: <br />{userDetails.pronouns}</h1>
+                <h1> your about me:<br /> {userDetails.bio}</h1>
+                <h1>your location: <br/> {userDetails.bio}</h1>
             </div>
+            {/* <Link className='event-link' to='/events'>Add Event</Link> */}
             <div className="info-form">
-                <Link className='event-link' to='/events'>Add Event</Link>
-                <h2>Update Character </h2>
+                <h1>We are always changing, update your information here! </h1>
                 <div className="card-overlay centered">
                     <form className="col" onSubmit={handleSubmit}>
-                        picture:
+                        Picture:
                         <div className="input-wrapper">
                             <input
                                 onChange={handleChange}
@@ -90,8 +92,8 @@ export default function Dashboard({authUser, ...props}) {
                                 value={updatedUser.profilePic}
                                 required
                             />
-                        </div>                      
-                       Character:
+                        </div>
+                        What should we call you?
                         <div className="input-wrapper">
                             <input
                                 onChange={handleChange}
@@ -100,9 +102,10 @@ export default function Dashboard({authUser, ...props}) {
                                 placeholder={userDetails.characterName}
                                 value={updatedUser.characterName}
                                 required
+                               
                             />
                         </div>
-                        pronouns:
+                        Pronouns:
                         <div className="input-wrapper">
                             <input
                                 onChange={handleChange}
@@ -111,9 +114,10 @@ export default function Dashboard({authUser, ...props}) {
                                 placeholder="she/he/they/"
                                 value={updatedUser.pronouns}
                                 required
+                                
                             />
                         </div>
-                        Bio:
+                        Tell your story:
                         <div className="input-wrapper">
                             <textarea
                                 onChange={handleChange}
@@ -122,30 +126,29 @@ export default function Dashboard({authUser, ...props}) {
                                 placeholder={userDetails.bio}
                                 value={updatedUser.bio}
                                 required
+
                             />
                         </div>
-                        {/* location
-                <div className="input-wrapper">
-                  {/* <label htmlFor="password">Password</label> */}
-                        {/* <input
-                    onChange={handleChange}
-                    type="text"
-                    name="location"
-                    placeholder='where are you?'
-                    value={updatedUser.city}
-                    required
-                  /> */}
-                        {/* </div> */}
+                        Location:
+                        <div className="input-wrapper">
+                            <input
+                                onChange={handleChange}
+                                type="text"
+                                name="city"
+                                placeholder='where are you?'
+                                value={updatedUser.city}
+                                required
+
+                            />
+                        </div>
                         <button>
                             update your character
                         </button>
                     </form>
-                    <DeleteAccount userId = {userId}/>
-               </div>
-               <div>
-                   {/* <h2>events: {userDetails.eventsOwned}</h2> */}
-                   {/* <h2>events attending: {userDetails.eventsAttending}</h2> */}
-               </div>
+                    {/* <DeleteAccount userId={userId} /> */}
+                </div>
+                <div>
+                </div>
             </div>
         </div>
     )
