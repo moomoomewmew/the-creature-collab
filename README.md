@@ -21,7 +21,8 @@
 
 
 ## Future Updates
-
+* messages between users
+* upload profile pic and event pic from computer
 
 ## Getting started
 ```
@@ -38,9 +39,9 @@ code .
 * Node.js
 
 ### Credits
-Jeremy Taubman
-John Jacobs
-Christopher Bowers
-Marvell Johnson
-Glenn Brown
-Whoever chose to put this badass group of people/creatures together
+* Jeremy Taubman
+* John Jacobs
+* Christopher Bowers
+* Marvell Johnson
+* Glenn Brown
+* Whoever chose to put this badass group of people/creatures together

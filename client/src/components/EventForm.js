@@ -63,16 +63,36 @@ export default function EventForm(props) {
     e.preventDefault();
     if (!newEvent.name) {
       setDisplayedMessage('Event must have a name');
+    } else if (newEvent.name.length > 255) {
+      setDisplayedMessage(
+        "Your event name can't be longer than 255 characters."
+      );
     } else if (!newEvent.date) {
       setDisplayedMessage('Event must have a date');
     } else if (!newEvent.time) {
       setDisplayedMessage('Event must have a time');
     } else if (!newEvent.description) {
       setDisplayedMessage('Event must have a description');
+    } else if (newEvent.description.length > 255) {
+      setDisplayedMessage(
+        "Your event description can't be longer than 255 characters."
+      );
     } else if (!newEvent.online) {
       setDisplayedMessage('Please choose online or in-person');
     } else if (!newEvent.address) {
       setDisplayedMessage('Please specify a street address or URL');
+    } else if (newEvent.address.length > 255) {
+      setDisplayedMessage(
+        "Your event address can't be longer than 255 characters."
+      );
+    } else if (newEvent.city.length > 255) {
+      setDisplayedMessage(
+        "Your event city can't be longer than 255 characters."
+      );
+    } else if (newEvent.state.length > 255) {
+      setDisplayedMessage(
+        "Your event state can't be longer than 255 characters."
+      );
     } else {
       createNewEvent();
     }
@@ -82,7 +102,7 @@ export default function EventForm(props) {
       <h1 className="event-header">Add Event</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <section className="name">
-          <label htmlFor="name">Name:</label>
+          <label htmlFor="name">Event Name:</label>
           <br />
           <input
             type="text"
@@ -125,6 +145,15 @@ export default function EventForm(props) {
             name="description"
             id="description"
           />
+          <h5
+            className={
+              newEvent.description.length < 255
+                ? 'positive-countdown'
+                : 'negative-countdown'
+            }
+          >
+            Description Characters Left: {255 - newEvent.description.length}
+          </h5>
         </section>
         <section className="event-picture-input">
           <label htmlFor="picture">Event Picture URL:</label>
@@ -137,6 +166,15 @@ export default function EventForm(props) {
             name="picture"
             id="picture"
           />
+          <h5
+            className={
+              newEvent.picture.length < 255
+                ? 'positive-countdown'
+                : 'negative-countdown'
+            }
+          >
+            Picture URL Characters Left: {255 - newEvent.picture.length}
+          </h5>
         </section>
 
         <section className="event-online-input">
