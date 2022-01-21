@@ -2,8 +2,9 @@
 import React, { useState } from 'react'
 import { SignInUser } from '../services/Auth'
 import { Link, useNavigate } from 'react-router-dom'
+import '../styles/validator.css'
 
-
+ 
 export default function LogIn(props) {
   const navigate = useNavigate()
   const [formValues, setFormValues] = useState({ email: '', password: '' })
