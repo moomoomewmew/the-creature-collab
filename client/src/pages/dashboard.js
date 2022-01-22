@@ -108,6 +108,18 @@ export default function Dashboard({ authUser, ...props }) {
                                
                             />
                         </div>
+                        Alias:
+                        <div className="input-wrapper">
+                            <input
+                                onChange={handleChange}
+                                name="characterName"
+                                type="text"
+                                placeholder={userDetails.characterName}
+                                value={updatedUser.characterName}
+                                required
+                               
+                            />
+                        </div>
                         Pronouns:
                         <div className="input-wrapper">
                             <input
