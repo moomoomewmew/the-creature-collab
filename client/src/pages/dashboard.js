@@ -13,6 +13,7 @@ export default function Dashboard({ authUser, ...props }) {
     let userName = authUser.userName
     let userDetailsArray = [];
     const [userDetails, setUserDetails] = useState(userDetailsArray);
+    const [returnId, setReturnId] = useState(userId);
     const [updatedUser, setUpdatedUser] = useState({
         characterName: '',
         userName: '',
@@ -25,7 +26,7 @@ export default function Dashboard({ authUser, ...props }) {
 
     })
     const getUserDetails = async (user) => {
-        const response = await axios.get(`${BASE_URL}/users/info/${authUser.id}`);
+        const response = await axios.get(`${BASE_URL}/users/${authUser.id}`);
         setUserDetails(response.data);
 
     };
@@ -35,21 +36,20 @@ export default function Dashboard({ authUser, ...props }) {
         };
         axios
             .put(`${BASE_URL}/users/${userId}`, newUser)
-            .then = () => {
-        setUpdatedUser({
-            characterName: '',
-            userName: '',
-            pronouns: '',
-            race: '',
-            moralAllignment: '',
-            bio: '',
-            profilePic: '',
-            city: ''
-        })
-    }
+            .then(() =>         
+                setUpdatedUser({
+                    characterName: '',
+                    userName: '',
+                    pronouns: '',
+                    race: '',
+                    moralAllignment: '',
+                    bio: '',
+                    profilePic: '',
+                    city: ''
+                }))
 
-        getUserDetails()
-    };
+            }
+
 
     const handleChange = (e) => {
         setUpdatedUser({ ...updatedUser, [e.target.name]: e.target.value })
@@ -78,7 +78,7 @@ export default function Dashboard({ authUser, ...props }) {
                 <h1> your email: <br /> {userDetails.email}</h1>
                 <h1> your pronouns: <br />{userDetails.pronouns}</h1>
                 <h1> your about me:<br /> {userDetails.bio}</h1>
-                <h1>your location: <br/> {userDetails.bio}</h1>
+                <h1>your location: <br/> {userDetails.city}</h1>
             </div>
             {/* <Link className='event-link' to='/events'>Add Event</Link> */}
             <div className="info-form">
@@ -100,10 +100,10 @@ export default function Dashboard({ authUser, ...props }) {
                         <div className="input-wrapper">
                             <input
                                 onChange={handleChange}
-                                name="characterName"
+                                name="userName"
                                 type="text"
-                                placeholder={userDetails.characterName}
-                                value={updatedUser.characterName}
+                                placeholder={userDetails.userName}
+                                value={updatedUser.userName}
                                 required
                                
                             />
@@ -144,13 +144,14 @@ export default function Dashboard({ authUser, ...props }) {
 
                             />
                         </div>
-                        <button>
+                        <button type= 'submit'>
                             update your character
                         </button>
-                        <DeleteAccount userId={userId} userName = {userName}/>
                     </form>
                     
                 </div>
+                <DeleteAccount userId={userId} userName = {userName}/>
+
                 <div>
                 </div>
             </div>
