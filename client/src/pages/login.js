@@ -28,6 +28,7 @@ export default function LogIn(props) {
       <div className="register-slip">
         <form className="col" onSubmit={handleSubmit}>
           <div className="input-wrapper">
+            <h2 className='login-title'>Login</h2>
             <input
               onChange={handleChange}
               name="email"
