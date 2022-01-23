@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { RegisterUser } from '../services/Auth'
+import '../styles/forms.css'
+
 
 const iState = {
   userName: '',
@@ -52,8 +54,9 @@ export default function Register(props) {
     <div className="register-form">
       <div className="card-overlay centered">
         <form className="col" onSubmit={handleSubmit}>
+          <h2 className='login-title'>Character Creation</h2>
+
           <div className="input-wrapper">
-            {/* <label htmlFor="Username">username</label> */}
             <input
               onChange={handleChange}
               name="userName"

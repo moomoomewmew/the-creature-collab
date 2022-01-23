@@ -7,6 +7,12 @@ input {
 
 
 }
+
+.login-title {
+    font-family: 'Almendra SC', serif;
+  text-align: center;
+  font-size: 3em;
+}
  
 button {
   background-color: #E19402;
@@ -35,7 +41,7 @@ form {
   color: #222222;
   padding: 1.5rem 2rem;
   text-align: left;
-  margin: 150px;
+  margin: 150px auto;
   width: 300px;
 }
 
