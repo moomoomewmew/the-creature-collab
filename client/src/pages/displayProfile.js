@@ -32,7 +32,7 @@ const ProfileDisplay = (props) => {
         <ProfileCard
           key={user.id}
           {...user}
-          name = {user.userName}
+          name = {user.characterName}
           image={user.profilePic}
           id = {user._id}
           onClick= {()=> navigate(`/users/info/${user.id}`)
