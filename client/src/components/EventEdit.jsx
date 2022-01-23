@@ -63,7 +63,7 @@ export default function EventEdit(props) {
   };
 
   return (
-    <div className="event-form" id="event-edit">
+    <div className="event-card">
       <h1 className="event-header">Update Event</h1>
       <form onSubmit={(e) => handleSubmit(e)}>
         <section className="name">
@@ -152,7 +152,7 @@ export default function EventEdit(props) {
             value={true}
             onChange={handleChange}
           />
-          <label className='radio-label' name="onlineChoice">Online</label>
+          <label name="onlineChoice">Online</label>
           <input
             type="radio"
             id="inPerson"
@@ -160,7 +160,7 @@ export default function EventEdit(props) {
             value={false}
             onChange={handleChange}
           />
-          <label className='radio-label' name="inPersonChoice">In-Person</label>
+          <label name="inPersonChoice">In-Person</label>
         </section>
         <section className="address-input">
           <p>Please input a street address for in-person or URL for online: </p>
@@ -186,7 +186,7 @@ export default function EventEdit(props) {
               value={false}
               onChange={handleChange}
             />
-            <label className='radio-label' name="indoorChoice">Indoor</label>
+            <label name="indoorChoice">Indoor</label>
             <input
               type="radio"
               id="outdoor"
@@ -194,7 +194,7 @@ export default function EventEdit(props) {
               value={true}
               onChange={handleChange}
             />
-            <label className='radio-label' name="outdoorChoice">Outdoor</label>
+            <label name="outdoorChoice">Outdoor</label>
           </section>
           <p>For In-Person Events:</p>
           <section className="event-city-input">
