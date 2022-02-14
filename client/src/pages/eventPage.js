@@ -3,7 +3,7 @@ import EventForm from '../components/EventForm';
 import axios from 'axios';
 import { BASE_URL } from '../globals/index';
 import EventCard from '../components/EventCard';
-import '../styles/events.css';
+import '../styles/zevents.css';
 
 export default function Events(props) {
   const [events, setEvents] = useState([]);

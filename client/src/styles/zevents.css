@@ -24,7 +24,7 @@
   padding: 10px;
   background-color: rgba(234,180,77, 0.2);
   border-radius: 0.3em;
-  width: 30vw;
+  width: 25vw;
 }
 
 .attending-button {
@@ -53,7 +53,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 30vw;
+  width: 25vw;
   border-radius: 0.3em;
 }
 
@@ -62,9 +62,9 @@
 }
 
 .owner-pic {
-  height: 15vh;
+  max-height: 15vh;
   border-radius: 50px;
-  width: auto;
+  width: fit-content;
   align-self: center;
 }
 
@@ -87,4 +87,8 @@
 
 .negative-countdown {
   color: #e12502;
+}
+
+input[type='radio'] {
+  accent-color: #3f3118;
 }
